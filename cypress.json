@@ -1,0 +1,9 @@
+{
+ "defaultCommandTimeout": 30000,
+ "video": false,
+ "env": {
+    "environment": "QA"
+  },
+  "viewportWidth": 1400,
+  "viewportHeight": 660
+}

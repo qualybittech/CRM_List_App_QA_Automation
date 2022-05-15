@@ -1,0 +1,20 @@
+[
+    {
+        "userkey": "admin_user",
+        "contact": "Ravi",
+        "date": "April 14, 2022 10:30 AM{enter}",
+        "description": "Cool",
+        "owner": "Haaaashini L",
+        "call result": "Connected",
+        "linkedinaction": "Profile Research",
+        "twitteraction": "Follow",
+        "meetingaction": "Connection",
+        "editdate": "April 14, 2022 10:30 PM{enter}",
+        "viewdate": "April 14, 2022 10:30 PM",
+        "Tags": "Tasks{enter}",
+        "tags": "Tasks",
+        "Status": "NOT COMPLETED",
+        "Type": "Note",
+        "Createdtype": "Manual Tasks"
+    }
+]

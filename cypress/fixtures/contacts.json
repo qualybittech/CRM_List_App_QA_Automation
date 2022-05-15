@@ -1,0 +1,16 @@
+[
+    {
+        "userkey": "non_admin_user",
+        "Firstname": "Ravi",
+        "Lastname": "krishna",
+        "Email": "ravikrishna@someclient.com",
+        "Title": "Senir QA"
+    },
+    {
+        "userkey": "admin_user",
+        "Firstname": "hari",
+        "Lastname": "krishna",
+        "Email": "ravikrishna@someclient.com",
+        "Title": "Senir QA"
+    }
+]

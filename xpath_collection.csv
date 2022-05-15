@@ -1,0 +1,5 @@
+XpathName,XpathValue
+LandingPage_loginSuccessful_Message,//div[text()='Login Successful']
+Main_section_Expand_link,//button[@aria-label='sidebar-toggle-btn']
+Main_section_Template_Link,//span[text()='Templates']
+Template_Section_Create,//button[text()='Create']

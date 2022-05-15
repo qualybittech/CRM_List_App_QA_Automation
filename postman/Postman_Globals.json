@@ -1,0 +1,129 @@
+{
+	"id": "68920fa0-ad46-4519-86ef-20e0c56e660f",
+	"values": [
+		{
+			"key": "Global_Token1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Global_Token2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "accountid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "accountid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "invalid contact id",
+			"value": "2345",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contactid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contactid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName1",
+			"value": "tom",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lName1",
+			"value": "jerry",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email01",
+			"value": "tj@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phno1",
+			"value": "1231231233",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "fName2",
+			"value": "chin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lName2",
+			"value": "chan",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email02",
+			"value": "cc@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phno2",
+			"value": "1591591599",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tag1",
+			"value": "cartoon",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tag2",
+			"value": "CN",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "test",
+			"value": "123123",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "efname1",
+			"value": "tommm",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "elname1",
+			"value": "jeryyy",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-01-12T05:22:57.767Z",
+	"_postman_exported_using": "Postman/9.8.2"
+}

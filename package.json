@@ -1,0 +1,34 @@
+{
+  "name": "simple-reactjs-application",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://aditya-sridhar.github.io/simple-reactjs-app",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "newman": "5.3.1",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "cypress:UI-test": "cypress run --spec cypress/integration/sample_spec.js",
+    "postMan:API-test": "newman run postman/CI_CRM_Postman_Collection.json -e Postman_Environment.json -g Postman_Globals.json",
+    "refresh_Json_Test_data": "node ./cypress/support/CSV_To_JSON_convertor.mjs && node ./cypress/support/Properties_file_to_Json.js",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "cypress": "^9.2.0",
+    "cypress-xpath": "^1.6.2",
+    "gh-pages": "^1.2.0",
+    "properties-reader": "^2.2.0",
+    "papaparse": "^4.6.2",
+    "properties-to-json": "^0.2.1"
+  }
+}

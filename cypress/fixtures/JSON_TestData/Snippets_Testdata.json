@@ -1,0 +1,11 @@
+[
+    {
+        "userkey": "admin_user",
+        "Type": "personal",
+        "Name": "Intro",
+        "Tags": "snippets{enter}",
+        "Body": "Hi I am xxx conntected\n you regarding yyyy , \nSo if you are intersted reply me.",
+        "Bodyedit": "Thankyou",
+        "tag": "snippets"
+    }
+]

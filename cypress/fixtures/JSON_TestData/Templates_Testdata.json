@@ -1,0 +1,12 @@
+[
+    {
+        "userkey": "admin_user",
+        "Type": "team",
+        "Name": "Intro",
+        "Subject": "Subject",
+        "Tags": "templates{enter}",
+        "Body": "Hi I am xxx conntected you regarding yyyy , So if you are intersted reply me.",
+        "Bodyedit": "Thankyou",
+        "tag": "templates"
+    }
+]

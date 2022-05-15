@@ -1,0 +1,18 @@
+[
+    {
+        "userkey": "admin_user",
+        "Seq_Name": "UI_Testing",
+        "Description": "Description",
+        "Email_Sub": "Subject",
+        "Linkedintt": "Connect",
+        "Twittertt": "Retweet",
+        "Email": "Email Auto",
+        "Call": "Call Log",
+        "Linkedin": "LinkedIn (Connect)",
+        "Sms": "SMS Manual",
+        "Twitter": "Twitter (Retweet)",
+        "Whatsapp": "WhatsApp",
+        "Meeting": "Meeting",
+        "Editeddescription": "Edited Description"
+    }
+]
