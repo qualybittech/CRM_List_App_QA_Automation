@@ -1,7 +1,7 @@
 export class Templates{
 
     navigateToTemplates(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Templates_Link');
 
     }

@@ -1,7 +1,7 @@
 export class Tasks{
 
     navigateToTasks(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Tasks_Link');
 
     }
@@ -11,39 +11,117 @@ export class Tasks{
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
         cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Date',Date);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
         cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
         cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
     }
-    createNoteTask(Date,Description){
+    createCallTask(Date,Description){
         cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
-        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Note');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Call');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
         cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
-        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Date',Date);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        //cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
         cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
         cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
     }
-    sort(){
-        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
-        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Filter');
-        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter_Sort_Descending');
+    createEmailTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Email');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+    }
+    createLinkedinTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Linkedin');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+    }
+    createTwitterTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Twitter');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+    }
+    createWhatsappTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Whatsapp');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+    }
+    createMeetingTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Meeting');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+    }
+    createSmsTask(Date,Description){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Button');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Sms');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Assign_Contact','Ravi');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Select_Contact');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Date');
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Select_Date','#text#',Date);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
     }
     updatedTaskDetails(Description,Date){
         //Contact_Edit
         cy.wait(3000)
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search','Ravi');
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Edit','#text#',Description);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Date',Date);  
         cy.element_Click_based_on_inputXpath('Tasks_Section_Edit_Update');
         //Assertion
         cy.asserting_As_Xpath_Present('Tasks_Section_Edit_Assertion');
-        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Taskpage_Taskedited_View');
-        cy.wait(3000)
     }
     viewTask(Description,Date){
         //view
+        cy.wait(3000)
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_View','#text#',Description);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
       // Assertion
@@ -165,6 +243,9 @@ export class Tasks{
         
     }
     filterTask(Type,Daterange,Tags,Status,Createdtype,RandomName){
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Filter');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter_Sort_Descending');
         //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Type',Type);
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Daterange',Daterange)
         //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Tags',Tags);
@@ -181,13 +262,13 @@ export class Tasks{
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_View_Saved_Filter','#text#',RandomName);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.wait(3000)
-      } 
+    } 
       searchTask(){
-        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Search','Ravi');
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search','Ravi');
         //Assertion As Email1 present
-        cy.Returning_String_after_Find_and_Replace('Taskpage_Taskadded_View','#text#','Ravi krishna');
+        cy.Returning_String_after_Find_and_Replace('Taskpage_Task_View','#text#','Ravi krishna');
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
-      } 
+    } 
     deleteTask(Description){
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Delete','#text#',Description);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));

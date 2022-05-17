@@ -1,7 +1,7 @@
 export class Contacts{
 
     navigateToContacts(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
     }
 
@@ -32,7 +32,16 @@ export class Contacts{
 	    cy.Returning_String_after_Find_and_Replace('Contactpage_Contactadded_View','#text#',Email);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
     }
+    invalidEmail(Email,Firstname, Lastname){
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Email',Email);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);        
+        //Assertion for contact created
+        cy.asserting_As_Xpath_Present('Contacts_Section_Invalid_Email_Message');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
 
+    }
     updatedContactDetails(Email,Phone){
         //Contact_Edit
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Edit','#text#',Email);
@@ -189,8 +198,8 @@ export class Contacts{
     filterContact(Lastname,Title,State,Country,Tags,RandomName){
         cy.element_Click_based_on_inputXpath('Contacts_Section_Filter');
         cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter');
-        //cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Sortby');
-        //cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Lastmodified');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Sortby');
+       // cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Lastmodified');
         //cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Tags',Tags);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Title',Title);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Stage',"Cold");

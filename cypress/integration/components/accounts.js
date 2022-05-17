@@ -1,7 +1,7 @@
 export class Accounts{
 
     navigateToAccounts(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
     }
 
@@ -31,6 +31,16 @@ export class Accounts{
         //Assertion wheather the created contact visible
         cy.Returning_String_after_Find_and_Replace('Accountpage_Accountadded_View','#text#',Website);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString))
+    }
+    invalidWebsite(Fullname,Phone,Website){
+      cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Button');
+      cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Fullname',Fullname);
+      cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Website',Website);
+      cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Phone',Phone);
+      //Assertion for contact created
+      cy.asserting_As_Xpath_Present('Accounts_Section_Invalid_Website_Message');
+      cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
+
     }
     viewAccount(Website,Fullname,State){
         cy.Returning_String_after_Find_and_Replace('Accounts_Section_View','#text#',Website);
@@ -198,5 +208,12 @@ export class Accounts{
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_checkbox_Multiple_Delete');
     cy.element_Click_based_on_inputXpath('Accounts_Section_Delete_Confirmation');
+  }
+  searchAccount(Fullname){
+    cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Search',Fullname)
+    cy.wait(2000)
+    //Assertion wheather the created contact visible
+    cy.Returning_String_after_Find_and_Replace('Accounts_Section_Search_Assertion','#text#',Fullname);
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString))
   }
 }

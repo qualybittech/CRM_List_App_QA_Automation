@@ -1,6 +1,6 @@
 export class Sequences{
     navigateToSequences(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Sequences_Link');
 
     }
@@ -11,9 +11,15 @@ export class Sequences{
         cy.asserting_As_Xpath_Present('Sequences_Section_Name_Required');
         cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Sequences_Name',Seq_Name);
     }
+    editSequences(Seq_Name){
+        cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Edit_Name',Seq_Name);
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Sequences_Section_Edit',Seq_Name);
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Back');
+
+    }
     createEmailSteps(Description,Email_Sub,Step){
         cy.element_Click_based_on_inputXpath('Sequences_Section_Create_First_Step');
-        // Email step
+        //Email step
         cy.element_Click_based_on_inputXpath('Sequences_Section_Step_Next');
         cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Emailsub',Email_Sub);
         cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Emailbody',Description);
@@ -235,7 +241,7 @@ export class Sequences{
         cy.get('@XpathvalueString').then(xpathString => {
         cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Seq_Name));
         })
-        cy.asserting_As_Xpath_Present('Sequences_Deactivate_Assertion');
+        //cy.asserting_As_Xpath_Present('Sequences_Deactivate_Assertion');
 
     }
     selectSequences(Seq_Name){
@@ -243,5 +249,48 @@ export class Sequences{
         cy.get('@XpathvalueString').then(xpathString => {
         cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Seq_Name));
         })
+    }
+    assignContacts(Firstname,Lastname){
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Contacts')
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Add_Contact')
+        cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Assign_Contact',Lastname)
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Select_Contact');
+        cy.get('@XpathvalueString').then(xpathString => {
+		cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
+	    });
+        cy.element_Click_based_on_inputXpath('Sequences_Section__Assign_Contact_Add')
+        cy.asserting_As_Xpath_Present('Sequences_Section_Assign_Contact_Message')
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Assign_Contact_Assertion');
+        cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
+	    });
+    }
+    
+    removeContacts(Firstname,Lastname){
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Select_Assigned_Contact');
+        cy.get('@XpathvalueString').then(xpathString => {
+		cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
+	    });
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Remove_Contact');
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Remove_Confirmation');
+        cy.asserting_As_Xpath_Present('Sequences_Section_Remove_Assertion');
+    }
+    settingsSequences(Time){
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Settings');
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Settings_Sun');
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Settings_Sat');
+        cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Settings_Time',Time);
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Settings_Reply_To_Email');
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Settings_Save');
+        cy.asserting_As_Xpath_Present('Sequences_Section_Settings_Assertion')
+
+    }
+    deleteSequences(Seq_Name){
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Back');
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Delete');
+        cy.get('@XpathvalueString').then(xpathString => {
+		cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Seq_Name));
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Remove_Confirmation');
+	    });
     }
 }

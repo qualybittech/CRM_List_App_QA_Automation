@@ -7,6 +7,7 @@ describe('Testing Successful login in Application', () => {
 	const util = new Util();
     const RandomEmail1 = util.generateRandomEmail('harry');
 	const RandomEmail2 = util.generateRandomEmail('potter');
+    const InvalidEmail = util.generateRandomEmail('invalid@');
     const RandomName = util.generateRandomNumber('Filter');
     
 	before(function() {
@@ -39,6 +40,13 @@ describe('Testing Successful login in Application', () => {
 	//cy.logout_of_CRM_Application();
   }
 })})
+it('Invalid_Contact', function (){
+    cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+      for  (var jsonindex in json_TestDataData){
+       contact.invalidEmail(InvalidEmail,json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname)
+   }
+   })
+})
     it('Filter_Contact', function (){
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){

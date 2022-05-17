@@ -1,13 +1,18 @@
 export class Snippets{
 
     navigateToSnippets(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Snippets_Link');
 
     }
     createSnippet(Type,Name,Tag,Body){
+        //cy.Returning_String_after_Find_and_Replace('Snippets_Section_Type','#text#',Type);
+        //cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Button');
-        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Type',Type);
+        cy.element_Click_based_on_inputXpath('Snippets_Section_Add_Type');
+        cy.wait(2000)
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Type','#text#',Type);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Name',Name);
         //cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Body',Body);
