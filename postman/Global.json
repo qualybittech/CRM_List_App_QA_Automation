@@ -1,0 +1,687 @@
+{
+	"id": "f6576574-9760-4848-89a5-600f995fed57",
+	"values": [
+		{
+			"key": "Global_Token1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Global_Token2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "accountid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "accountid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "invalid contact id",
+			"value": "2345",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contactid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contactid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName1",
+			"value": "tom",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lName1",
+			"value": "jerry",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email01",
+			"value": "tj@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phno1",
+			"value": "1231231233",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "fName2",
+			"value": "chin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lName2",
+			"value": "chan",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email02",
+			"value": "cc@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phno2",
+			"value": "1591591599",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tag1",
+			"value": "cartoon",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tag2",
+			"value": "CN",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "test",
+			"value": "123123",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "efname1",
+			"value": "tommm",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "elname1",
+			"value": "jeryyy",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "taskid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "taskid2",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "invalid taskid",
+			"value": "345",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tasktag 1",
+			"value": "level 1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tasktag 2",
+			"value": "level 2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "true",
+			"value": "[true]",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "false",
+			"value": "[\n  false\n]",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "compname1",
+			"value": "tom",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "compname2",
+			"value": "chin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "compphno1",
+			"value": "112233445566",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "compphno2",
+			"value": "1112223334",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "compweb1",
+			"value": "t",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "compweb2",
+			"value": "c",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "ecompname1",
+			"value": "tommm",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ecompphno1",
+			"value": "1472583699",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ecompweb1",
+			"value": "tt",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tempid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tempid2",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temname1",
+			"value": "joshna shree@1234",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temname2",
+			"value": "ammu",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temtag1",
+			"value": "session",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temtag2",
+			"value": "special",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "teminvalid",
+			"value": "543",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ufname1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "ulname1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "uemail1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "ufname2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "ulname2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "uemail2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "temid1",
+			"value": "61e6416132b3c70d63ab7246",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sniid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniid2",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temsub1",
+			"value": "scientific,fl khndlihj",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temsub2",
+			"value": "study",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "eufname1",
+			"value": "haashiniiii",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniname1",
+			"value": "lucy",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniname2",
+			"value": "lucy2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snisub1",
+			"value": "special",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snisub2",
+			"value": "freek",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniinvalidid",
+			"value": "456",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "newpassword",
+			"value": "Haaaashini98",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snitag1",
+			"value": "oops",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snitag2",
+			"value": "concept",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temname3",
+			"value": "aaa",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temname4",
+			"value": "rani",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temsub3",
+			"value": "sub3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "temsub4",
+			"value": "tools",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tempid3",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tempid4",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registerfname",
+			"value": "romeo",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registerlname",
+			"value": "juliet",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registerpassword",
+			"value": "Haaaashini@98",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registeremail",
+			"value": "julietr@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registerinvalidemail",
+			"value": "rrjjrr@@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registerinvalidpassword",
+			"value": "112233445566",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "registermaxchar",
+			"value": "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzzaabbccddeeffgghhiijjkkllmmnnoopp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "notes",
+			"value": "automation",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "editnotes",
+			"value": "automation step by step",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniname3",
+			"value": "testing sni",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniname4",
+			"value": "different",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snitag3",
+			"value": "bkj",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniid3",
+			"value": "61ea30c52f7a9cb8ec65d9d5",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sniid4",
+			"value": "61ea30452f7a9cb8ec65d9cf",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snisub3",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snisub4",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyid3",
+			"value": "61ea7acb5c93a09bb071d2d3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyid4",
+			"value": "61d7cf0ffb1208dee619b1e0",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "taskid3",
+			"value": "61eaa09971aeca0069eaad58",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "taskid4",
+			"value": "61eaa13071aeca0069eaad64",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Sequencesid1",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Stepsid2",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Stepsid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "fName3",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName3",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email03",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName4",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName4",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email04",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contactid3",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contactid4",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "compweb3",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "compweb4",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "noteid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "noteid2",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "seqname",
+			"value": "tom",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Filter_Con_01",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Filter_Acc_01",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Filter_Tas_01",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "aid1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "owner1",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "owner2",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-05-17T06:03:18.383Z",
+	"_postman_exported_using": "Postman/9.18.2"
+}
