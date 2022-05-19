@@ -4,7 +4,7 @@ version: 2.1
 
 orbs:
   newman: postman/newman@0.0.2
-
+  cypress: cypress-io/cypress@1.29.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -35,3 +35,4 @@ workflows:
     jobs:
       - say-hello
       - postmanexecution
+      - cypress/run
