@@ -29,17 +29,20 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./postman/CI_CRM_Postman_Collection.json
-          environment: ./postman/Postman_Environment.json
-          globals: ./postman/Postman_Globals.json
+          #collection: ./postman/CI_CRM_Postman_Collection.json
+          #environment: ./postman/Postman_Environment.json
+          #globals: ./postman/Postman_Globals.json
+          collection: ./postman/CRM_Backend_Test_Collection.json
+          environment: ./postman/Global.json
+          globals: ./postman/QA_Environment.json
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   crm-app-workflow:
     jobs:
-      - say-hello
+      #- say-hello
       - postmanexecution
-      - cypress/run:
-          executor: with-chrome
-          browser: chrome
-          spec: cypress/integration/accountsspec.js
+      #- cypress/run:
+          #executor: with-chrome
+          #browser: chrome
+          #spec: cypress/integration/accountsspec.js
