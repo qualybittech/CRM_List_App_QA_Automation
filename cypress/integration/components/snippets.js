@@ -9,7 +9,7 @@ export class Snippets{
         //cy.Returning_String_after_Find_and_Replace('Snippets_Section_Type','#text#',Type);
         //cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Button');
-        cy.element_Click_based_on_inputXpath('Snippets_Section_Add_Type');
+       // cy.element_Click_based_on_inputXpath('Snippets_Section_Add_Type');
         cy.wait(2000)
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Type','#text#',Type);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));

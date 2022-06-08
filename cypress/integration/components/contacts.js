@@ -219,4 +219,27 @@ export class Contacts{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.wait(3000)
     }
+    basics(){
+        cy.element_Click_based_on_inputXpath('Landing_Page_Blubrd_Logo');
+        cy.asserting_As_Xpath_Present('Dashboard_Section_Text_Dashboard');
+        cy.element_Click_based_on_inputXpath('Main_Section_Dashboard_Link');
+        cy.asserting_As_Xpath_Present('Dashboard_Section_Text_Dashboard');
+        cy.element_Click_based_on_inputXpath('Main_section_Tasks_Link');
+        cy.asserting_As_Xpath_Present('Tasks_Section_Text_Tasks');
+        cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
+        cy.asserting_As_Xpath_Present('Contacts_Section_Text_Contacts');
+        cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
+        cy.asserting_As_Xpath_Present('Accounts_Section_Text_Accounts');
+        cy.element_Click_based_on_inputXpath('Main_section_Templates_Link');
+        cy.asserting_As_Xpath_Present('Templates_Section_Text_Templates');
+        cy.element_Click_based_on_inputXpath('Main_section_Snippets_Link');
+        cy.asserting_As_Xpath_Present('Snippets_Section_Text_Snippets');
+        cy.element_Click_based_on_inputXpath('Main_section_Sequences_Link');
+        cy.asserting_As_Xpath_Present('Sequences_Section_Text_Sequences');
+        cy.element_Click_based_on_inputXpath('Main_Section_Notification_Link');
+        cy.asserting_As_Xpath_Present('Notification_Section_Text_Notification');
+        cy.element_Click_based_on_inputXpath('Main_Section_Setting_Link');
+        cy.asserting_As_Xpath_Present('Profile_Section_Text_Profile');
+        cy.asserting_As_Xpath_Present('Profile_Section_Account_Name');
+    }
 }
