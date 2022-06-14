@@ -1,7 +1,7 @@
 export class Accounts{
 
     navigateToAccounts(){
-        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
     }
 
@@ -11,6 +11,7 @@ export class Accounts{
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Phone',Phone);
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Website',Website);
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Tags',Tags);
+        cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
         //cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Account_Owner',Account_Owner);
         cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Showmore');
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Address',Address);
@@ -93,7 +94,9 @@ export class Accounts{
         
     }
     navigateToArchive(){
+        cy.wait(2000)
         cy.element_Click_based_on_inputXpath('Accounts_Section_Unarchivepage');
+        
     }
     unArchiveAccount(Website){
         cy.Returning_String_after_Find_and_Replace('Accounts_Section_Unarchive','#text#',Website);
@@ -134,6 +137,7 @@ export class Accounts{
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Tag','#text#',Email);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Add_Tag',Tags);
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
     cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
   }
   RemoveTag(Email,Tags){
@@ -159,6 +163,7 @@ export class Accounts{
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_checkbox_Multiple_Tag');
     cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Add_Tag',Tags);
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
     cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
   }
   multipleRemovetag(Email1,Email2,Tags){
@@ -199,9 +204,7 @@ export class Accounts{
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Delete_Confirmation');
     cy.wait(3000)
-    //Assertion As Email1 present
-    cy.Returning_String_after_Find_and_Replace('Accountpage_Accountadded_View','#text#',Website);
-    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+    
   }
   multipleDelete(Website1){
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_checkbox_Multiple','#text#',Website1);

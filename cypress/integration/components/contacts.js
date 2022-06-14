@@ -1,7 +1,7 @@
 export class Contacts{
 
     navigateToContacts(){
-        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
     }
 
@@ -20,7 +20,8 @@ export class Contacts{
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Linkedin',Linkedin);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Facebook',Facebook);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Twitter',Twitter);
-        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Tag',Tags);
+        //cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Tag',Tags);
+       // cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Stage',"Cold");
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Type',"Customer");
         cy.element_Click_based_on_inputXpath('Contacts_Section_Submit');
@@ -79,6 +80,7 @@ export class Contacts{
 	    cy.Returning_String_after_Find_and_Replace('Contacts_Section_Tag','#text#',Email);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
 	    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Add_Tag',Tags);
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
     }
     ViewTag(Email,Tags){
@@ -175,6 +177,7 @@ export class Contacts{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_checkbox_Multiple_Tag');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Add_Tag',Tags);
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
         cy.wait(2000)
     }
