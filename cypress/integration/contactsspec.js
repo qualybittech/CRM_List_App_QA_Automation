@@ -20,8 +20,14 @@ describe('Testing Successful login in Application', () => {
             cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
        }
        })
-   })
-
+    })
+    /*it('Basics', function (){
+        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+          for  (var jsonindex in json_TestDataData){
+           contact.basics();
+       }
+       })
+    })*/
 	it('Create_Contact', function (){
     	cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
@@ -47,15 +53,6 @@ it('Invalid_Contact', function (){
    }
    })
 })
-    it('Filter_Contact', function (){
-         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
-           for  (var jsonindex in json_TestDataData){
-         contact.filterContact(json_TestDataData[jsonindex].Lastname,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,
-            json_TestDataData[jsonindex].Tags,RandomName)
-            screenTop
-        }
-        })
-    })
    it('View_Contact', function (){
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
@@ -136,6 +133,15 @@ it('Invalid_Contact', function (){
            }
            })
     })
+    it('Filter_Contact', function (){
+        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+          for  (var jsonindex in json_TestDataData){
+        contact.filterContact(json_TestDataData[jsonindex].Lastname,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,
+           json_TestDataData[jsonindex].Tags,RandomName)
+           screenTop
+       }
+       })
+   })
     it('Delete', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){

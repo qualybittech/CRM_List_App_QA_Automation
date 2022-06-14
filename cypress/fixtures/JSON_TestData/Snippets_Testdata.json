@@ -3,9 +3,9 @@
         "userkey": "admin_user",
         "Type": "Team",
         "Name": "Intro",
-        "Tags": "snippets{enter}",
-        "Body": "Hi I am xxx conntected\n you regarding yyyy , \nSo if you are intersted reply me.",
+        "Tags": "tag{enter}",
+        "Body": "Hi I am xxx conntected\r\n you regarding yyyy , \r\nSo if you are intersted reply me.",
         "Bodyedit": "Thankyou",
-        "tag": "snippets"
+        "tag": "tag"
     }
 ]

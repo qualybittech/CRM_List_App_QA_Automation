@@ -46,7 +46,7 @@ describe('Testing Successful login in Application', () => {
      }
      })
     })
-    it('Invalid_Account', function (){
+   it('Invalid_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
           accounts.invalidWebsite(json_TestDataData[jsonindex].Fullname,json_TestDataData[jsonindex].Phone,json_TestDataData[jsonindex].Fullname)
@@ -134,7 +134,7 @@ describe('Testing Successful login in Application', () => {
       }
       })
   })
-  it('Filter_Account', function (){
+  /*it('Filter_Account', function (){
          cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
             accounts.filterAccount(json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].No_Of_Employee,
@@ -142,7 +142,7 @@ describe('Testing Successful login in Application', () => {
             screenTop
         }
         })
-  })
+  })*/
   it('Delete', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
