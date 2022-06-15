@@ -34,6 +34,7 @@ describe('Testing Successful login in Application', () => {
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
      snippets.updatedSnippetDetails(RandomName1,json_TestDataData[jsonindex].Bodyedit)
+     cy.wait(2000)
      }
      })
   })
@@ -75,10 +76,10 @@ describe('Testing Successful login in Application', () => {
       }
       })
   })
-  it('Archive_Snippet', function (){
+ it('Archive_Snippet', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
-      snippets.archiveAccount(RandomName1)
+      snippets.archiveSnippet(RandomName1)
       snippets.navigateToArchive()
       snippets.assertion(RandomName1)
        }
@@ -87,7 +88,7 @@ describe('Testing Successful login in Application', () => {
 it('Unarchive_Snippet', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
-      snippets.unArchiveAccount(RandomName1)
+      snippets.unArchiveSnippet(RandomName1)
       snippets.navigateToArchive()
       snippets.assertion(RandomName1)
        }
