@@ -61,9 +61,12 @@ export class Snippets{
         //Contact_Add_Tag
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_View_Add_Tag','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.wait(2000)
         //Assertion 
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_View_Add_Tag_Assertion','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_View_Add_Tag','#text#',Name);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
       } 
       multipleAddtag(Name1,Name2,Tags){
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_checkbox_Multiple','#text#',Name1);
@@ -72,6 +75,7 @@ export class Snippets{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_checkbox_Multiple_Tag');
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tags);
+        cy.wait(2000)
         //cy.element_Click_based_on_inputXpath('Snippets_Section_Select_Tag');
         cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
       }
@@ -86,18 +90,18 @@ export class Snippets{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
       }
-      archiveAccount(Name){
+      archiveSnippet(Name){
         //archive_Contact
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Archive','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion for popup
         cy.asserting_As_Xpath_Present('Snippets_Section_Archive_Assertion');
-        
+        cy.wait(2000)
     }
     navigateToArchive(){
         cy.element_Click_based_on_inputXpath('Snippets_Section_Unarchivepage');
     }
-    unArchiveAccount(Name){
+    unArchiveSnippet(Name){
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Unarchive','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion for popup

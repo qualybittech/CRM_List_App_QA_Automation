@@ -1,7 +1,7 @@
 export class Templates{
 
     navigateToTemplates(){
-        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Templates_Link');
 
     }
@@ -85,9 +85,10 @@ export class Templates{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion for popup
         cy.asserting_As_Xpath_Present('Templates_Section_Archive_Assertion');
-        
+    
     }
     navigateToArchive(){
+        cy.wait(2000)
         cy.element_Click_based_on_inputXpath('Templates_Section_Unarchivepage');
     }
     unArchiveAccount(Name){
