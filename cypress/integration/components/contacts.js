@@ -3,6 +3,8 @@ export class Contacts{
     navigateToContacts(){
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+
     }
 
     createContact(Firstname, Lastname,Email,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags){
@@ -20,8 +22,9 @@ export class Contacts{
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Linkedin',Linkedin);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Facebook',Facebook);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Twitter',Twitter);
-        //cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Tag',Tags);
-       // cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Tag',Tags);
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Stage',"Cold");
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Type',"Customer");
         cy.element_Click_based_on_inputXpath('Contacts_Section_Submit');
@@ -67,7 +70,9 @@ export class Contacts{
         
     }
     navigateToArchive(){
+        cy.wait(2000)
         cy.element_Click_based_on_inputXpath('Contacts_Section_Unarchivepage');
+        cy.wait(2000)
     }
     unArchiveContact(Email){
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Unarchive','#text#',Email);
@@ -80,7 +85,8 @@ export class Contacts{
 	    cy.Returning_String_after_Find_and_Replace('Contacts_Section_Tag','#text#',Email);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
 	    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Add_Tag',Tags);
-        cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
     }
     ViewTag(Email,Tags){
@@ -139,10 +145,11 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Contacts_Section_Delete_Confirmation');
         cy.wait(3000)
         //Assertion As Email1 present
-        cy.Returning_String_after_Find_and_Replace('Contactpage_Contactadded_View','#text#',Email);
-        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+        //cy.Returning_String_after_Find_and_Replace('Contactpage_Contactadded_View','#text#',Email);
+        //cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
     }
     multipleArchive(Email1,Email2){
+        cy.wait(2000);
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_checkbox_Multiple','#text#',Email1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_checkbox_Multiple','#text#',Email2);
@@ -171,15 +178,17 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Contacts_Section_checkbox_Multiple_Unarchive');
     }
     multipleAddtag(Email1,Email2,Tags){
-        cy.Returning_String_after_Find_and_Replace('Contacts_Section_checkbox_Multiple','#text#',Email1);
-        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.wait(2000)
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_checkbox_Multiple','#text#',Email2);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_checkbox_Multiple','#text#',Email1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_checkbox_Multiple_Tag');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Add_Tag',Tags);
-        cy.element_Click_based_on_inputXpath('Contacts_Section_Select_Tag');
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
-        cy.wait(2000)
+        
     }
     multipleRemovetag(Email1,Email2,Tags){
         

@@ -3,6 +3,8 @@ export class Templates{
     navigateToTemplates(){
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Templates_Link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+
 
     }
     createTemplate(Type,Name,Subject,Tag,Body){
@@ -11,6 +13,8 @@ export class Templates{
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Name',Name);
       //cy.element_Send_Value_based_on_InputXpath(' Templates_Section_Add_Subject',Subject);
       //cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tag);
+        //cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tag);
+        //cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Body',Body);
         cy.element_Click_based_on_inputXpath('Templates_Section_Create_Add');   
         //Assertion for Template created
@@ -41,6 +45,8 @@ export class Templates{
         cy.Returning_String_after_Find_and_Replace('Templates_Section_Tag','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tags);
+        cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_Tag_Close');
       }
     RemoveTag(Name,Tags){
@@ -66,6 +72,8 @@ export class Templates{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_checkbox_Multiple_Tag');
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tags);
+        cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_Tag_Close');
       }
       multipleRemovetag(Name1,Name2,Tags){

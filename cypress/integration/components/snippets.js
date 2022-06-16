@@ -14,7 +14,9 @@ export class Snippets{
        // cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Type','#text#',Type);
        // cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Name',Name);
-        //cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
+        /*cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tag);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));*/
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Body',Body);
         cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Add');   
         //Assertion for Snippet created
@@ -46,6 +48,8 @@ export class Snippets{
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Tag','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tags);
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //cy.element_Click_based_on_inputXpath('Snippets_Section_Select_Tag');
         cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
       }
@@ -75,9 +79,8 @@ export class Snippets{
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_checkbox_Multiple_Tag');
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tags);
-        cy.wait(2000)
-        //cy.element_Click_based_on_inputXpath('Snippets_Section_Select_Tag');
-        cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));        cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
       }
       multipleRemovetag(Name1,Name2,Tags){
         

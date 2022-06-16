@@ -3,6 +3,8 @@ export class Accounts{
     navigateToAccounts(){
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+
     }
 
     createAccount(Fullname,Phone,Website,Tags,Address,City,State,Code,Country,Industry,About,Linkedin,Facebook,Twitter,Num_Of_Employee){
@@ -11,7 +13,8 @@ export class Accounts{
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Phone',Phone);
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Website',Website);
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Tags',Tags);
-        cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
+        cy.Returning_String_after_Find_and_Replace('Accounts_Section_Select_Tag','#text#',Tags);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Account_Owner',Account_Owner);
         cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Showmore');
         cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Address',Address);
@@ -137,7 +140,8 @@ export class Accounts{
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Tag','#text#',Email);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Add_Tag',Tags);
-    cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
+    cy.Returning_String_after_Find_and_Replace('Accounts_Section_Select_Tag','#text#',Tags);
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
   }
   RemoveTag(Email,Tags){
@@ -163,7 +167,8 @@ export class Accounts{
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_checkbox_Multiple_Tag');
     cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Add_Tag',Tags);
-    cy.element_Click_based_on_inputXpath('Accounts_Section_Select_Tag');
+    cy.Returning_String_after_Find_and_Replace('Accounts_Section_Select_Tag','#text#',Tags);
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
   }
   multipleRemovetag(Email1,Email2,Tags){

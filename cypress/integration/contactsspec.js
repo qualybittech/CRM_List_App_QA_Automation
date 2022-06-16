@@ -133,7 +133,7 @@ it('Invalid_Contact', function (){
            }
            })
     })
-    it('Filter_Contact', function (){
+    /*it('Filter_Contact', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
         contact.filterContact(json_TestDataData[jsonindex].Lastname,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,
@@ -141,7 +141,7 @@ it('Invalid_Contact', function (){
            screenTop
        }
        })
-   })
+   })*/
     it('Delete', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
