@@ -3,7 +3,7 @@
         "userkey": "admin_user",
         "Type": "Team",
         "Name": "Intro",
-        "Tags": "tag{enter}",
+        "Tags": "tag",
         "Body": "Hi I am xxx conntected\r\n you regarding yyyy , \r\nSo if you are intersted reply me.",
         "Bodyedit": "Thankyou",
         "tag": "tag"
