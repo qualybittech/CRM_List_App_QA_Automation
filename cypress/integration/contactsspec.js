@@ -1,15 +1,23 @@
+import { Sequences } from "./components/sequences";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
 
 describe('Testing Successful login in Application', () => {
 
+    const sequences = new Sequences();
 	const contact = new Contacts();
 	const util = new Util();
     const RandomEmail1 = util.generateRandomEmail('harry');
 	const RandomEmail2 = util.generateRandomEmail('potter');
     const InvalidEmail = util.generateRandomEmail('invalid@');
     const RandomName = util.generateRandomNumber('Filter');
-    
+    const RandomSequences = util.generateRandomNumber('UI_Testing');
+    const RandomDescription1 = util.generateRandomNumber('Email');
+    const RandomDescription2 = util.generateRandomNumber('Call');
+    const Firstname1 = util.generateRandomNumber('Ravi');
+    const Firstname2 = util.generateRandomNumber('Krish');
+
+
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
     })
@@ -31,14 +39,18 @@ describe('Testing Successful login in Application', () => {
 	it('Create_Contact', function (){
     	cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
-	    contact.navigateToContacts();
-	    contact.createContact(json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname,RandomEmail1,
+        sequences.navigateToSequences();
+        sequences.createSequences(RandomSequences);
+        sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+        sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);    
+        contact.navigateToContacts();
+	    contact.createContact(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,
 		json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
 		json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
 		json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
 		json_TestDataData[jsonindex].Tags)
 
-	contact.createContact(json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname,RandomEmail2,
+	contact.createContact(Firstname2,json_TestDataData[jsonindex].Lastname,RandomEmail2,
 		json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
 		json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
 		json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
@@ -56,7 +68,10 @@ it('Invalid_Contact', function (){
    it('View_Contact', function (){
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
-            contact.viewContact(RandomEmail1,json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname)
+            contact.viewContact(RandomEmail1,Firstname1,json_TestDataData[jsonindex].Lastname)
+            contact.viewAddTask(RandomEmail1,json_TestDataData[jsonindex].date,json_TestDataData[jsonindex].Description,Firstname1)
+            contact.viewAddToSequences(RandomEmail1,RandomSequences)
+            contact.viewSendEmail(RandomEmail1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Description)
         }
         })
     })

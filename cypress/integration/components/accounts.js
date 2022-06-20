@@ -49,7 +49,7 @@ export class Accounts{
     viewAccount(Website,Fullname,State){
         cy.Returning_String_after_Find_and_Replace('Accounts_Section_View','#text#',Website);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
-	    cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Expand');
+	      cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Expand');
         cy.Returning_String_after_Find_and_Replace('Accounts_Section_View_Assertion','#text#',Website);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
         cy.Returning_String_after_Find_and_Replace('Accounts_Section_View_Assertion','#text#',Fullname);
@@ -74,6 +74,12 @@ export class Accounts{
         //Assertion Delete note
         cy.asserting_As_Xpath_Present('Accounts_Section_View_Deletenotes_Assertion');
         cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Close');
+    }
+    viewAddContact(Website){
+      cy.Returning_String_after_Find_and_Replace('Accounts_Section_View','#text#',Website);
+      cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+      cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Expand');
+      cy.element_Click_based_on_inputXpath('Accounts_Section_View_Add_Contact');
     }
     updatedAccountDetails(Website,Phone){
         //Contact_Edit
@@ -223,5 +229,54 @@ export class Accounts{
     //Assertion wheather the created contact visible
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Search_Assertion','#text#',Fullname);
     cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString))
+  }
+  createContact(Firstname, Lastname,Email,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags,Fullname){
+    //cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Email',Email);
+    cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Showmore');
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Title',Title);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Street',Street);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_City',City);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_State',State);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Country',Country);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Code',Code);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Linkedin',Linkedin);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Facebook',Facebook);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Twitter',Twitter);
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Tag',Tags);
+    cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Tag','#text#',Tags);
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Stage',"Cold");
+    cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Type',"Customer");
+    cy.element_Click_based_on_inputXpath('Contacts_Section_Submit');
+    
+    //Assertion for contact created
+    cy.asserting_As_Xpath_Present('Contactpage_Contactadded_Message');
+    cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Close');
+    cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+    cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
+    //Assertion wheather the created contact visible
+    cy.Returning_String_after_Find_and_Replace('Contactpage_Contactadded_View','#text#',Email);
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+    cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
+    //Assertion wheather the created contact with account visible
+    cy.Returning_String_after_Find_and_Replace('Contacts_Section_Account_View','#text#',Fullname);
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+    cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
+    
+  }
+  existingWebsite(Fullname,Phone,Website){
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Button');
+    cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Fullname',Fullname);
+    cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Website',Website);
+    cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Phone',Phone);
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Add');
+    //Assertion for contact created
+    cy.asserting_As_Xpath_Present('Accounts_Section_Already_Exist_Message');
+    cy.wait(2000)
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
+
   }
 }

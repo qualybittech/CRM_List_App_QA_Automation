@@ -1,14 +1,18 @@
+import { Contacts } from "./components/contacts";
 import { Accounts } from "./components/accounts";
 import { Util } from "./components/util";
 
 describe('Testing Successful login in Application', () => {
 
+  const contacts = new Contacts();
 	const accounts = new Accounts();
   const util = new Util();
   const Random_Website1 = util.generateRandomWebsite('netflix');
   const Random_Website2 = util.generateRandomWebsite('gram');
   const Fullname = util.generateRandomNumber('sai')
   const RandomName = util.generateRandomNumber('Filter');
+  const RandomEmail1 = util.generateRandomEmail('harry');
+
     
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
@@ -53,10 +57,23 @@ describe('Testing Successful login in Application', () => {
      }
      })
     })
+    it('Creating_Existing_Account', function (){
+      cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
+        for  (var jsonindex in json_TestDataData){
+          accounts.existingWebsite(json_TestDataData[jsonindex].Fullname,json_TestDataData[jsonindex].Phone,Random_Website1)
+     }
+     })
+    })
     it('View_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
           accounts.viewAccount(Random_Website1,Fullname,json_TestDataData[jsonindex].State)
+          accounts.viewAddContact(Random_Website1)
+          accounts.createContact(json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname,RandomEmail1,
+            json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+            json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
+            json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+            json_TestDataData[jsonindex].Tags,Fullname)
      }
      })
     })
