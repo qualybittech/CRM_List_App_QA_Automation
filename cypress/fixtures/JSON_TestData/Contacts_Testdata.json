@@ -3,7 +3,7 @@
         "userkey": "admin_user",
         "Firstname": "Ravi",
         "Lastname": "krishna",
-        "Email": "ravi@someclient.com",
+        "Email": "Email Auto",
         "Phone": "1122334455",
         "Title": "Tiltle",
         "Street": "Ramnagar",
@@ -15,6 +15,13 @@
         "Facebook": "Facebook",
         "Twitter": "Twitter",
         "Tags": "tag",
-        "tags": "tag"
+        "tags": "tag",
+        "Email_Sub": "Subject",
+        "Call": "Call Log",
+        "Description": "Description",
+        "date": "April 14",
+        "__parsed_extra": [
+            " 2022 10:30 PM{enter}"
+        ]
     }
 ]

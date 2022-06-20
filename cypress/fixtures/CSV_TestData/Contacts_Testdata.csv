@@ -1,2 +1,2 @@
-userkey,Firstname,Lastname,Email,Phone,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags,tags
-admin_user,Ravi,krishna,ravi@someclient.com,1122334455,Tiltle,Ramnagar,Coimbatore,TN,India,638102,Linkedin,Facebook,Twitter,tag,tag
+userkey,Firstname,Lastname,Email,Phone,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags,tags,Email_Sub,Email,Call,Description,Email_Sub,date
+admin_user,Ravi,krishna,ravi@someclient.com,1122334455,Tiltle,Ramnagar,Coimbatore,TN,India,638102,Linkedin,Facebook,Twitter,tag,tag,Subject,Email Auto,Call Log,Description,Subject,April 14, 2022 10:30 PM{enter}

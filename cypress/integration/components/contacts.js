@@ -1,7 +1,7 @@
 export class Contacts{
 
     navigateToContacts(){
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
 
@@ -253,5 +253,56 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Main_Section_Setting_Link');
         cy.asserting_As_Xpath_Present('Profile_Section_Text_Profile');
         cy.asserting_As_Xpath_Present('Profile_Section_Account_Name');
+    }
+    viewAddToSequences(Email,Seqname){
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_View','#text#',Email);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+	    cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Expand');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Add_To_Sequence');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Assign_Sequence',Seqname);
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Sequences','#text#',Seqname);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Submit');
+        cy.asserting_As_Xpath_Present('Contacts_Section_Added_Sequences_Assertion');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_View_Sequences');
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Sequences_Assertion','#text#',Seqname);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+        cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Close');
+    }
+    viewSendEmail(Email,Email_Sub,Description){
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_View','#text#',Email);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+	    cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Expand');
+	    cy.element_Click_based_on_inputXpath('Contacts_Section_View_Send_Email');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Emailsub',Email_Sub);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Emailbody',Description);
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Email_Send');
+        cy.asserting_As_Xpath_Present('Contacts_Section_Email_Send_Message');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_View_Emails');
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_View_Email_Send','#text#',Email_Sub);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+        cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Close');
+
+    }
+    viewAddTask(Email,Date,Description,Name){
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_View','#text#',Email);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+	    cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Expand');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_View_Add_Task');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Date',Date);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Description',Description);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Add');  
+        cy.asserting_As_Xpath_Present('Taskpage_Taskadded_Message'); 
+        cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Close');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        cy.element_Click_based_on_inputXpath('Main_section_Tasks_Link');
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search',Name);
+        //Assertion As Email1 present
+        cy.Returning_String_after_Find_and_Replace('Taskpage_Task_View','#text#',Name);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+        cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+
     }
 }
