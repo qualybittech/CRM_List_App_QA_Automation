@@ -27,13 +27,13 @@ describe('Testing Successful login in Application', () => {
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
     })
-  it('Login', function (){
-        cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
-          for  (var jsonindex in json_TestDataData){
-            cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
-            cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
-       }
-       })
+    beforeEach(()=>{
+      cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+        for  (var jsonindex in json_TestDataData){
+          cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
+          cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
+     }
+     })
   })
   it('Create_Tasks', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {

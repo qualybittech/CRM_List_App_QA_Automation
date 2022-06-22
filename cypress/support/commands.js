@@ -1,3 +1,4 @@
+import 'cypress-file-upload';
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -37,6 +38,7 @@
 	cy.element_Click_based_on_inputXpathName('Login_Page_Submit');
 })
 */
+
 
 Cypress.Commands.add('asserting_As_Xpath_Present', (xpathValue) => {		
 	//cy.fixture('xpath_Locators').then((xpath_Locators)  => {
@@ -203,5 +205,4 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 		}
 	})
 })
-
 

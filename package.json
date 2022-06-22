@@ -25,10 +25,11 @@
   },
   "devDependencies": {
     "cypress": "^9.2.0",
+    "cypress-file-upload": "^5.0.8",
     "cypress-xpath": "^1.6.2",
     "gh-pages": "^1.2.0",
-    "properties-reader": "^2.2.0",
     "papaparse": "^4.6.2",
+    "properties-reader": "^2.2.0",
     "properties-to-json": "^0.2.1"
   }
 }

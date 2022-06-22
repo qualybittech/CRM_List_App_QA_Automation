@@ -1,7 +1,7 @@
 [
     {
         "userkey": "admin_user",
-        "Type": "team",
+        "Type": "Personal",
         "Name": "Intro",
         "Subject": "Subject",
         "Tags": "templates",
