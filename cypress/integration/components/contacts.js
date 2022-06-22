@@ -1,3 +1,4 @@
+
 export class Contacts{
 
     navigateToContacts(){
@@ -43,6 +44,17 @@ export class Contacts{
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);        
         //Assertion for contact created
         cy.asserting_As_Xpath_Present('Contacts_Section_Invalid_Email_Message');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
+
+    }
+    duplicateEmail(Email,Firstname,Lastname){
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Email',Email);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);        
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Submit');
+        //Assertion for contact created
+        cy.asserting_As_Xpath_Present('Contacts_Section_Duplicate_Email_Message');
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
 
     }
@@ -304,5 +316,12 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Main_section_Contacts_Link');
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
 
+    }
+    uploadContact(file){
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Upload');
+        cy.get('#file-upload--input').attachFile(file);
+        cy.wait(2000)
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Upload_Next');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Upload_Confirm');
     }
 }

@@ -1,7 +1,6 @@
 import { Sequences } from "./components/sequences";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
-
 describe('Testing Successful login in Application', () => {
 
     const sequences = new Sequences();
@@ -21,8 +20,8 @@ describe('Testing Successful login in Application', () => {
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
     })
-    it('Login', function (){
-        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+    beforeEach(()=>{
+        cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
             cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
@@ -36,15 +35,15 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })*/
-	it('Create_Contact', function (){
+/*	it('Create_Contact', function (){
     	cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
-        sequences.navigateToSequences();
-        sequences.createSequences(RandomSequences);
-        sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
-        sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);    
+       // sequences.navigateToSequences();
+       // sequences.createSequences(RandomSequences);
+       // sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+       // sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);    
         contact.navigateToContacts();
-	    contact.createContact(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,
+	   contact.createContact(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,
 		json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
 		json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
 		json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
@@ -58,13 +57,20 @@ describe('Testing Successful login in Application', () => {
 	//cy.logout_of_CRM_Application();
   }
 })})
-it('Invalid_Contact', function (){
-    cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
-      for  (var jsonindex in json_TestDataData){
-       contact.invalidEmail(InvalidEmail,json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname)
-   }
-   })
-})
+   it('Invalid_Contact', function (){
+        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+         for  (var jsonindex in json_TestDataData){
+           contact.invalidEmail(InvalidEmail,json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname)
+         }
+        })
+    })
+    it('Duplicate_Contact', function (){
+        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+          for  (var jsonindex in json_TestDataData){
+           contact.duplicateEmail(RandomEmail1,json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname)
+       }
+       })
+    })
    it('View_Contact', function (){
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
@@ -146,6 +152,14 @@ it('Invalid_Contact', function (){
             contact.navigateToArchive();
             contact.multipleAssertion(RandomEmail1,RandomEmail2);
            }
+           })
+    })*/
+    it('Upload_Contact', function (){
+        cy.fixture('./CSV_TestData/Contacts_Testdata.csv').then((CSV_TestData) => {
+         //for  (var jsonindex in json_TestDataData){
+           contact.navigateToContacts();
+         contact.uploadContact('Contact_Upload.csv')
+          // }
            })
     })
     /*it('Filter_Contact', function (){

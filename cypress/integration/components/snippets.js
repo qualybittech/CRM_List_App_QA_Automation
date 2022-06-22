@@ -5,19 +5,35 @@ export class Snippets{
         cy.element_Click_based_on_inputXpath('Main_section_Snippets_Link');
 
     }
-    createSnippet(Type,Name,Tag,Body){
-        //cy.Returning_String_after_Find_and_Replace('Snippets_Section_Type','#text#',Type);
-        //cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+    navigateToSnippetsTeam(){
+      cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+      cy.element_Click_based_on_inputXpath('Main_section_Snippets_Link');
+      cy.element_Click_based_on_inputXpath('Snippets_Section_Type_Team');
+  }
+    createPersonalSnippet(Name,Tag,Body){
+        cy.element_Click_based_on_inputXpath('Snippets_Section_Type_Personal');
         cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Button');
-       // cy.element_Click_based_on_inputXpath('Snippets_Section_Add_Type');
-        cy.wait(2000)
-       // cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Type','#text#',Type);
-       // cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Name',Name);
-        /*cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tag);
-        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));*/
-        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Body',Body);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Body',Name);
+        cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Add');   
+        //Assertion for Snippet created
+        cy.asserting_As_Xpath_Present('Snippetpage_Snippetadded_Message');
+
+        //Assertion wheather the created Snippet visible
+	      cy.Returning_String_after_Find_and_Replace('Snippetpage_Snippetadded_View','#text#',Name);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+      }
+      createTeamSnippet(Name,Tag,Body){
+        cy.element_Click_based_on_inputXpath('Snippets_Section_Type_Team');
+        cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Button');
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Name',Name);
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tag);
+        cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tag);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Body',Name);
         cy.element_Click_based_on_inputXpath('Snippets_Section_Create_Add');   
         //Assertion for Snippet created
         cy.asserting_As_Xpath_Present('Snippetpage_Snippetadded_Message');
@@ -47,7 +63,7 @@ export class Snippets{
         //Contact_Add_Tag
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Tag','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
-        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tags);
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Extra_Tag',Tags);
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //cy.element_Click_based_on_inputXpath('Snippets_Section_Select_Tag');
@@ -78,7 +94,7 @@ export class Snippets{
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_checkbox_Multiple','#text#',Name2);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_checkbox_Multiple_Tag');
-        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Tag',Tags);
+        cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Extra_Tag',Tags);
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_Select_Tag','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));        cy.element_Click_based_on_inputXpath('Snippets_Section_Tag_Close');
       }
@@ -121,6 +137,8 @@ export class Snippets{
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_checkbox_Multiple','#text#',Name2);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_checkbox_Multiple_Archive');
+        cy.wait(2000)
+
         
     }
     multipleUnarchive(Name1,Name2){
@@ -137,8 +155,18 @@ export class Snippets{
        //Assertion As Email2 present
        cy.Returning_String_after_Find_and_Replace('Snippetpage_Snippetadded_View','#text#',Name2);
        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
-   }
-   deleteSnippet(Name){
+    }
+    cloneSnippet(Name1){
+      cy.Returning_String_after_Find_and_Replace('Snippets_Section_Clone','#text#',Name1);
+      cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+      cy.element_Send_Value_based_on_InputXpath('Snippets_Section_Add_Name','-Cloned');
+      cy.element_Click_based_on_inputXpath('Snippets_Section_Clone_Confirm')
+      //Assertion As Email1 present
+      cy.Returning_String_after_Find_and_Replace('Snippetpage_Snippetcloned_View','#text#',Name1);
+      cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+       
+    }
+    deleteSnippet(Name){
     cy.Returning_String_after_Find_and_Replace('Snippets_Section_Delete','#text#',Name);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Snippets_Section_Delete_Confirmation');

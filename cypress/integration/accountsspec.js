@@ -17,19 +17,20 @@ describe('Testing Successful login in Application', () => {
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
     })
-    it('Login', function (){
-        cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
-          for  (var jsonindex in json_TestDataData){
-            cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
-            cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
 
-        }
-       }) 
-      })
+    beforeEach(()=>{
+      cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+        for  (var jsonindex in json_TestDataData){
+          cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
+          cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
+          accounts.navigateToAccounts();
+
+     }
+     })
+  })
        it('Create_Account', function (){
         cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
-          accounts.navigateToAccounts();
           accounts.createAccount(Fullname,json_TestDataData[jsonindex].Phone,
             Random_Website1,json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Address,json_TestDataData[jsonindex].City,
           json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Code,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Industry,json_TestDataData[jsonindex].About,
@@ -67,6 +68,8 @@ describe('Testing Successful login in Application', () => {
     it('View_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
+          accounts.searchAccount(Fullname)
+          cy.wait(2000)
           accounts.viewAccount(Random_Website1,Fullname,json_TestDataData[jsonindex].State)
           accounts.viewAddContact(Random_Website1)
           accounts.createContact(json_TestDataData[jsonindex].Firstname,json_TestDataData[jsonindex].Lastname,RandomEmail1,
@@ -80,6 +83,7 @@ describe('Testing Successful login in Application', () => {
     it('Edit_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        accounts.searchAccount(Fullname)
         accounts.updatedAccountDetails(Random_Website1,json_TestDataData[jsonindex].Phoneedit)
         cy.wait(2000)
        }
@@ -88,6 +92,7 @@ describe('Testing Successful login in Application', () => {
     it('Archive_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        accounts.searchAccount(Fullname)
           accounts.archiveAccount(Random_Website1)
           accounts.navigateToArchive()
           accounts.assertion(Random_Website1)
@@ -97,6 +102,7 @@ describe('Testing Successful login in Application', () => {
   it('Unarchive_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        accounts.searchAccount(Fullname)
         accounts.unArchiveAccount(Random_Website1)
         accounts.navigateToArchive()
         accounts.assertion(Random_Website1)
@@ -106,6 +112,7 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Archive', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
         accounts.multipleArchive(Random_Website1,Random_Website2);    
         accounts.navigateToArchive(); 
         accounts.multipleAssertion(Random_Website1,Random_Website2);
@@ -115,6 +122,7 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Unarchive', function (){
      cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
+        accounts.searchAccount(Fullname)
         accounts.multipleUnarchive(Random_Website1,Random_Website2);
         accounts.navigateToArchive();
         accounts.multipleAssertion(Random_Website1,Random_Website2);
@@ -124,6 +132,7 @@ describe('Testing Successful login in Application', () => {
   it('Add_Tag', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.AddTag(Random_Website1,json_TestDataData[jsonindex].Tags)
       accounts.ViewTag(Random_Website1,json_TestDataData[jsonindex].tags)
       }
@@ -132,6 +141,7 @@ describe('Testing Successful login in Application', () => {
   it('Remove_Tag', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.RemoveTag(Random_Website1,json_TestDataData[jsonindex].tags)
       }
     })
@@ -139,6 +149,7 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Add_Tag', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.multipleAddtag(Random_Website1,Random_Website2,json_TestDataData[jsonindex].Tags)
       accounts.ViewTag(Random_Website1,json_TestDataData[jsonindex].tags)
        }
@@ -147,6 +158,7 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Remove_Tag', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.multipleRemovetag(Random_Website1,Random_Website2,json_TestDataData[jsonindex].tags)
       }
       })
@@ -163,6 +175,7 @@ describe('Testing Successful login in Application', () => {
   it('Delete', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.deleteAccount(Random_Website2);
       }
       })
@@ -170,6 +183,7 @@ describe('Testing Successful login in Application', () => {
   it('Delete_Multiple', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      accounts.searchAccount(Fullname)
       accounts.multipleDelete(Random_Website1);   
       }
       })

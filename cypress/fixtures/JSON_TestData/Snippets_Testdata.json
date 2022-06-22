@@ -1,7 +1,7 @@
 [
     {
         "userkey": "admin_user",
-        "Type": "Team",
+        "Type": "Personal",
         "Name": "Intro",
         "Tags": "tag",
         "Body": "Hi I am xxx conntected\r\n you regarding yyyy , \r\nSo if you are intersted reply me.",
