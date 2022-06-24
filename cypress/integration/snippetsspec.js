@@ -20,6 +20,14 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
+  it('Upload_Snippets', function (){
+    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+      //for  (var jsonindex in json_TestDataData){
+        snippets.navigateToSnippets();
+        snippets.uploadSnippet('Snippet_Upload.csv')
+      // }
+       })
+  })
   it('Create_Personal_Snippets', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){

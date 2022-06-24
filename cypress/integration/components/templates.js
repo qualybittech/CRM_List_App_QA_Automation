@@ -320,4 +320,25 @@ export class Templates{
     cy.element_Click_based_on_inputXpath('Templates_Section_checkbox_Multiple_Delete');
     cy.element_Click_based_on_inputXpath('Templates_Section_Delete_Confirmation');
   }
+  uploadTemplate(file){
+    cy.element_Click_based_on_inputXpath('Templates_Section_Upload');
+    cy.get('#file-upload--input').attachFile(file);
+    cy.wait(2000)
+    cy.element_Click_based_on_inputXpath('Templates_Section_Upload_Next');
+    cy.element_Click_based_on_inputXpath('Templates_Section_Upload_Confirm');
+    cy.element_Click_based_on_inputXpath('Templates_Section_Upload_Complete');
+    //Assertion
+    cy.Returning_String_after_Find_and_Replace('Templatepage_Templateadded_View','#text#','Upload Template');
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+    cy.element_Click_based_on_inputXpath('Templates_Section_Unarchivepage');
+    cy.Returning_String_after_Find_and_Replace('Templatepage_Templateadded_View','#text#','Upload Template');
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+    cy.element_Click_based_on_inputXpath('Templates_Section_Type_Team');
+    cy.Returning_String_after_Find_and_Replace('Templatepage_Templateadded_View','#text#','Upload Template');
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+    cy.element_Click_based_on_inputXpath('Templates_Section_Unarchivepage');
+    cy.Returning_String_after_Find_and_Replace('Templatepage_Templateadded_View','#text#','Upload Template');
+    cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+
+}
 }    

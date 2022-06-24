@@ -102,6 +102,7 @@ describe('Testing Successful login in Application', () => {
   it('Unarchive_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        accounts.navigateToArchive()
         accounts.searchAccount(Fullname)
         accounts.unArchiveAccount(Random_Website1)
         accounts.navigateToArchive()
@@ -122,6 +123,7 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Unarchive', function (){
      cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
+        accounts.navigateToArchive()
         accounts.searchAccount(Fullname)
         accounts.multipleUnarchive(Random_Website1,Random_Website2);
         accounts.navigateToArchive();

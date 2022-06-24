@@ -1,0 +1,5 @@
+name,subject,type,description,tags,archive
+Upload Template,Example ,Team ,Team Archived,"Tag1,Tag2",TRUE
+Upload Template,Example ,Personal,Personal Archived,"Tag1,Tag2",TRUE
+Upload Template,Example ,Team ,Team ,"Tag1,Tag2",FALSE
+Upload Template,Example ,Personal,Personal,"Tag1,Tag2",FALSE
