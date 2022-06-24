@@ -13,7 +13,7 @@ describe('Testing Successful login in Application', () => {
   const RandomName4 = util.generateRandomNumber('TeamTemplate2');
   const PersonalSnippet = util.generateRandomNumber('PersonalSnippet');
   const TeamSnippet = util.generateRandomNumber('TeamSnippet')
-  const file = 'accounts.json'
+  const file = 'Template_Upload.csv'
 
 	before(function() {
       cy.exec("npm run refresh_Json_Test_data");	  
@@ -27,6 +27,14 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })  
+  it('Upload_Template', function (){
+    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+      //for  (var jsonindex in json_TestDataData){
+      templates.navigateToTeamTemplates();
+      templates.uploadTemplate('Template_Upload.csv')
+      // }
+       })
+  })
   it('Create_Snippet', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
@@ -292,4 +300,5 @@ cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) =
   }
   })
 })
+
 })

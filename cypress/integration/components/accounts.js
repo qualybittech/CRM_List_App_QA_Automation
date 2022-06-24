@@ -3,7 +3,6 @@ export class Accounts{
     navigateToAccounts(){
         cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Accounts_Link');
-        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
 
     }
 
@@ -73,11 +72,15 @@ export class Accounts{
         cy.element_Click_based_on_inputXpath('Accounts_Section_View_Deletenotes');
         //Assertion Delete note
         cy.asserting_As_Xpath_Present('Accounts_Section_View_Deletenotes_Assertion');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Close');
+
+
     }
     viewAddContact(Website){
       cy.Returning_String_after_Find_and_Replace('Accounts_Section_View','#text#',Website);
       cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+     cy.wait(2000)
       cy.element_Click_based_on_inputXpath('Accountpage_Accountadded_View_Expand');
       cy.element_Click_based_on_inputXpath('Accounts_Section_View_Add_Contact');
     }
