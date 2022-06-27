@@ -46,7 +46,7 @@ workflows:
       - cypress/run:
           executor: with-chrome
           browser: chrome
-          spec: cypress/integration/accountsspec.js
+          spec: cypress/integration/accountsspec_ci.js
           post-steps:
             - store_test_results:
                 path: cypress/results
