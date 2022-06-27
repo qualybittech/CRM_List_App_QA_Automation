@@ -35,18 +35,25 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
-  it('Create_Tasks', function (){
+  it('Create_Contact', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       contacts.navigateToContacts();
-    contacts.createContact(Firstname1,Lastname1,RandomEmail1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+    contacts.createContact(Firstname1,Lastname1,RandomEmail1,Firstname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
       json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
       json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
       json_TestDataData[jsonindex].Tags)
-      contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+      contacts.createContact(Firstname2,Lastname1,RandomEmail2,Firstname2,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
         json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
         json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
         json_TestDataData[jsonindex].Tags)
+    
+    }
+    })
+  })
+   it('Create_Tasks', function (){
+    cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
     tasks.navigateToTasks();
     tasks.createNoteTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription1)
     tasks.createNoteTask(Lastname1,Firstname2,json_TestDataData[jsonindex].date,RandomDescription2)
@@ -75,6 +82,7 @@ describe('Testing Successful login in Application', () => {
      for  (var jsonindex in json_TestDataData){
       //tasks.sort();
       //tasks.searchTask()
+      tasks.navigateToTasks();
       tasks.updatedTaskDetails(Lastname1,RandomDescription2,json_TestDataData[jsonindex].editdate)
       }
       })
@@ -83,13 +91,15 @@ describe('Testing Successful login in Application', () => {
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
       
-      tasks.viewTask(Firstname1,Lastname1,json_TestDataData[jsonindex].viewdate)
+        tasks.navigateToTasks();
+        tasks.viewTask(Firstname1,Lastname1,json_TestDataData[jsonindex].viewdate)
     }
     })
   })
    it('Archive_Tasks', function (){
       cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        tasks.navigateToTasks();
         tasks.archiveTask(RandomDescription1)
         tasks.navigateToArchive()
         tasks.assertion(RandomDescription1)
@@ -99,6 +109,8 @@ describe('Testing Successful login in Application', () => {
   it('Unarchive_Tasks', function (){
       cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
+        tasks.navigateToTasks();
+        tasks.navigateToArchive()
         tasks.unArchiveTask(RandomDescription1)
         tasks.navigateToArchive()
         tasks.assertion(RandomDescription1)
@@ -108,6 +120,8 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Archive', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.multipleArchive(RandomDescription1,RandomDescription2);    
       tasks.navigateToArchive(); 
       tasks.multipleAssertion(RandomDescription1,RandomDescription2);
@@ -117,6 +131,9 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Unarchive', function (){
      cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
+        tasks.navigateToTasks();
+        tasks.navigateToArchive()
+        tasks.searchTask(Lastname1)
         tasks.multipleUnarchive(RandomDescription1,RandomDescription2);
         tasks.navigateToArchive();
         tasks.multipleAssertion(RandomDescription1,RandomDescription2);
@@ -126,6 +143,8 @@ describe('Testing Successful login in Application', () => {
   it('Add_Tag', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.AddTag(RandomDescription1,json_TestDataData[jsonindex].Tags)
       tasks.ViewTag(RandomDescription1,json_TestDataData[jsonindex].tags)
       }
@@ -134,6 +153,8 @@ describe('Testing Successful login in Application', () => {
   it('Remove_Tag', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.RemoveTag(RandomDescription1,json_TestDataData[jsonindex].tags)
       }
     })
@@ -141,6 +162,8 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Add_Tag', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.multipleAddtag(RandomDescription1,RandomDescription2,json_TestDataData[jsonindex].Tags)
       tasks.ViewTag(RandomDescription1,json_TestDataData[jsonindex].tags)
        }
@@ -149,6 +172,8 @@ describe('Testing Successful login in Application', () => {
   it('Multiple_Remove_Tag', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.multipleRemovetag(RandomDescription1,RandomDescription2,json_TestDataData[jsonindex].tags)
       }
       })
@@ -156,6 +181,8 @@ describe('Testing Successful login in Application', () => {
   it('Complete_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.completeTask(RandomDescription1)
       }
       })
@@ -163,6 +190,8 @@ describe('Testing Successful login in Application', () => {
   it('Notcomplete_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.notCompleteTask(RandomDescription1)
       }
       })
@@ -170,6 +199,8 @@ describe('Testing Successful login in Application', () => {
   it('Skip_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.skipTask(RandomDescription1)
       }
       })
@@ -177,6 +208,8 @@ describe('Testing Successful login in Application', () => {
   it('Undoskip_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.undoSkipTask(RandomDescription1)
       }
       })
@@ -193,6 +226,8 @@ describe('Testing Successful login in Application', () => {
   it('Delete', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
       tasks.deleteTask(RandomDescription2);
       }
       })
@@ -200,7 +235,7 @@ describe('Testing Successful login in Application', () => {
   it('Search_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
-       tasks.searchTask(Firstname1)
+        tasks.navigateToTasks();
        screenTop
    }
    })
@@ -208,6 +243,7 @@ describe('Testing Successful login in Application', () => {
   it('Delete_Multiple', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
       tasks.multipleDelete(RandomDescription1);   
       }
       })

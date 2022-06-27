@@ -1,9 +1,11 @@
 import { Sequences } from "./components/sequences";
+import { Tasks } from "./components/tasks";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
 
 describe('Testing Successful login in Application', () => {
 
+  const tasks = new Tasks();
   const contacts = new Contacts();
 	const sequences = new Sequences();
 	const util = new Util();
@@ -16,6 +18,8 @@ describe('Testing Successful login in Application', () => {
   const RandomDescription5 = util.generateRandomNumber('Twitter');
   const RandomDescription6 = util.generateRandomNumber('Whatsapp');
   const RandomDescription7 = util.generateRandomNumber('Meeting');
+  const RandomDescriptionAdded = util.generateRandomNumber('Added');
+  const ERandomDescriptionAdded = util.generateRandomNumber('EAdded');
   const EDescription1 = util.generateRandomNumber('EEmail');
   const EDescription2 = util.generateRandomNumber('ECall');
   const EDescription3 = util.generateRandomNumber('ELinkedin');
@@ -45,16 +49,14 @@ describe('Testing Successful login in Application', () => {
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     contacts.navigateToContacts();
-    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname1,RandomEmail1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname1,RandomEmail1,Lastname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
       json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
       json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
       json_TestDataData[jsonindex].Tags)
-    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname2,RandomEmail2,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname2,RandomEmail2,Lastname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
       json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
       json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
       json_TestDataData[jsonindex].Tags)
-    sequences.navigateToSequences();
-    sequences.createSequences(RandomSequences);
     //cy.logout_of_CRM_Application();
     }
     })
@@ -62,7 +64,9 @@ describe('Testing Successful login in Application', () => {
   it('Create_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-     sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+      sequences.navigateToSequences();
+      sequences.createSequences(RandomSequences);
+      sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
     sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);
     sequences.createLinkedinSteps(RandomDescription3,json_TestDataData[jsonindex].Linkedintt,json_TestDataData[jsonindex].Linkedin);
     sequences.createSmsSteps(RandomDescription4,json_TestDataData[jsonindex].Sms);
@@ -72,9 +76,11 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  /*it('Edit_Steps', function (){
+  it('Edit_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
     sequences.editEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email,EDescription1);
     sequences.editCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call,EDescription2);
     sequences.editLinkedinSteps(RandomDescription3,json_TestDataData[jsonindex].Linkedin,EDescription3);
@@ -85,46 +91,101 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Delete_Steps', function (){
-    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
-    for  (var jsonindex in json_TestDataData){
-      sequences.deleteEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
-      sequences.deleteCallSteps(EDescription2,json_TestDataData[jsonindex].Call);  
-    }
-    })
-  })*/
+  
   it('Activate_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.activateSequences(RandomSequences);
+      sequences.navigateToSequences();
+       sequences.activateSequences(RandomSequences);
     }
     })
   })
-  it('Deactivate_Steps', function (){
-    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
-    for  (var jsonindex in json_TestDataData){
-      sequences.deactivateSequences(RandomSequences);
-    }
-    })
-  })
-  it('Select_Steps', function (){
+ /* 
+ it('Select_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.selectSequences(RandomSequences);
     }
     })
-  })
+  })*/
   it('Assign_Contact', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
+      sequences.viewContactSeq(json_TestDataData[jsonindex].Firstname,Lastname1,RandomSequences)
+ // Sequence Email Jobs=> method=GET; NOBODY NO PARAMS;  URL = https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs;
+ //cy.request(GET, 'https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs)
+    }
+    })
+  })
+  it('Task_Contact', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
+      sequences.taskSequencesPresent(Lastname1,RandomSequences,EDescription2,EDescription3,EDescription4,
+  EDescription5,EDescription6,EDescription7 )
+    }
+    })
+  })
+  it('Complete_Task', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
+      sequences.completeTaskSequences(EDescription3,EDescription2,RandomSequences,json_TestDataData[jsonindex].Firstname,Lastname1)
+    }
+    })
+  })
+  it('Notcomplete_Task', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      tasks.searchTask(Lastname1)
+      sequences.notCompleteTaskSequences(EDescription3,EDescription2,RandomSequences,json_TestDataData[jsonindex].Firstname,Lastname1)
+    }
+    })
+  })
+  it('Outbox', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      tasks.navigateToTasks();
+      sequences.outBox(RandomEmail1,RandomSequences)
+    }
+    })
+  })
+  it('Add&Edit after task created',function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
+      sequences.createSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms);
+      sequences.editSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms,ERandomDescriptionAdded);
+
     }
     })
   })
   it('Remove_Contact', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.removeContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
+   sequences.removeContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
+    }
+    })
+  })
+  it('Deactivate_Steps', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.deactivateSequences(RandomSequences);
+      sequences.selectSequences(RandomSequences);
+      sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname2);
+      tasks.searchTask(Lastname2)
+      sequences.taskSequencesAbsent(Lastname2,RandomSequences,EDescription2,EDescription3,EDescription4,
+      EDescription5,EDescription6,EDescription7 )
     }
     })
   })
@@ -138,14 +199,35 @@ describe('Testing Successful login in Application', () => {
   it('Settings_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-    sequences.settingsSequences(json_TestDataData[jsonindex].Time);
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
+  sequences.settingsSequences(json_TestDataData[jsonindex].Time);
+    }
+    })
+  })
+  it('Clone_Sequences', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.cloneSequences(RandomSequences);
+    }
+    })
+  })
+  it('Delete_Steps', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
+       sequences.deleteEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+      sequences.deleteCallSteps(EDescription2,json_TestDataData[jsonindex].Call);  
     }
     })
   })
   it('Delete_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-    sequences.deleteSequences(RandomSequences);
+      sequences.navigateToSequences();
+      sequences.deleteSequences(RandomSequences);
     }
     })
   })
