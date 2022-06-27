@@ -42,8 +42,11 @@ workflows:
   crm-app-workflow:
     jobs:
       #- say-hello
-      - postmanexecution
-      #- cypress/run:
-          #executor: with-chrome
-          #browser: chrome
-          #spec: cypress/integration/accountsspec.js
+      #- postmanexecution
+      - cypress/run:
+          executor: with-chrome
+          browser: chrome
+          spec: cypress/integration/accountsspec.js
+          post-steps:
+            - store_test_results:
+                path: cypress/results
