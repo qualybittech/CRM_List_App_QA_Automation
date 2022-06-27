@@ -147,6 +147,8 @@ export class Snippets{
         cy.Returning_String_after_Find_and_Replace('Snippets_Section_checkbox_Multiple','#text#',Name2);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Snippets_Section_checkbox_Multiple_Unarchive');
+        cy.wait(2000)
+
     }
     multipleAssertion(Name1,Name2){
         //Assertion As Email1 present

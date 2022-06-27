@@ -255,27 +255,31 @@ export class Tasks{
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Complete','#text#',Description1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion as task completed
-        //cy.Returning_String_after_Find_and_Replace('Tasks_Section_Complete_Assertion','#text#',Description1);
-        //cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Complete_Assertion','#text#',Description1);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+
     }
     notCompleteTask(Description1){
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Notcomplete','#text#',Description1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion as task not completed
-        //cy.Returning_String_after_Find_and_Replace('Tasks_Section_Notcomplete_Assertion','#text#',Description1);
-        //cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Notcomplete_Assertion','#text#',Description1);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
     }
     skipTask(Description1){
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Skip','#text#',Description1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion as task completed
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Skip_Assertion','#text#',Description1);
-        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
     }
     undoSkipTask(Description1){
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Undoskip','#text#',Description1);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
-        
+        //Assertion
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Undoskip_Assertion','#text#',Description1);
+        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+
     }
     filterTask(Type,Daterange,Tags,Status,Createdtype,RandomName){
         cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
@@ -301,8 +305,8 @@ export class Tasks{
       searchTask(Contact){
         cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search',Contact);
         //Assertion As Email1 present
-        cy.Returning_String_after_Find_and_Replace('Taskpage_Task_View','#text#',Contact);
-        cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
+       // cy.Returning_String_after_Find_and_Replace('Taskpage_Task_View','#text#',Contact);
+       // cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Not_Present(convertedString));
     } 
     deleteTask(Description){
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_Extra_Option','#text#',Description);
