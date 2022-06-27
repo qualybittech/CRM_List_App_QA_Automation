@@ -1,2 +1,2 @@
-userkey,contact,date,description,owner,call result,linkedinaction,twitteraction,meetingaction,editdate,viewdate,Tags,tags,Status,Type,Createdtype
-admin_user,Ravi,"Saturday, May 14th, 2022",Cool,Haaaashini L,Connected,Profile Research,Follow,Connection,"April 14, 2022 10:30 PM{enter}","April 14, 2022 10:30 PM",Tasks{enter},Tasks,NOT COMPLETED,Note,Manual Tasks
+userkey,contact,date,description,owner,call result,linkedinaction,twitteraction,meetingaction,editdate,viewdate,Tags,tags,Status,Type,Createdtype,Firstname,Phone,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter
+admin_user,Ravi,"April 14, 2022 10:30 PM{enter}",Cool,Haaaashini L,Connected,Profile Research,Follow,Connection,"April 14, 2022 10:30 PM{enter}","April 14, 2022 10:30 PM",Tasks,Tasks,NOT COMPLETED,Note,Manual Tasks,Sai,1122334455,Tiltle,Ramnagar,Coimbatore,TN,India,638102,LinkedIn (Connect),Facebook,Twitter (Retweet)

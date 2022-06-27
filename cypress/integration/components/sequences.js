@@ -1,6 +1,6 @@
 export class Sequences{
     navigateToSequences(){
-        //cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Main_section_Sequences_Link');
 
     }
@@ -288,9 +288,9 @@ export class Sequences{
     deleteSequences(Seq_Name){
         cy.element_Click_based_on_inputXpath('Sequences_Section_Back');
         cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Delete');
-        cy.get('@XpathvalueString').then(xpathString => {
-		cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Seq_Name));
-        cy.element_Click_based_on_inputXpath('Sequences_Section_Remove_Confirmation');
-	    });
+       // cy.get('@XpathvalueString').then(xpathString => {
+		//cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Seq_Name));
+       // cy.element_Click_based_on_inputXpath('Sequences_Section_Remove_Confirmation');
+	   // });
     }
 }

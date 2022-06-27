@@ -1,0 +1,5 @@
+name,type,description,tags,archive
+Upload Snippet,Team ,Team Archived,"Tag1,Tag2",TRUE
+Upload Snippet,Personal,Personal Archived,"Tag1,Tag2",TRUE
+Upload Snippet,Team ,Team ,"Tag1,Tag2",FALSE
+Upload Snippet,Personal,Personal,"Tag1,Tag2",FALSE

@@ -2,7 +2,7 @@
     {
         "userkey": "admin_user",
         "contact": "Ravi",
-        "date": "Saturday, May 14th, 2022",
+        "date": "April 14, 2022 10:30 PM{enter}",
         "description": "Cool",
         "owner": "Haaaashini L",
         "call result": "Connected",
@@ -11,10 +11,21 @@
         "meetingaction": "Connection",
         "editdate": "April 14, 2022 10:30 PM{enter}",
         "viewdate": "April 14, 2022 10:30 PM",
-        "Tags": "Tasks{enter}",
+        "Tags": "Tasks",
         "tags": "Tasks",
         "Status": "NOT COMPLETED",
         "Type": "Note",
-        "Createdtype": "Manual Tasks"
+        "Createdtype": "Manual Tasks",
+        "Firstname": "Sai",
+        "Phone": "1122334455",
+        "Title": "Tiltle",
+        "Street": "Ramnagar",
+        "City": "Coimbatore",
+        "State": "TN",
+        "Country": "India",
+        "Code": "638102",
+        "Linkedin": "LinkedIn (Connect)",
+        "Facebook": "Facebook",
+        "Twitter": "Twitter (Retweet)"
     }
 ]
