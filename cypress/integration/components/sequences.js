@@ -17,14 +17,49 @@ export class Sequences{
         cy.element_Click_based_on_inputXpath('Sequences_Section_Back');
 
     }
-    createEmailSteps(Description,Email_Sub,Step){
+    createEmailSteps(Description,Email_Sub,Step,PersonalTemplate,TeamTemplate,PersonalSnippet,TeamSnippet,file){
         cy.element_Click_based_on_inputXpath('Sequences_Section_Create_First_Step');
         //Email step
         cy.element_Click_based_on_inputXpath('Sequences_Section_Step_Next');
-        cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Emailsub',Email_Sub);
+       // cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Emailsub',Email_Sub);
         cy.element_Send_Value_based_on_InputXpath('Sequences_Section_Emailbody',Description);
-        cy.element_Click_based_on_inputXpath('Sequences_Section_Step_Add');
+       // cy.element_Click_based_on_inputXpath('Sequences_Section_Step_Add');
+         //Templates
+       cy.element_Click_based_on_inputXpath('Contacts_Section_Add_Template');
+       cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Template',PersonalTemplate)
+       cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Template','#text#',PersonalTemplate);
+       cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+       cy.element_Click_based_on_inputXpath('Contacts_Section_Add_Template');
+       cy.element_Click_based_on_inputXpath('Contacts_Section_Team_Template');
+       cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Template',TeamTemplate)
+       cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Template','#text#',TeamTemplate);
+       cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+       //Snippet
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Add_Snippet');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Snippet',PersonalSnippet)
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Snippet','#text#',PersonalSnippet);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Add_Snippet');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Team_Snippet');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Snippet',TeamSnippet)
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Snippet','#text#',TeamSnippet);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         //Assertion
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contacts_Section_Add_Template_Snippet_Assertion');
+        cy.get('@XpathvalueString').then(xpathString => {
+            cy.asserting_As_Xpath_Present(xpathString.replace('#text#',PersonalSnippet).replace('#text_2#',TeamSnippet).replace('#text_3#',TeamTemplate).replace('#text_4#',PersonalSnippet).replace('#text_5#',TeamSnippet));
+          });
+          cy.get('#attachments').attachFile(file);          
+          //Assertion
+          cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
+          cy.Returning_String_after_Find_and_Replace('Templates_Section_Attachments_Assertion','#text#',file);
+          cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+          cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
+          cy.get('.wsywgi-form > .justify-between > .gap-2 > :nth-child(2) > .flex').should('not.be.disabled')
+          cy.get('.gap-2 > :nth-child(3) > .flex').should('not.be.disabled')
+          cy.element_Click_based_on_inputXpath('Sequences_Section_Step_Add');
+
+          //Assertion
         cy.asserting_As_Xpath_Present('Sequences_Section_Added_Assertion');
         cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Step_Assertion');
         cy.get('@XpathvalueString').then(xpathString => {
@@ -263,9 +298,10 @@ export class Sequences{
         cy.get('@XpathvalueString').then(xpathString => {
 		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
 	    });
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
     }
     viewContactSeq(Firstname,Lastname,Seq_Name){
-        
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Contacts')
         cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Contact_View');
         cy.get('@XpathvalueString').then(xpathString => {
         cy.element_Click_based_on_inputXpath(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
@@ -274,6 +310,7 @@ export class Sequences{
         cy.element_Click_based_on_inputXpath('Contacts_Section_View_Sequences');
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Sequences_Assertion','#text#',Seq_Name);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Close');
 
     }
@@ -312,7 +349,7 @@ export class Sequences{
     }
     taskSequencesAbsent(Contact,Seq_Name,d2,d3,d4,d5,d6,d7){
         cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search',Contact);
-        //Assertion As Seq name present
+        /*Assertion As Seq name present
         cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Task_Seq_Name');
         cy.get('@XpathvalueString').then(xpathString => {
          cy.asserting_As_Xpath_Not_Present(xpathString.replace('#text#',Seq_Name));
@@ -340,7 +377,8 @@ export class Sequences{
         cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Task_Description');
         cy.get('@XpathvalueString').then(xpathString => {
          cy.asserting_As_Xpath_Not_Present(xpathString.replace('#text#',d7));
-        });
+        });*/
+        cy.asserting_As_Xpath_Present('Sequences_Section_No_Data');
 
     }
     completeTaskSequences(d3,d2,Seq_Name,Firstname,Lastname){
@@ -461,6 +499,26 @@ export class Sequences{
 	    });
       //Assertion
       cy.asserting_As_Xpath_Present('Sequences_Section_Delete_Sequence_Assertion')
+
+    }
+    Email(Email,Email_Sub,Description,PersonalSnippet,TeamSnippet,PersonalTemplate,TeamTemplate,file){
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_View','#text#',Email);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+	    cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Expand');
+	    cy.element_Click_based_on_inputXpath('Contacts_Section_View_Send_Email');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Emailsub',Email_Sub);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Emailbody',Description);
+    }
+    uploadContact(file){
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Upload_Contact');
+        cy.get('#file-upload--input').attachFile(file);
+        cy.wait(2000)
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Upload_Next');
+        cy.element_Click_based_on_inputXpath('Sequences_Section_Upload_Confirm');
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Sequences_Section_Assign_Contact_Assertion');
+        cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#','1').replace('#text_2#','a'));
+	    });
 
     }
 }

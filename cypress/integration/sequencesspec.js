@@ -1,4 +1,6 @@
 import { Sequences } from "./components/sequences";
+import { Snippets } from "./components/snippets";
+import { Templates } from "./components/templates";
 import { Tasks } from "./components/tasks";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
@@ -6,6 +8,8 @@ import { Util } from "./components/util";
 describe('Testing Successful login in Application', () => {
 
   const tasks = new Tasks();
+  const snippets = new Snippets();
+  const templates = new Templates();
   const contacts = new Contacts();
 	const sequences = new Sequences();
 	const util = new Util();
@@ -31,6 +35,12 @@ describe('Testing Successful login in Application', () => {
 	const RandomEmail2 = util.generateRandomEmail('potter');
   const Lastname1 = util.generateRandomNumber('krishna');
   const Lastname2 = util.generateRandomNumber('krishna');
+  const PersonalSnippet = util.generateRandomNumber('PersonalSnippet');
+  const TeamSnippet = util.generateRandomNumber('TeamSnippet')
+  const PersonalTemplate = util.generateRandomNumber('PersonalTemplate');
+  const TeamTemplate = util.generateRandomNumber('TeamTemplate')
+  const file = 'Seq_Contact_Upload.csv'
+
 
   const RandomName = util.generateRandomNumber('Filter');
 
@@ -44,6 +54,33 @@ describe('Testing Successful login in Application', () => {
           cy.asserting_As_Xpath_Present('LandingPage_loginSuccessful_Message');
      }
      })
+  })
+  it('Create_Snippet', function (){
+    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+        snippets.navigateToSnippets();
+        snippets.createPersonalSnippet(PersonalSnippet,json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body  )  
+        snippets.createTeamSnippet(TeamSnippet,json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body  ) 
+    }
+    })
+  })
+  it('Create_Personal_Template', function (){
+    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+        templates.navigateToTemplates();
+        templates.createPersonalTemplate(PersonalTemplate,json_TestDataData[jsonindex].Subject,
+        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,file)
+    }
+    })
+  })
+  it('Create_Team_Template', function (){
+    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      templates.navigateToTemplates();
+      templates.createTeamTemplate(TeamTemplate,json_TestDataData[jsonindex].Subject,
+        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,file  )
+    }
+    })
   })
   it('Create_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
@@ -66,7 +103,7 @@ describe('Testing Successful login in Application', () => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
       sequences.createSequences(RandomSequences);
-      sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+      sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email,PersonalTemplate,TeamTemplate,PersonalSnippet,TeamSnippet,file);
     sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);
     sequences.createLinkedinSteps(RandomDescription3,json_TestDataData[jsonindex].Linkedintt,json_TestDataData[jsonindex].Linkedin);
     sequences.createSmsSteps(RandomDescription4,json_TestDataData[jsonindex].Sms);
@@ -114,7 +151,7 @@ describe('Testing Successful login in Application', () => {
       sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
-      sequences.viewContactSeq(json_TestDataData[jsonindex].Firstname,Lastname1,RandomSequences)
+      sequences.uploadContact(file);
  // Sequence Email Jobs=> method=GET; NOBODY NO PARAMS;  URL = https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs;
  //cy.request(GET, 'https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs)
     }
@@ -163,7 +200,22 @@ describe('Testing Successful login in Application', () => {
       sequences.selectSequences(RandomSequences);
       sequences.createSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms);
       sequences.editSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms,ERandomDescriptionAdded);
+      sequences.viewContactSeq(json_TestDataData[jsonindex].Firstname,Lastname1,RandomSequences)
 
+    }
+    })
+  })
+  it('Edit_Old_Steps', function (){
+    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      sequences.navigateToSequences();
+      sequences.selectSequences(RandomSequences);
+    sequences.editCallSteps(EDescription2,json_TestDataData[jsonindex].Call,EDescription2);
+    sequences.editLinkedinSteps(EDescription3,json_TestDataData[jsonindex].Linkedin,EDescription3);
+    sequences.editSmsSteps(EDescription4,json_TestDataData[jsonindex].Sms,EDescription4);
+    sequences.editTwitterSteps(EDescription5,json_TestDataData[jsonindex].Twitter,EDescription5);
+    sequences.editWhatsappSteps(EDescription6,json_TestDataData[jsonindex].Whatsapp,EDescription6);
+    sequences.editMeetingSteps(EDescription7,json_TestDataData[jsonindex].Meeting,EDescription7);
     }
     })
   })
@@ -183,6 +235,7 @@ describe('Testing Successful login in Application', () => {
       sequences.deactivateSequences(RandomSequences);
       sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname2);
+      tasks.navigateToTasks();
       tasks.searchTask(Lastname2)
       sequences.taskSequencesAbsent(Lastname2,RandomSequences,EDescription2,EDescription3,EDescription4,
       EDescription5,EDescription6,EDescription7 )
@@ -196,6 +249,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })*/
+
   it('Settings_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
