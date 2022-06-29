@@ -335,6 +335,7 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Contacts_Section_View_Emails');
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_View_Email_Send','#text#',Email_Sub);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
+        cy.element_Click_based_on_inputXpath('Main_section_Expand_link');
         cy.element_Click_based_on_inputXpath('Contactpage_Contactadded_View_Close');
 
     }

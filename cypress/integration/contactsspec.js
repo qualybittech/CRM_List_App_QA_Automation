@@ -94,7 +94,7 @@ describe('Testing Successful login in Application', () => {
           for  (var jsonindex in json_TestDataData){
             sequences.navigateToSequences();
             sequences.createSequences(RandomSequences);
-            sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
+            sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email,PersonalTemplate,TeamTemplate,PersonalSnippet,TeamSnippet,file);
             sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);  
        }
        })
@@ -248,14 +248,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Upload_Contact', function (){
-        cy.fixture('./CSV_TestData/Contacts_Testdata.csv').then((CSV_TestData) => {
-         //for  (var jsonindex in json_TestDataData){
-            contact.navigateToContacts();
-         contact.uploadContact('Contact_Upload.csv')
-          // }
-           })
-    })
+   
     /*it('Filter_Contact', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
@@ -281,5 +274,12 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-
+    it('Upload_Contact', function (){
+      cy.fixture('./CSV_TestData/Contacts_Testdata.csv').then((CSV_TestData) => {
+       //for  (var jsonindex in json_TestDataData){
+          contact.navigateToContacts();
+       contact.uploadContact('Contact_Upload.csv')
+        // }
+         })
+  })
 })
