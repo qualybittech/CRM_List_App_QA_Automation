@@ -101,7 +101,7 @@ describe('Testing Successful login in Application', () => {
   it('Create_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.createSequences(RandomSequences);
       sequences.createEmailSteps(RandomDescription1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email,PersonalTemplate,TeamTemplate,PersonalSnippet,TeamSnippet,file);
     sequences.createCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call);
@@ -116,7 +116,7 @@ describe('Testing Successful login in Application', () => {
   it('Edit_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
     sequences.editEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email,EDescription1);
     sequences.editCallSteps(RandomDescription2,json_TestDataData[jsonindex].Call,EDescription2);
@@ -132,7 +132,7 @@ describe('Testing Successful login in Application', () => {
   it('Activate_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
        sequences.activateSequences(RandomSequences);
     }
     })
@@ -148,7 +148,7 @@ describe('Testing Successful login in Application', () => {
   it('Assign_Contact', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
       sequences.uploadContact(file);
@@ -196,7 +196,7 @@ describe('Testing Successful login in Application', () => {
   it('Add&Edit after task created',function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
       sequences.createSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms);
       sequences.editSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms,ERandomDescriptionAdded);
@@ -208,7 +208,7 @@ describe('Testing Successful login in Application', () => {
   it('Edit_Old_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
     sequences.editCallSteps(EDescription2,json_TestDataData[jsonindex].Call,EDescription2);
     sequences.editLinkedinSteps(EDescription3,json_TestDataData[jsonindex].Linkedin,EDescription3);
@@ -222,7 +222,7 @@ describe('Testing Successful login in Application', () => {
   it('Remove_Contact', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
    sequences.removeContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
     }
@@ -231,7 +231,7 @@ describe('Testing Successful login in Application', () => {
   it('Deactivate_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.deactivateSequences(RandomSequences);
       sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname2);
@@ -253,7 +253,7 @@ describe('Testing Successful login in Application', () => {
   it('Settings_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
   sequences.settingsSequences(json_TestDataData[jsonindex].Time);
     }
@@ -262,7 +262,7 @@ describe('Testing Successful login in Application', () => {
   it('Clone_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.cloneSequences(RandomSequences);
     }
     })
@@ -270,7 +270,7 @@ describe('Testing Successful login in Application', () => {
   it('Delete_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.selectSequences(RandomSequences);
        sequences.deleteEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
       sequences.deleteCallSteps(EDescription2,json_TestDataData[jsonindex].Call);  
@@ -280,7 +280,7 @@ describe('Testing Successful login in Application', () => {
   it('Delete_Sequences', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToSequences();
+      sequences.navigateToTeamSequences();
       sequences.deleteSequences(RandomSequences);
     }
     })

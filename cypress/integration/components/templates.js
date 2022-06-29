@@ -17,9 +17,9 @@ export class Templates{
         cy.element_Click_based_on_inputXpath('Templates_Section_Create_Button');
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Name',Name);
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Subject',Subject);
-        //cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tag);
-       // cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tag);
-        //cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tag);
+        cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tag);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Body',Name);
         cy.element_Click_based_on_inputXpath('Templates_Section_Add_Snippet');
         cy.element_Send_Value_based_on_InputXpath('Templates_Section_Search_Snippet',PersonalSnippet)
@@ -103,9 +103,9 @@ export class Templates{
       cy.element_Click_based_on_inputXpath('Templates_Section_Create_Button');
       cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Name',Name);
       cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Subject',Subject);
-     // cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tag);
-     // cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tag);
-     // cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+      cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tag);
+      cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tag);
+      cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
       cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Body',Name);
       cy.element_Click_based_on_inputXpath('Templates_Section_Add_Snippet');
       cy.element_Send_Value_based_on_InputXpath('Templates_Section_Search_Snippet',PersonalSnippet)
@@ -216,7 +216,7 @@ export class Templates{
         //Contact_Add_Tag
         cy.Returning_String_after_Find_and_Replace('Templates_Section_Tag','#text#',Name);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
-        cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tags);
+        cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Extra_Tag',Tags);
         cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_Tag_Close');
@@ -243,7 +243,7 @@ export class Templates{
         cy.Returning_String_after_Find_and_Replace('Templates_Section_checkbox_Multiple','#text#',Name2);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_checkbox_Multiple_Tag');
-        cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Tag',Tags);
+        cy.element_Send_Value_based_on_InputXpath('Templates_Section_Add_Extra_Tag',Tags);
         cy.Returning_String_after_Find_and_Replace('Templates_Section_Select_Tag','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Templates_Section_Tag_Close');
