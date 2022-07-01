@@ -364,7 +364,7 @@ export class Contacts{
           });
           cy.get(':nth-child(1) > button.text-2xl').attachFile(file);
           //Assertion
-          cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
+         // cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
           cy.Returning_String_after_Find_and_Replace('Templates_Section_Attachments_Assertion','#text#',file);
           cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
           cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');

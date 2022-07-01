@@ -25,7 +25,7 @@ describe('Testing Successful login in Application', () => {
     const TeamSnippet = util.generateRandomNumber('TeamSnippet')
     const PersonalTemplate = util.generateRandomNumber('PersonalTemplate');
     const TeamTemplate = util.generateRandomNumber('TeamTemplate')
-    const file = 'Snippet_Upload.csv'
+    const file = 'Template_Upload.csv'
     const Random_Website = util.generateRandomWebsite('gram');
     const Fullname = util.generateRandomNumber('sai')
   
@@ -158,7 +158,7 @@ describe('Testing Successful login in Application', () => {
        for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();
           contact.insertContactVariables(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,json_TestDataData[jsonindex].Phone,
-            json_TestDataData[jsonindex].City,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country )
+            json_TestDataData[jsonindex].Ecity,json_TestDataData[jsonindex].Estate,json_TestDataData[jsonindex].Ecountry )
           }
           })
     })
