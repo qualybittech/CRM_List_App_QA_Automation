@@ -4,6 +4,8 @@
         "Lastname": "chan",
         "Emailid": "chinchan0209@gmail.com",
         "Password": "Haaaashini@98",
-        "Msft": "chinchan0209@outlook.com"
+        "Msft": "chinchan0209@outlook.com",
+        "Invalidemail": "abc@gmail.com",
+        "Invalidmsft": "abc@outlook.com"
     }
 ]

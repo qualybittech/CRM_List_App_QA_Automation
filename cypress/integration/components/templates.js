@@ -170,11 +170,12 @@ export class Templates{
       cy.element_Click_based_on_inputXpath('Templates_Section_Insert_Variables_Accounts',);
       cy.element_Click_based_on_inputXpath('Templates_Section_Insert_Variables_Accounts_Industry','{enter}');
       cy.get('#attachments').attachFile(file);
+      cy.wait(2000)
       //Assertion
-      cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
-      cy.Returning_String_after_Find_and_Replace('Templates_Section_Attachments_Assertion','#text#',file);
-      cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
-      cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
+      cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Templates_Section_Attachments_Assertion');
+      cy.get('@XpathvalueString').then(xpathString => {
+      cy.asserting_As_Xpath_Present(xpathString.replace('#text#','Template_Upload.csv'));
+      });
 
       cy.element_Click_based_on_inputXpath('Templates_Section_Create_Add');   
       //Assertion for Template created
