@@ -7,14 +7,15 @@ export class Contacts{
 
     }
 
-    createContact(Firstname, Lastname,Email,Account,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags){
+    createContact(Firstname, Lastname,Email,Phone,Account,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags){
         cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Email',Email);
-        /*cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Account',Account);
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Phone',Phone);  
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Account',Account);
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Select_Account','#text#',Account);
-        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));*/
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Showmore');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Title',Title);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Street',Street);
@@ -34,11 +35,35 @@ export class Contacts{
         
         //Assertion for contact created
         cy.asserting_As_Xpath_Present('Contactpage_Contactadded_Message');
-
+        cy.wait(2000)
         //Assertion wheather the created contact visible
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contact_Name_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+            cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Firstname).replace('#text_2#',Lastname));
+            });    
 	    cy.Returning_String_after_Find_and_Replace('Contactpage_Contactadded_View','#text#',Email);
         cy.get('@convertedString').then(convertedString => cy.asserting_As_Xpath_Present(convertedString));
-    }
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',Phone));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Account_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',Account));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',City));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',State));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',Country));
+	    });
+ }
     invalidEmail(Email,Firstname, Lastname){
         cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
@@ -60,11 +85,15 @@ export class Contacts{
         cy.element_Click_based_on_inputXpath('Contacts_Section_Tag_Close');
 
     }
-    updatedContactDetails(Email,Phone){
+    updatedContactDetails(Email,Phone,City,State,Country){
         //Contact_Edit
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Edit','#text#',Email);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
-        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Phone',Phone);  
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Contacts_Section_Create_Phone',Phone);
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Showmore')  
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Contacts_Section_Create_City',City);
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Contacts_Section_Create_State',State);
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Contacts_Section_Create_Country',Country);
         cy.element_Click_based_on_inputXpath('Contacts_Section_Edit_Update');
         //Assertion
         cy.asserting_As_Xpath_Present('Contacts_Section_Edit_Assertion');
@@ -73,7 +102,19 @@ export class Contacts{
 	    cy.get('@XpathvalueString').then(xpathString => {
 		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',Phone));
 	    });
-        
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',City));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',State));
+	    });
+        cy.Returning_XPATH_value_based_on_XpathKey_Supplied('Contactpage_Contactedited_View');
+	    cy.get('@XpathvalueString').then(xpathString => {
+		cy.asserting_As_Xpath_Present(xpathString.replace('#text#',Email).replace('#text_2#',Country));
+	    });
+
     }
     archiveContact(Email){
         //archive_Contact
@@ -321,7 +362,7 @@ export class Contacts{
         cy.get('@XpathvalueString').then(xpathString => {
             cy.asserting_As_Xpath_Present(xpathString.replace('#text#',PersonalSnippet).replace('#text_2#',TeamSnippet).replace('#text_3#',TeamTemplate).replace('#text_4#',PersonalSnippet).replace('#text_5#',TeamSnippet));
           });
-          cy.get('#attachments').attachFile(file);
+          cy.get(':nth-child(1) > button.text-2xl').attachFile(file);
           //Assertion
           cy.element_Click_based_on_inputXpath('Templates_Section_Attachments');
           cy.Returning_String_after_Find_and_Replace('Templates_Section_Attachments_Assertion','#text#',file);

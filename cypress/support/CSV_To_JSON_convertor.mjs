@@ -22,6 +22,9 @@ csv_to_JSON_Convertor (filename);
 filename="Sequences_Testdata";
 csv_to_JSON_Convertor (filename);
 
+filename="Register_Testdata";
+csv_to_JSON_Convertor (filename);
+
 function csv_to_JSON_Convertor (filename) {
 try {
   //const csvFile = readFileSync(filename, "utf8");

@@ -20,7 +20,7 @@ describe('Testing Successful login in Application', () => {
     const RandomDescription1 = util.generateRandomNumber('Email');
     const RandomDescription2 = util.generateRandomNumber('Call');
     const Firstname1 = util.generateRandomNumber('Ravi');
-    const Firstname2 = util.generateRandomNumber('Krish');
+    const Firstname2 = util.generateRandomNumber('Kri');
     const PersonalSnippet = util.generateRandomNumber('PersonalSnippet');
     const TeamSnippet = util.generateRandomNumber('TeamSnippet')
     const PersonalTemplate = util.generateRandomNumber('PersonalTemplate');
@@ -103,13 +103,13 @@ describe('Testing Successful login in Application', () => {
     	cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         contact.navigateToContacts();
-	   contact.createContact(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,Fullname,
+	   contact.createContact(Firstname1,json_TestDataData[jsonindex].Lastname,RandomEmail1,json_TestDataData[jsonindex].Phone,Fullname,
 		json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
 		json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
 		json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
 		json_TestDataData[jsonindex].Tags)
 
-	contact.createContact(Firstname2,json_TestDataData[jsonindex].Lastname,RandomEmail2,Fullname,
+	contact.createContact(Firstname2,json_TestDataData[jsonindex].Lastname,RandomEmail2,json_TestDataData[jsonindex].Phone,Fullname,
 		json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
 		json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
 		json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
@@ -148,7 +148,8 @@ describe('Testing Successful login in Application', () => {
       cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();
-          contact.updatedContactDetails(RandomEmail1,json_TestDataData[jsonindex].Phone)
+          contact.updatedContactDetails(RandomEmail1,json_TestDataData[jsonindex].Phone,json_TestDataData[jsonindex].Ecity,json_TestDataData[jsonindex].Estate,
+            json_TestDataData[jsonindex].Ecountry)
           }
           })
   })

@@ -56,24 +56,24 @@ describe('Testing Successful login in Application', () => {
     for  (var jsonindex in json_TestDataData){
     tasks.navigateToTasks();
     tasks.createNoteTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription1)
-    tasks.createNoteTask(Lastname1,Firstname2,json_TestDataData[jsonindex].date,RandomDescription2)
-   // tasks.assertion(RandomDescription1)
-   /* tasks.createCallTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription2)
+    //tasks.createNoteTask(Lastname1,Firstname2,json_TestDataData[jsonindex].date,RandomDescription2)
+   tasks.assertion(RandomDescription1)
+   tasks.createCallTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription2)
     tasks.assertion(RandomDescription2)
-    tasks.createCallTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription3)
-    tasks.assertion(RandomDescription3)
-    tasks.createEmailTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription4)
+    //tasks.createCallTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription3)
+    //tasks.assertion(RandomDescription3)
+    tasks.createEmailTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription4)
     tasks.assertion(RandomDescription4)
-    tasks.createLinkedinTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription5)
+    tasks.createLinkedinTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription5)
     tasks.assertion(RandomDescription5)
-    tasks.createTwitterTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription6)
+    tasks.createTwitterTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription6)
     tasks.assertion(RandomDescription6)
-    tasks.createMeetingTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription7)
+    tasks.createMeetingTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription7)
     tasks.assertion(RandomDescription7)
-    tasks.createSmsTask(Lastname1,json_TestDataData[jsonindex].date,RandomDescription8)
+    tasks.createSmsTask(Lastname1,Firstname1,json_TestDataData[jsonindex].date,RandomDescription8)
     tasks.assertion(RandomDescription8)
 
-    //cy.logout_of_CRM_Application();*/
+    //cy.logout_of_CRM_Application();
     }
     })
   })

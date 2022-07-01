@@ -44,6 +44,15 @@ describe('Testing Successful login in Application', () => {
       }
      })
     })
+    it('Filter_Account', function (){
+      cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
+        for  (var jsonindex in json_TestDataData){
+         accounts.filterAccount(json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].No_Of_Employee,
+           json_TestDataData[jsonindex].Industry,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,RandomName)
+         screenTop
+     }
+     })
+})
     it('Search_Account', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
@@ -165,7 +174,7 @@ describe('Testing Successful login in Application', () => {
       }
       })
   })
-  /*it('Filter_Account', function (){
+  it('Filter_Account', function (){
          cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
             accounts.filterAccount(json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].No_Of_Employee,
@@ -173,7 +182,7 @@ describe('Testing Successful login in Application', () => {
             screenTop
         }
         })
-  })*/
+  })
   it('Delete', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
