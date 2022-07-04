@@ -17,7 +17,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-    it('Sign up with email id & password', function (){
+    /*it('Sign up with email id & password', function (){
       cy.fixture('./JSON_TestData/Register_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
             register.Api();
@@ -72,6 +72,13 @@ describe('Testing Successful login in Application', () => {
 
          }
       })
-    })
+    })*/
 
+    it('Sign up with google', function (){
+      cy.fixture('./JSON_TestData/Register_Testdata.json').then((json_TestDataData) => {
+        for  (var jsonindex in json_TestDataData){
+            register.signupUsingGoogle(json_TestDataData[jsonindex].Emailid,json_TestDataData[jsonindex].Emailpassword);
+        }
+      })
+    })
 })
