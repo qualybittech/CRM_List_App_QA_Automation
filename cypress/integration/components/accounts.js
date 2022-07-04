@@ -191,7 +191,7 @@ export class Accounts{
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Tag_Close');
   }
-  filterAccount(Tags,No_Of_Employee,Industry,State,Country,RandomName){
+  filterAccount(Tags,No_Of_Employee,Industry,State,Country,RandomName,ENo_Of_Employee){
     cy.element_Click_based_on_inputXpath('Accounts_Section_Filter');
     cy.element_Click_based_on_inputXpath('Accounts_Section_Create_Filter');
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Create_Filter_Sortby','#text#','Last Modified');
@@ -208,7 +208,7 @@ export class Accounts{
     cy.element_Click_based_on_inputXpath('Accounts_Section_Save_Filter');
     //Assertion
     cy.asserting_As_Xpath_Present('Accounts_Section_Save_Filter_Assertion');
-    cy.element_Click_based_on_inputXpath('Accounts_Section_Filter');
+    /*cy.element_Click_based_on_inputXpath('Accounts_Section_Filter');
     cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Search_Filter',RandomName);
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_View_Saved_Filter','#text#',RandomName);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
@@ -217,6 +217,20 @@ export class Accounts{
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Edit_Saved_Filter','#text#',RandomName);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Edit_Filter')
+    cy.Returning_String_after_Find_and_Replace('Accounts_Section_Create_Filter_Sortby','#text#','Created ');
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+    cy.element_Clear_And_Send_Value_based_on_InputXpath('Accounts_Section_Create_Filter_Noofemp',ENo_Of_Employee);
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Update_Filter');
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Filter_Update');*/
+    //Delete
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Filter');
+    cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Search_Filter',RandomName);
+    cy.Returning_String_after_Find_and_Replace('Accounts_Section_Edit_Saved_Filter','#text#',RandomName);
+    cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+    cy.element_Click_based_on_inputXpath('Accounts_Section_Delete_Filter')
+
+
   }  
   deleteAccount(Website){
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Delete','#text#',Website);

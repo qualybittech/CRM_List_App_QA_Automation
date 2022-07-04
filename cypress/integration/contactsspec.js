@@ -41,7 +41,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-    it('Basics', function (){
+   /* it('Basics', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -116,7 +116,17 @@ describe('Testing Successful login in Application', () => {
 		json_TestDataData[jsonindex].Tags)
 	//cy.logout_of_CRM_Application();
   }
-})})
+})})*/
+  it('Filter_Contact', function (){
+    cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      contact.navigateToContacts();
+    contact.filterContact(json_TestDataData[jsonindex].Lastname,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,
+     json_TestDataData[jsonindex].Tags,RandomName)
+     screenTop
+    }
+    })
+  })
    it('Invalid_Contact', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
@@ -250,15 +260,7 @@ describe('Testing Successful login in Application', () => {
            })
     })
    
-    /*it('Filter_Contact', function (){
-        cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
-          for  (var jsonindex in json_TestDataData){
-        contact.filterContact(json_TestDataData[jsonindex].Lastname,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,
-           json_TestDataData[jsonindex].Tags,RandomName)
-           screenTop
-       }
-       })
-   })*/
+    
     it('Delete', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){

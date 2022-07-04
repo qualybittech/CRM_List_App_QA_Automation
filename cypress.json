@@ -5,5 +5,6 @@
     "environment": "QA"
   },
   "viewportWidth": 1400,
-  "viewportHeight": 660
+  "viewportHeight": 660,
+  "chromeWebSecurity": false
 }
