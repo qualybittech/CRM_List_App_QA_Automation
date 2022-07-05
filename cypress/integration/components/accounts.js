@@ -229,6 +229,7 @@ export class Accounts{
     cy.Returning_String_after_Find_and_Replace('Accounts_Section_Edit_Saved_Filter','#text#',RandomName);
     cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
     cy.element_Click_based_on_inputXpath('Accounts_Section_Delete_Filter')
+    cy.asserting_As_Xpath_Present('Accounts_Section_Delete_Filter_Assertion');
 
 
   }  

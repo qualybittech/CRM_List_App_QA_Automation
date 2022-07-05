@@ -292,23 +292,41 @@ export class Tasks{
         cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
         cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Filter');
         cy.element_Click_based_on_inputXpath('Tasks_Section_Filter_Sort_Descending');
-        //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Type',Type);
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Type',Type);
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Daterange',Daterange)
-        //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Tags',Tags);
-        //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Status',Status);
-        //cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Createdtype',Createdtype);
+        cy.element_Send_Value_based_on_InputXpath('Accounts_Section_Create_Filter_Tags',Tags);
+        cy.Returning_String_after_Find_and_Replace('Accounts_Section_Filter_Select_Tag','#text#',Tags);
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Status',Status);
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Filter_Createdtype',Createdtype);
         cy.element_Click_based_on_inputXpath('Tasks_Section_Create_Save_Filter');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Save_Filter_Name',RandomName);
         cy.element_Click_based_on_inputXpath('Tasks_Section_Save_Filter');
-        cy.scrollTo(500, 0)
-        cy.element_Click_based_on_inputXpath('Tasks_Section_Saved_Filter');
         //Assertion
         cy.asserting_As_Xpath_Present('Tasks_Section_Save_Filter_Assertion');
+        /*cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
         cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Search_Filter',RandomName);
         cy.Returning_String_after_Find_and_Replace('Tasks_Section_View_Saved_Filter','#text#',RandomName);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.wait(3000)
-    } 
+        //Edit
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Edit_Saved_Filter','#text#',RandomName);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Edit_Filter')
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Create_Filter_Sortby','#text#','Created ');
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Create_Filter_Noofemp',ENo_Of_Employee);
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Update_Filter');
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter_Update');*/
+        //Delete
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Filter');
+        cy.element_Send_Value_based_on_InputXpath('Tasks_Section_Search_Filter',RandomName);
+        cy.Returning_String_after_Find_and_Replace('Tasks_Section_Edit_Saved_Filter','#text#',RandomName);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Tasks_Section_Delete_Filter')
+        cy.asserting_As_Xpath_Present('Tasks_Section_Delete_Filter_Assertion');
+    
+        } 
       searchTask(Contact){
         cy.element_Clear_And_Send_Value_based_on_InputXpath('Tasks_Section_Search',Contact);
         //Assertion As Email1 present

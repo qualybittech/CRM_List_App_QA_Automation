@@ -41,7 +41,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-   /* it('Basics', function (){
+   it('Basics', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -116,7 +116,7 @@ describe('Testing Successful login in Application', () => {
 		json_TestDataData[jsonindex].Tags)
 	//cy.logout_of_CRM_Application();
   }
-})})*/
+})})
   it('Filter_Contact', function (){
     cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
@@ -147,9 +147,9 @@ describe('Testing Successful login in Application', () => {
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
-            //contact.viewContact(RandomEmail1,Firstname1,json_TestDataData[jsonindex].Lastname)
-            //contact.viewAddTask(RandomEmail1,json_TestDataData[jsonindex].date,json_TestDataData[jsonindex].Description,Firstname1)
-           // contact.viewAddToSequences(RandomEmail1,RandomSequences)
+            contact.viewContact(RandomEmail1,Firstname1,json_TestDataData[jsonindex].Lastname)
+            contact.viewAddTask(RandomEmail1,json_TestDataData[jsonindex].date,json_TestDataData[jsonindex].Description,Firstname1)
+           contact.viewAddToSequences(RandomEmail1,RandomSequences)
             contact.viewSendEmail(RandomEmail1,json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Description,PersonalSnippet,TeamSnippet,PersonalTemplate,TeamTemplate,file)
         }
         })

@@ -2,11 +2,13 @@ import { Sequences } from "./components/sequences";
 import { Snippets } from "./components/snippets";
 import { Templates } from "./components/templates";
 import { Tasks } from "./components/tasks";
+import { Accounts } from "./components/accounts";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
 
 describe('Testing Successful login in Application', () => {
 
+  const accounts = new Accounts();
   const tasks = new Tasks();
   const snippets = new Snippets();
   const templates = new Templates();
@@ -33,13 +35,20 @@ describe('Testing Successful login in Application', () => {
   const EDescription7 = util.generateRandomNumber('EMeeting');
   const RandomEmail1 = util.generateRandomEmail('harry');
 	const RandomEmail2 = util.generateRandomEmail('potter');
-  const Lastname1 = util.generateRandomNumber('krishna');
-  const Lastname2 = util.generateRandomNumber('krishna');
+  const Lastname1 = util.generateRandomNumber('kri');
+  const Lastname2 = util.generateRandomNumber('Kri');
   const PersonalSnippet = util.generateRandomNumber('PersonalSnippet');
   const TeamSnippet = util.generateRandomNumber('TeamSnippet')
   const PersonalTemplate = util.generateRandomNumber('PersonalTemplate');
   const TeamTemplate = util.generateRandomNumber('TeamTemplate')
   const file = 'Seq_Contact_Upload.csv'
+  const Fullname = util.generateRandomNumber('sai')
+  const Random_Website1 = util.generateRandomWebsite('gram');
+  const fileattach = 'Template_Upload.csv'
+  const Firstname1 = util.generateRandomNumber('Ravi');
+  const Firstname2 = util.generateRandomNumber('Kri');
+
+
 
 
   const RandomName = util.generateRandomNumber('Filter');
@@ -55,6 +64,18 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
+  it('Create_Account', function (){
+    cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      accounts.navigateToAccounts();
+      accounts.createAccount(Fullname,json_TestDataData[jsonindex].Phone,Random_Website1,json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Address,json_TestDataData[jsonindex].City,
+      json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Code,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Industry,json_TestDataData[jsonindex].About,
+      json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+      json_TestDataData[jsonindex].No_Of_Employee);
+   
+  }
+ })
+})
   it('Create_Snippet', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
@@ -69,7 +90,7 @@ describe('Testing Successful login in Application', () => {
     for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
         templates.createPersonalTemplate(PersonalTemplate,json_TestDataData[jsonindex].Subject,
-        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,file)
+        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,fileattach)
     }
     })
   })
@@ -78,26 +99,28 @@ describe('Testing Successful login in Application', () => {
     for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
       templates.createTeamTemplate(TeamTemplate,json_TestDataData[jsonindex].Subject,
-        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,file  )
+        json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Body,PersonalSnippet,TeamSnippet,fileattach  )
     }
     })
   })
-  it('Create_Sequences', function (){
-    cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
+  it('Create_Contact', function (){
+    cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-    contacts.navigateToContacts();
-    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname1,RandomEmail1,Lastname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
-      json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
-      json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
-      json_TestDataData[jsonindex].Tags)
-    contacts.createContact(json_TestDataData[jsonindex].Firstname,Lastname2,RandomEmail2,Lastname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
-      json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
-      json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
-      json_TestDataData[jsonindex].Tags)
-    //cy.logout_of_CRM_Application();
-    }
-    })
-  })
+      contacts.navigateToContacts();
+   contacts.createContact(Firstname1,Lastname1,RandomEmail1,json_TestDataData[jsonindex].Phone,Fullname,
+  json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+  json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
+  json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+  json_TestDataData[jsonindex].Tags)
+
+contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsonindex].Phone,Fullname,
+  json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+  json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
+  json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+  json_TestDataData[jsonindex].Tags)
+//cy.logout_of_CRM_Application();
+}
+})})
   it('Create_Steps', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
@@ -150,10 +173,10 @@ describe('Testing Successful login in Application', () => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
-      sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
+      sequences.assignContacts(Firstname1,Lastname1);
       sequences.uploadContact(file);
  // Sequence Email Jobs=> method=GET; NOBODY NO PARAMS;  URL = https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs;
-   // cy.request(GET, 'https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs')
+   cy.request('GET', 'https://sales-tmp-server.herokuapp.com/automation/sequenceEmailJobs')
     }
     })
   })
