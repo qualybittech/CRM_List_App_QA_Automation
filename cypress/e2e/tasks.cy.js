@@ -1,9 +1,11 @@
 import { Contacts } from "./components/contacts";
+import { Accounts } from "./components/accounts";
 import { Tasks } from "./components/tasks";
 import { Util } from "./components/util";
 
 describe('Testing Successful login in Application', () => {
 
+  const accounts = new Accounts();
   const contacts = new Contacts();
 	const tasks = new Tasks();
 	const util = new Util();
@@ -22,6 +24,8 @@ describe('Testing Successful login in Application', () => {
   const Lastname2 = util.generateRandomNumber('kris');
   const Firstname2 = util.generateRandomNumber('Sai');
   const RandomEmail2 = util.generateRandomEmail('harry');
+  const Random_Website = util.generateRandomWebsite('gram');
+  const Fullname = util.generateRandomNumber('sai')
 
 
 	before(function() {
@@ -35,22 +39,46 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
-  it('Create_Contact', function (){
+  
+  it('Filter_Task', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
+      for  (var jsonindex in json_TestDataData){
+        tasks.navigateToTasks();
+        tasks.filterTask(json_TestDataData[jsonindex].Type,json_TestDataData[jsonindex].Daterange,json_TestDataData[jsonindex].tags,json_TestDataData[jsonindex].Status,json_TestDataData[jsonindex].Createdtype,RandomName)
+       screenTop
+   }
+   })
+  })
+  it('Create_Account', function (){
+    cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
+    for  (var jsonindex in json_TestDataData){
+      accounts.navigateToAccounts();
+      accounts.createAccount(Fullname,json_TestDataData[jsonindex].Phone,
+        Random_Website,json_TestDataData[jsonindex].Tags,json_TestDataData[jsonindex].Address,json_TestDataData[jsonindex].City,
+      json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Code,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Industry,json_TestDataData[jsonindex].About,
+      json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+      json_TestDataData[jsonindex].No_Of_Employee);
+  }
+ })
+})
+  it('Create_Contact', function (){
+    cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       contacts.navigateToContacts();
-    contacts.createContact(Firstname1,Lastname1,RandomEmail1,Firstname1,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
-      json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
-      json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
-      json_TestDataData[jsonindex].Tags)
-      contacts.createContact(Firstname2,Lastname1,RandomEmail2,Firstname2,json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
-        json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
-        json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
-        json_TestDataData[jsonindex].Tags)
-    
-    }
-    })
-  })
+   contacts.createContact(Firstname1,Lastname1,RandomEmail1,json_TestDataData[jsonindex].Phone,Fullname,
+  json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+  json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
+  json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+  json_TestDataData[jsonindex].Tags)
+
+contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsonindex].Phone,Fullname,
+  json_TestDataData[jsonindex].Title,json_TestDataData[jsonindex].Street,json_TestDataData[jsonindex].City,
+  json_TestDataData[jsonindex].State,json_TestDataData[jsonindex].Country,json_TestDataData[jsonindex].Code,
+  json_TestDataData[jsonindex].Linkedin,json_TestDataData[jsonindex].Facebook,json_TestDataData[jsonindex].Twitter,
+  json_TestDataData[jsonindex].Tags)
+//cy.logout_of_CRM_Application();
+}
+})})
    it('Create_Tasks', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
@@ -215,14 +243,6 @@ describe('Testing Successful login in Application', () => {
       })
   })
   
-  /*it('Filter_Task', function (){
-    cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
-      for  (var jsonindex in json_TestDataData){
-       tasks.filterTask(json_TestDataData[jsonindex].Type,json_TestDataData[jsonindex].date,json_TestDataData[jsonindex].tags,json_TestDataData[jsonindex].Status,json_TestDataData[jsonindex].Createdtype,RandomName)
-       screenTop
-   }
-   })
-  })*/
   it('Delete', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){

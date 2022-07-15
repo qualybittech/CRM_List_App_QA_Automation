@@ -7,7 +7,7 @@ export class Contacts{
 
     }
 
-    createContact(Firstname, Lastname,Email,Phone,Account,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags){
+    createContact(Firstname,Lastname,Email,Phone,Account,Title,Street,City,State,Country,Code,Linkedin,Facebook,Twitter,Tags){
         cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Button');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Firstname',Firstname);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Lastname',Lastname);
@@ -272,8 +272,8 @@ export class Contacts{
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Filter_Select_Tag','#text#',Tags);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));    
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Title',Title);
-        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Stage',"Cold");
-        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Type',"Customer");
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Stage');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Create_Filter_Type');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_State',State);
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Country',Country);
         //cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Create_Filter_Company',Company);
@@ -283,7 +283,7 @@ export class Contacts{
         //cy.element_Click_based_on_inputXpath('Contacts_Section_Saved_Filter');
         //Assertion
         cy.asserting_As_Xpath_Present('Contacts_Section_Save_Filter_Assertion');
-        cy.element_Click_based_on_inputXpath('Contacts_Section_Filter');
+       /* cy.element_Click_based_on_inputXpath('Contacts_Section_Filter');
         cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Filter',RandomName);
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_View_Saved_Filter','#text#',RandomName);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
@@ -291,12 +291,19 @@ export class Contacts{
         cy.Returning_String_after_Find_and_Replace('Contacts_Section_Edit_Saved_Filter','#text#',RandomName);
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_Edit_Filter')
-        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Create_Filter_Sortby','#text#','Created ');
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Create_Filter_Sortby','#text#','Created');
         cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
         cy.element_Click_based_on_inputXpath('Contacts_Section_Update_Filter');
-        cy.element_Click_based_on_inputXpath('Contacts_Section_Filter_Update');
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Filter_Update');*/
+        //Delete
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Filter');
+        cy.element_Send_Value_based_on_InputXpath('Contacts_Section_Search_Filter',RandomName);
+        cy.Returning_String_after_Find_and_Replace('Contacts_Section_Edit_Saved_Filter','#text#',RandomName);
+        cy.get('@convertedString').then(convertedString => cy.element_Click_based_on_inputXpath(convertedString));
+        cy.element_Click_based_on_inputXpath('Contacts_Section_Delete_Filter')
+        cy.asserting_As_Xpath_Present('Contacts_Section_Delete_Filter_Assertion');
     
-        cy.wait(3000)
+        
     }
     basics(){
         cy.element_Click_based_on_inputXpath('Landing_Page_Blubrd_Logo');

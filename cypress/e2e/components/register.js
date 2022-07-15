@@ -52,13 +52,21 @@ loginUsingUnsignupEmailid(Email,Password){
     cy.asserting_As_Xpath_Present('Register_Section_No_User_Message')
 }
 signupUsingGoogle(Email,Password){
-    cy.element_Click_based_on_inputXpath ("Register_Section_Signup") 
-    cy.wait(3000)
-    cy.element_Click_based_on_inputXpath("Register_With_Google")
-    //Cypress.Cookies.debug('enable', 'option')
-    cy.element_Send_Value_based_on_InputXpath('Register_With_Google_Email',Email)
-    cy.element_Click_based_on_inputXpath("Register_With_Google_Email_Next")
-    cy.element_Send_Value_based_on_InputXpath('Register_With_Google_Password',Password)
-    cy.element_Click_based_on_inputXpath("Register_With_Google_Email_Next")
+    const args = {Email,Password}
+    cy.session(args,()=>
+    {
+        cy.origin('google.com',{args} ,({Email,Password})=> {
+            cy.element_Click_based_on_inputXpath ("Register_Section_Signup") 
+            cy.wait(3000)
+            cy.element_Click_based_on_inputXpath("Register_With_Google")
+            //Cypress.Cookies.debug('enable', 'option')
+            cy.element_Send_Value_based_on_InputXpath('Register_With_Google_Email',Email)
+            cy.element_Click_based_on_inputXpath("Register_With_Google_Email_Next")
+            cy.element_Send_Value_based_on_InputXpath('Register_With_Google_Password',Password)
+            cy.element_Click_based_on_inputXpath("Register_With_Google_Email_Next")
+        })
+    }
+    )
+
 }
 }
