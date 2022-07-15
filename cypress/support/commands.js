@@ -1,4 +1,6 @@
 import 'cypress-file-upload';
+import { Checkbox } from 'react-bootstrap';
+require('cypress-xpath');
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -39,14 +41,32 @@ import 'cypress-file-upload';
 })
 */
 
+Cypress.Commands.add('launch_Application', () => {
+	
+	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
+		cy.visit(environment.URL)
+	})
+	
+})
+
+Cypress.Commands.add('login_with_Userkey_from_Testdata_to_CRM_Application', (userKeyvalue) => {
+	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
+		//In below line test data from Json file is used
+		var username_Password_array = environment[userKeyvalue].split('|');
+		//environment.[userKeyvalue].split('|').then((username_Password_array) => {
+		cy.login_to_CRM_Application_with_username_and_password(username_Password_array[0],username_Password_array[1]);
+	})
+})
 
 Cypress.Commands.add('asserting_As_Xpath_Present', (xpathValue) => {		
 	//cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 		cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 
-			if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+			
+
+			if (typeof xpath_Locators[xpathValue] !== 'undefined')
 			{
-				cy.xpath(xpath_Locators.[xpathValue]).should('be.visible');
+				cy.xpath(xpath_Locators[xpathValue]).should('be.visible');
 			}
 			else 
 			{
@@ -59,9 +79,9 @@ Cypress.Commands.add('asserting_As_Xpath_Not_Present', (xpathValue) => {
 	//cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 		cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 
-			if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+			if (typeof xpath_Locators[xpathValue] !== 'undefined')
 			{
-				cy.xpath(xpath_Locators.[xpathValue]).not('be.visible');
+				cy.xpath(xpath_Locators[xpathValue]).not('be.visible');
 			}
 			else 
 			{
@@ -72,13 +92,15 @@ Cypress.Commands.add('asserting_As_Xpath_Not_Present', (xpathValue) => {
 
 Cypress.Commands.add('element_Click_based_on_inputXpath', (xpathValue) => {		
 	cy.fixture('xpath_Locators').then((xpath_Locators)  => {
-
-		if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+			cy.log("xpathValue: "+xpathValue)
+		if (xpath_Locators[xpathValue] !== 'undefined')
 		{
-			cy.xpath(xpath_Locators.[xpathValue]).click();
+			cy.log("if: "+xpath_Locators[xpathValue])
+			cy.xpath(xpath_Locators[xpathValue]).click();
 		}
 		else 
 		{
+			cy.log("value: "+cy.xpath(xpathValue))
 			cy.xpath(xpathValue).click();
 		}
 	})	
@@ -88,9 +110,9 @@ Cypress.Commands.add('element_Send_Value_based_on_InputXpath', (xpathValue,Sendi
 	cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 	var xpathtobeused='';
 	
-		if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+		if (typeof xpath_Locators[xpathValue] !== 'undefined')
 		{
-			xpathtobeused=xpath_Locators.[xpathValue];
+			xpathtobeused=xpath_Locators[xpathValue];
 		}
 		else 
 		{
@@ -122,9 +144,9 @@ Cypress.Commands.add('element_Clear_And_Send_Value_based_on_InputXpath', (xpathV
 	cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 	var xpathtobeused='';
 	
-		if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+		if (typeof xpath_Locators[xpathValue] !== 'undefined')
 		{
-			xpathtobeused=xpath_Locators.[xpathValue];
+			xpathtobeused=xpath_Locators[xpathValue];
 		}
 		else 
 		{
@@ -164,9 +186,9 @@ for(var i = 0; i < str_array.length; i++) {
    
 }
 
-		if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+		if (typeof xpath_Locators[xpathValue] !== 'undefined')
 		{
-			cy.xpath(xpath_Locators.[xpathValue]).type(SendingValue);
+			cy.xpath(xpath_Locators[xpathValue]).type(SendingValue);
 		}
 		else 
 		{
@@ -180,9 +202,9 @@ Cypress.Commands.add('Returning_String_after_Find_and_Replace', (xpathValue,stri
 	
 		cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 
-			if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+			if (typeof xpath_Locators[xpathValue] !== 'undefined')
 			{
-				cy.wrap(xpath_Locators.[xpathValue].replace(stringtoFind, stringtoReplace)).as('convertedString');
+				cy.wrap(xpath_Locators[xpathValue].replace(stringtoFind, stringtoReplace)).as('convertedString');
 			}
 			else 
 			{
@@ -195,9 +217,9 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 	
 	cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 
-		if (typeof xpath_Locators.[xpathValue] !== 'undefined')
+		if (typeof xpath_Locators[xpathValue] !== 'undefined')
 		{
-			cy.wrap(xpath_Locators.[xpathValue]).as('XpathvalueString');
+			cy.wrap(xpath_Locators[xpathValue]).as('XpathvalueString');
 		}
 		else 
 		{
@@ -206,3 +228,32 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 	})
 })
 
+Cypress.Commands.add('launch_Application', () => {
+	
+	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
+		cy.visit(environment.URL)
+	})
+	
+})
+Cypress.Commands.add('login_to_CRM_Application_with_username_and_password', (emailvalue, passwordvalue) => {
+	
+	cy.launch_Application();
+	cy.element_Send_Value_based_on_InputXpath('Login_Page_Email_Username',emailvalue);
+	cy.element_Send_Value_based_on_InputXpath('Login_Page_password',passwordvalue);
+	cy.element_Click_based_on_inputXpath('Login_Page_Submit');
+})
+
+Cypress.Commands.add('login_with_Userkey_from_Testdata_to_CRM_Application', (userKeyvalue) => {
+	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
+		//In below line test data from Json file is used
+		var username_Password_array = environment[userKeyvalue].split('|');
+		//environment.[userKeyvalue].split('|').then((username_Password_array) => {
+		cy.login_to_CRM_Application_with_username_and_password(username_Password_array[0],username_Password_array[1]);
+	})
+})
+
+Cypress.Commands.add('logout_of_CRM_Application', () => {
+	
+	cy.element_Click_based_on_inputXpath('applicaation_Header_user_dropdown_Link');
+	cy.element_Click_based_on_inputXpath('applicaation_Header_user_LogoutLink');
+})

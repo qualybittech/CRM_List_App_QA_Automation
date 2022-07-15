@@ -11,9 +11,8 @@ describe('Testing Successful login in Application', () => {
         cy.fixture('./JSON_TestData/Register_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             Cypress.Cookies.debug(true)
-            Cypress.Cookies.preserveOnce()
             cy.launch_Application();
-            cy.asserting_As_Xpath_Present("Register_Section_Login_Text")
+            //cy.asserting_As_Xpath_Present("Register_Section_Login_Text")
        }
        })
     })

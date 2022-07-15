@@ -24,9 +24,9 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "cypress": "^9.2.0",
+    "cypress": "^10.3.0",
     "cypress-file-upload": "^5.0.8",
-    "cypress-xpath": "^1.6.2",
+    "cypress-xpath": "^2.0.0",
     "gh-pages": "^1.2.0",
     "papaparse": "^4.6.2",
     "properties-reader": "^2.2.0",
