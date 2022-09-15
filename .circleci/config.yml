@@ -3,7 +3,7 @@
 version: 2.1
 
 orbs:
-  newman: postman/newman@0.0.2
+  newman: postman/newman@1.0.0
   cypress: cypress-io/cypress@2.0.0
 executors:
   with-chrome:
@@ -36,17 +36,11 @@ jobs:
           environment: ./postman/Global.json
           globals: ./postman/QA_Environment.json
           additional-options: --verbose
-# Invoke jobs via workflows
+          # Invoke jobs via workflows
+
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   crm-app-workflow:
     jobs:
       #- say-hello
-      #- postmanexecution
-      - cypress/run:
-          executor: with-chrome
-          browser: chrome
-          spec: cypress/integration/accountsspec_ci.js
-          post-steps:
-            - store_test_results:
-                path: cypress/results
+      - postmanexecution
