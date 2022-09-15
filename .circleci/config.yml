@@ -29,12 +29,12 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          #collection: ./postman/CI_CRM_Postman_Collection.json
-          #environment: ./postman/Postman_Environment.json
-          #globals: ./postman/Postman_Globals.json
-          collection: ./postman/CRM_Backend_Test_Collection.json
-          environment: ./postman/Global.json
-          globals: ./postman/QA_Environment.json
+          collection: ./postman/CI_CRM_Postman_Collection.json
+          environment: ./postman/Postman_Environment.json
+          globals: ./postman/Postman_Globals.json
+          #collection: ./postman/CRM_Backend_Test_Collection.json
+          #environment: ./postman/Global.json
+          #globals: ./postman/QA_Environment.json
           additional-options: --verbose
           # Invoke jobs via workflows
 
