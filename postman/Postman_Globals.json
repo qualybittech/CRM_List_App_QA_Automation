@@ -1,5 +1,5 @@
 {
-	"id": "409c4af0-50c9-4c31-8828-5e1bcacbc792",
+	"id": "c6fdbdc5-e45d-4ade-8a8e-bd2f1bcb2a60",
 	"values": [
 		{
 			"key": "register_First_Name_01",
@@ -27,7 +27,7 @@
 		},
 		{
 			"key": "user_Id_01",
-			"value": "631b71d0f9058390bccaec26",
+			"value": "6333e4ede7ac6acf66e8f300",
 			"type": "default",
 			"enabled": true
 		},
@@ -57,13 +57,13 @@
 		},
 		{
 			"key": "user_Id_02",
-			"value": "631b71d1f9058390bccaec2e",
+			"value": "6333e4ede7ac6acf66e8f308",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "global_Token_01",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFiNzFkMGY5MDU4MzkwYmNjYWVjMjYiLCJhY2NvdW50SWQiOiI2MzFiNzFkMGY5MDU4MzkwYmNjYWVjMjUiLCJpYXQiOjE2NjI3NDI5OTYsImV4cCI6MTY2Mjc0NjUzNn0.adkEdqYjo-eeiEXkDKfVkX4MIqAkffY8qt9kUrmAK08",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzZTRlZGU3YWM2YWNmNjZlOGYzMDAiLCJhY2NvdW50SWQiOiI2MzMzZTRlZGU3YWM2YWNmNjZlOGYyZmYiLCJpYXQiOjE2NjQzNjQzNzUsImV4cCI6MTY5NTkyMTk3NX0.EAeZnJ6PFekzZcrbSyiC5gyq7zfWTKHuVnHaa85pmJQ",
 			"type": "default",
 			"enabled": true
 		},
@@ -111,31 +111,31 @@
 		},
 		{
 			"key": "account_Web_01",
-			"value": "20220909220952.com",
+			"value": "con20220928130903.com",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Id_01",
-			"value": "631b7124f9058390bccaeb91",
+			"value": "6333fba193614fc438b07555",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "global_Token_02",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFiNzFkMWY5MDU4MzkwYmNjYWVjMmUiLCJhY2NvdW50SWQiOiI2MzFiNzFkMWY5MDU4MzkwYmNjYWVjMmQiLCJpYXQiOjE2NjI3NDI5OTQsImV4cCI6MTY2Mjc0NjUzNH0.sn7Mkty9dmADGqutD4U3fx1gvV0JfCzSxzVlYM7P3vc",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzZTRlZGU3YWM2YWNmNjZlOGYzMDgiLCJhY2NvdW50SWQiOiI2MzMzZTRlZGU3YWM2YWNmNjZlOGYzMDciLCJpYXQiOjE2NjQzNjQzNjksImV4cCI6MTY5NTkyMTk2OX0.rUdIZVcwYaaS_qxpM7CMzdtTOpMPt-dalJhPzAetYCw",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Web_02",
-			"value": "20220909220975.com",
+			"value": "acc220220926130987.com",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Id_02",
-			"value": "631b7154f9058390bccaec09",
+			"value": "63315a92ccbc0145ba4e0bcb",
 			"type": "any",
 			"enabled": true
 		},
@@ -207,25 +207,25 @@
 		},
 		{
 			"key": "account_Web_03",
-			"value": "20220909220976.com",
+			"value": "acc320220926130903.com",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Web_04",
-			"value": "20220909220921.com",
+			"value": "acc420220926130949.com",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Id_04",
-			"value": "631b7120f9058390bccaeb79",
+			"value": "63315a4dccbc0145ba4e0b27",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "account_Id_03",
-			"value": "631b7120f9058390bccaeb74",
+			"value": "63315a4cccbc0145ba4e0b20",
 			"type": "default",
 			"enabled": true
 		},
@@ -309,7 +309,7 @@
 		},
 		{
 			"key": "account_Eweb",
-			"value": "20220909220925.com",
+			"value": "20220926130943.com",
 			"type": "any",
 			"enabled": true
 		},
@@ -399,13 +399,13 @@
 		},
 		{
 			"key": "snippet_Id_04",
-			"value": "631b71d6f9058390bccaec55",
+			"value": "6333e4f6e7ac6acf66e8f34e",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "snippet_Id_01",
-			"value": "631b7207f9058390bccaecd0",
+			"value": "6333e5176635788ce15f502c",
 			"type": "any",
 			"enabled": true
 		},
@@ -435,13 +435,13 @@
 		},
 		{
 			"key": "snippet_Id_02",
-			"value": "631b71d6f9058390bccaec4d",
+			"value": "6333e4f5e7ac6acf66e8f343",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "snippet_Id_03",
-			"value": "631b71d6f9058390bccaec51",
+			"value": "6333e4f5e7ac6acf66e8f34a",
 			"type": "any",
 			"enabled": true
 		},
@@ -495,25 +495,25 @@
 		},
 		{
 			"key": "template_Id_01",
-			"value": "631b7207f9058390bccaecd4",
+			"value": "6333e5186635788ce15f5030",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "template_Id_02",
-			"value": "631b7208f9058390bccaecd8",
+			"value": "6333e5186635788ce15f5034",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "template_Id_03",
-			"value": "631b7208f9058390bccaecdc",
+			"value": "6333e5186635788ce15f5038",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "template_Id_04",
-			"value": "631b7208f9058390bccaece0",
+			"value": "6333e5196635788ce15f503c",
 			"type": "any",
 			"enabled": true
 		},
@@ -585,7 +585,7 @@
 		},
 		{
 			"key": "account_Filter_Id",
-			"value": "631b712ef9058390bccaebc7",
+			"value": "63309cc38245b312ad158d1c",
 			"type": "default",
 			"enabled": true
 		},
@@ -603,850 +603,453 @@
 		},
 		{
 			"key": "fName1",
-			"value": "tom20220909220920",
+			"value": "tom20220928130943",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "lName1",
-			"value": "jerry20220909220920",
+			"value": "jerry20220925230988",
 			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "email01",
-			"value": "jerryRachel.Dicki0@yahoo.com",
+			"value": "chinEaston62@hotmail.com",
 			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Global_Token1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Global_Token2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "accountid1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "accountid2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "invalid contact id",
-			"value": "2345",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "contactid1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "contactid2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "phno1",
-			"value": "1231231233",
-			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "fName2",
-			"value": "",
-			"type": "default",
+			"value": "tom20220928130943",
+			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "lName2",
-			"value": "",
-			"type": "default",
+			"value": "chan20220923220966",
+			"type": "any",
 			"enabled": true
 		},
 		{
 			"key": "email02",
-			"value": "cc@gmail.com",
+			"value": "chinCarleton_Fay17@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName3",
+			"value": "ninja20220923220945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName3",
+			"value": "hatori20220923220945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email03",
+			"value": "hatoriiAnabel.Keeling@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName4",
+			"value": "chhin20220923220985",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName4",
+			"value": "chann20220923220985",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email04",
+			"value": "chhanniSabryna34@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Phone",
+			"value": "9865344446",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "phno2",
-			"value": "1591591599",
+			"key": "contact_Stage",
+			"value": "New",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "tag1",
-			"value": "cartoon",
+			"key": "contact_Street",
+			"value": "1208 Rocket Drive",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "tag2",
-			"value": "CN",
+			"key": "contact_City",
+			"value": "Minneapolis",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "test",
-			"value": "123123",
+			"key": "contact_State",
+			"value": "Minnesota",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "efname1",
-			"value": "tommm",
+			"key": "contact_Country",
+			"value": "United States",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "elname1",
-			"value": "jeryyy",
+			"key": "contact_Code",
+			"value": "55410",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Linkedin",
+			"value": "Linkedin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Facebook",
+			"value": "Facebook",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Twitter",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Type",
+			"value": "Lead",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Tag",
+			"value": "Tag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Timezone",
+			"value": "Asia/Calcutta",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_01",
+			"value": "tom20220928170919",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_01",
+			"value": "jerryTaya91@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_02",
+			"value": "tom20220927180945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Last_Name_02",
+			"value": "jerry20220927180945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_02",
+			"value": "jerryKane.Pfeffer@gmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_04",
+			"value": "tom20220927180999",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Last_Name_04",
+			"value": "jerry20220927180999",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_04",
+			"value": "jerryElisha5@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_01",
+			"value": [
+				"633438cb81ff470290244fee"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_02",
+			"value": [
+				"6332eefd7236bc8571b16343"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_03",
+			"value": [
+				"6332ef0f7236bc8571b1636c"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_04",
+			"value": [
+				"6332ef207236bc8571b16392"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Last_Name_01",
+			"value": "jerry20220928170919",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Tag",
+			"value": "contact",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_03",
+			"value": "tom20220927180913",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Last_Name_03",
+			"value": "jerry20220924230961",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_03",
+			"value": "jerryJerome_Weimann@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Last_Name_03",
+			"value": "jerry20220927180913",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Filter_Name",
+			"value": "con20220925230938EditedFilter",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Sortby",
+			"value": "Created",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Sharing",
+			"value": "private",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Filter_Id",
+			"value": "63309cf98245b312ad158de7",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Note_Type",
+			"value": "Note",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Description",
+			"value": "Description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Date",
+			"value": "2023-07-25T18:30:00.000Z",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "taskid1",
 			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "taskid2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "invalid taskid",
-			"value": "345",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "tasktag 1",
-			"value": "level 1",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "tasktag 2",
-			"value": "level 2",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "true",
-			"value": "[true]",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "false",
-			"value": "[\n  false\n]",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "companyid1",
-			"value": "",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "compname1",
-			"value": "tom",
+			"key": "sequences_Name",
+			"value": "sequences",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "compname2",
-			"value": "chin",
+			"key": "sequences_Email_Subject",
+			"value": "subject",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "compphno1",
-			"value": "112233445566",
+			"key": "sequences_Email_Body",
+			"value": "body",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "compphno2",
-			"value": "1112223334",
+			"key": "sequences_Type",
+			"value": "personal",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "compweb1",
-			"value": "t",
+			"key": "sequences_Step_Email",
+			"value": "Email",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "compweb2",
-			"value": "c",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "companyid2",
-			"value": "",
+			"key": "sequences_Id_01",
+			"value": "6334027493614fc438b07b25",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "ecompname1",
-			"value": "tommm",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "ecompphno1",
-			"value": "1472583699",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "ecompweb1",
-			"value": "tt",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "tempid2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temname1",
-			"value": "joshna shree@1234",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temname2",
-			"value": "ammu",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temtag1",
-			"value": "session",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temtag2",
-			"value": "special",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "teminvalid",
-			"value": "543",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "ufname1",
-			"value": "",
+			"key": "sequences_Id_02",
+			"value": "6334026a93614fc438b07a83",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "ulname1",
-			"value": "",
+			"key": "sequences_Step_Id_01",
+			"value": "6334026993614fc438b07a7a",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "uemail1",
-			"value": "",
+			"key": "sequences_Step_Id_02",
+			"value": "6334027593614fc438b07b31",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "ufname2",
-			"value": "",
+			"key": "sequences_Description",
+			"value": "Description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Call",
+			"value": "Call Log",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Linkedin",
+			"value": "LinkedIn",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Meeting",
+			"value": "Meeting",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Twitter",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Whatsapp",
+			"value": "WhatsApp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Sms",
+			"value": "SMS",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Edit_Description",
+			"value": "Edit description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Assign_Contact_01",
+			"value": "6334027593614fc438b07b40",
 			"type": "any",
 			"enabled": true
 		},
 		{
-			"key": "ulname2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "uemail2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "temid1",
-			"value": "61e6416132b3c70d63ab7246",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "sniid1",
-			"value": "",
+			"key": "sequences_Setting_Stop_Sending",
+			"value": "Replies to this sequence",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "sniid2",
-			"value": "",
+			"key": "sequences_Time_Zone_Value",
+			"value": "Pacific/Midway",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "temsub1",
-			"value": "scientific,fl khndlihj",
+			"key": "sequences_Time_Zone_Lable",
+			"value": "(GMT-11:00) Midway Island, Samoa",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "temsub2",
-			"value": "study",
+			"key": "sequences_Edit_Name",
+			"value": "Edited sequences",
 			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "eufname1",
-			"value": "haashiniiii",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniname1",
-			"value": "lucy",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniname2",
-			"value": "lucy2",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snisub1",
-			"value": "special",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snisub2",
-			"value": "freek",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniinvalidid",
-			"value": "456",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "newpassword",
-			"value": "Haaaashini98",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snitag1",
-			"value": "oops",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snitag2",
-			"value": "concept",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temname3",
-			"value": "aaa",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temname4",
-			"value": "rani",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temsub3",
-			"value": "sub3",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "temsub4",
-			"value": "tools",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "tempid3",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "tempid4",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registerfname",
-			"value": "romeo",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registerlname",
-			"value": "juliet",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registerpassword",
-			"value": "Haaaashini@98",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registeremail",
-			"value": "julietr@gmail.com",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registerinvalidemail",
-			"value": "rrjjrr@@gmail.com",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registerinvalidpassword",
-			"value": "112233445566",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "registermaxchar",
-			"value": "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzzaabbccddeeffgghhiijjkkllmmnnoopp",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "notes",
-			"value": "automation",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "editnotes",
-			"value": "automation step by step",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniname3",
-			"value": "testing sni",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniname4",
-			"value": "different",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snitag3",
-			"value": "bkj",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniid3",
-			"value": "61ea30c52f7a9cb8ec65d9d5",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "sniid4",
-			"value": "61ea30452f7a9cb8ec65d9cf",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snisub3",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "snisub4",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "companyid3",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "companyid4",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "taskid3",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "taskid4",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Sequencesid1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Stepsid2",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "fName3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "lName3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "email03",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "fName4",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "lName4",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "email04",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "contactid3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "contactid4",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "compweb3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "compweb4",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "noteid1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "noteid2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "seqname",
-			"value": "tom",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Filter_Con_01",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Filter_Acc_01",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Filter_Tas_01",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "aid1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "owner1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "owner2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "utemp1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "utemp2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "usnip1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "usnip2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Stepsid1",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "AssignContact01",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Sequencesid2",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "scontactid",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Global_Token",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "URL",
-			"value": "https://sales-tmp-server.herokuapp.com",
-			"enabled": true
-		},
-		{
-			"key": "results",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "email",
-			"value": "kowshikahaashini98@gmail.com",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "password",
-			"value": "Haaaashini@98",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "id",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "BaseURL",
-			"value": "https://postman-echo.com",
-			"enabled": false
-		},
-		{
-			"key": "BaseURL2",
-			"value": "https://reqres.in",
-			"enabled": false
-		},
-		{
-			"key": "first_name",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "page",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "authRunFlag",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "Work_Flow_ID",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "firstName",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "lastName",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "DOB",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "gender",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "city",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "state",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "SSN",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "addrLine1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "zipCode",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "phoneNo",
-			"value": "",
-			"type": "any",
 			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2022-09-15T10:54:35.761Z",
-	"_postman_exported_using": "Postman/9.26.8"
+	"_postman_exported_at": "2022-09-29T10:38:06.458Z",
+	"_postman_exported_using": "Postman/9.31.13"
 }
