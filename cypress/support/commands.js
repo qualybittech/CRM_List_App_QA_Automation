@@ -44,7 +44,13 @@ require('cypress-xpath');
 Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
-		cy.visit(environment.URL)
+		//cy.visit(environment.URL)
+		cy.visit('https://www.qa.blubrd.ai/', {
+			auth: {
+		  username: 'qateam',
+		  password: 'Secured1659password',
+		  },
+		  })
 	})
 	
 })
@@ -93,14 +99,15 @@ Cypress.Commands.add('asserting_As_Xpath_Not_Present', (xpathValue) => {
 Cypress.Commands.add('element_Click_based_on_inputXpath', (xpathValue) => {		
 	cy.fixture('xpath_Locators').then((xpath_Locators)  => {
 			cy.log("xpathValue: "+xpathValue)
-		if (xpath_Locators[xpathValue] !== 'undefined')
-		{
+			if (typeof xpath_Locators[xpathValue] !== 'undefined')
+			//if (xpath_Locators[xpathValue] !== 'undefined')
+			{
 			cy.log("if: "+xpath_Locators[xpathValue])
 			cy.xpath(xpath_Locators[xpathValue]).click();
 		}
 		else 
 		{
-			cy.log("value: "+cy.xpath(xpathValue))
+			//cy.log("value: "+cy.xpath(xpathValue))
 			cy.xpath(xpathValue).click();
 		}
 	})	
@@ -231,7 +238,13 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
-		cy.visit(environment.URL)
+		//cy.visit('https://www.qa.blubrd.ai/auth/login')
+		cy.visit('https://www.qa.blubrd.ai/', {
+        auth: {
+        username: 'qateam',
+        password: 'Secured1659password',
+        },
+    })
 	})
 	
 })
