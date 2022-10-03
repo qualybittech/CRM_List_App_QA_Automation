@@ -2,7 +2,7 @@ import { Contacts } from "./components/contacts";
 import { Accounts } from "./components/accounts";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Account module', () => {
 
   const contacts = new Contacts();
 	const accounts = new Accounts();

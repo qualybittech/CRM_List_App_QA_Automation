@@ -1,7 +1,7 @@
 import { Snippets } from "./components/snippets";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Snippets module', () => {
 
 	const snippets = new Snippets();
 	const util = new Util();

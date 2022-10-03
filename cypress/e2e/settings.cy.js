@@ -1,7 +1,7 @@
 import { Settings } from "./components/settings";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Settings module', () => {
 
     const settings = new Settings();
     const util = new Util();
@@ -18,7 +18,7 @@ describe('Testing Successful login in Application', () => {
       }
     })
   })
-      it('Assertion', function (){
+      it('Account Details', function (){
         cy.fixture('./JSON_TestData/Settings_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
           settings.navigateToSettings();
@@ -47,7 +47,10 @@ it('Security', function (){
    for  (var jsonindex in json_TestDataData){
     settings.navigateToSettings();
     settings.security(json_TestDataData[jsonindex].oldpassword,json_TestDataData[jsonindex].newpassword,json_TestDataData[jsonindex].email);
-   }
+    cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey1);
+    settings.navigateToSettings();
+    settings.security(json_TestDataData[jsonindex].oldpassword,json_TestDataData[jsonindex].newpassword);
+  }
   })
 })
 })

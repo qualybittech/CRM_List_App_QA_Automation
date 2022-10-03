@@ -3,7 +3,7 @@ import { Accounts } from "./components/accounts";
 import { Tasks } from "./components/tasks";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Task module', () => {
 
   const accounts = new Accounts();
   const contacts = new Contacts();

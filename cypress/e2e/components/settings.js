@@ -34,21 +34,11 @@ export class Settings{
       cy.asserting_As_Xpath_Present('Settings_Section_User_Teams_Invite_Popup');
 
     }
-    security(oldpassword,newpassword,email){
+    security(oldpassword,newpassword){
       cy.element_Click_based_on_inputXpath('Settings_Section_Security');
       cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Oldpassword',oldpassword)
       cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Newpassword',newpassword)
       cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Cnfpassword',newpassword)
-      cy.element_Click_based_on_inputXpath('Settings_Section_Security_Submit');
-      //password reversion
-      cy.element_Send_Value_based_on_InputXpath('Login_Page_Email_Username',email)
-      cy.element_Send_Value_based_on_InputXpath('Login_Page_password',newpassword)
-      cy.element_Click_based_on_inputXpath('Login_Page_Submit');
-      cy.element_Click_based_on_inputXpath('Main_Section_Setting_Link');
-      cy.element_Click_based_on_inputXpath('Settings_Section_Security');
-      cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Oldpassword',newpassword)
-      cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Newpassword',oldpassword)
-      cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Cnfpassword',oldpassword)
       cy.element_Click_based_on_inputXpath('Settings_Section_Security_Submit');
 
     }

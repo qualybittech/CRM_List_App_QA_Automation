@@ -45,7 +45,7 @@ Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
 		//cy.visit(environment.URL)
-		cy.visit('https://www.qa.blubrd.ai/', {
+		cy.visit('environment.URL', {
 			auth: {
 		  username: 'qateam',
 		  password: 'Secured1659password',
@@ -238,8 +238,7 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
-		//cy.visit('https://www.qa.blubrd.ai/auth/login')
-		cy.visit('https://www.qa.blubrd.ai/', {
+		cy.visit('environment.URL', {
         auth: {
         username: 'qateam',
         password: 'Secured1659password',

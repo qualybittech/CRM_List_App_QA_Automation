@@ -5,7 +5,7 @@ import { Tasks } from "./components/tasks";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Sequences module', () => {
 
   const tasks = new Tasks();
   const snippets = new Snippets();

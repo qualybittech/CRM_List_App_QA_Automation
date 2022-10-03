@@ -2,7 +2,7 @@ import { Snippets } from "./components/snippets";
 import { Templates } from "./components/templates";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Template module', () => {
 
 	const snippets = new Snippets();
   const templates = new Templates();

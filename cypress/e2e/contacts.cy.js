@@ -4,7 +4,7 @@ import { Templates } from "./components/templates";
 import { Sequences } from "./components/sequences";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
-describe('Testing Successful login in Application', () => {
+describe('Contact module', () => {
 
   const accounts = new Accounts();
   const snippets = new Snippets();
