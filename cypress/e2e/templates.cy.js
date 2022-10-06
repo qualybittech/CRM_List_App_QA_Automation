@@ -27,7 +27,7 @@ describe('Template module', () => {
      }
      })
   })  
-  it('Upload_Template', function (){
+  it('To validate the upload template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       //for  (var jsonindex in json_TestDataData){
       templates.navigateToTeamTemplates();
@@ -35,7 +35,7 @@ describe('Template module', () => {
       // }
        })
   })
-  it('Create_Snippet', function (){
+  it('To validate the create snippet feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -44,7 +44,7 @@ describe('Template module', () => {
     }
     })
   })
-  it('Create_Personal_Template', function (){
+  it('To validate the create personal template feature ', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -56,7 +56,7 @@ describe('Template module', () => {
     }
     })
   })
-  it('Edit_Template', function (){
+  it('To validate the edit template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -64,7 +64,7 @@ describe('Template module', () => {
      }
      })
   })
-  it('View_Template', function (){
+  it('To validate the view template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -72,7 +72,7 @@ describe('Template module', () => {
     }
     })
   })
-  it('Clone_Template', function (){
+  it('To validate the clone template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -80,7 +80,7 @@ describe('Template module', () => {
     }
     })
   })
-  it('Add_Tag', function (){
+  it('To validate the add tag feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -89,7 +89,7 @@ describe('Template module', () => {
       }
     })
   })
-  it('Remove_Tag', function (){
+  it('To validate the remove tag feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -97,7 +97,7 @@ describe('Template module', () => {
       }
     })
   })
-  it('Multiple_Add_Tag', function (){
+  it('To validate the multiple add tag feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -106,7 +106,7 @@ describe('Template module', () => {
        }
        })
   })
-  it('Multiple_Remove_Tag', function (){
+  it('To validate the multiple remove tag feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -114,7 +114,7 @@ describe('Template module', () => {
       }
       })
   })
-  it('Archive_Template', function (){
+  it('To validate the archive template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -124,7 +124,7 @@ describe('Template module', () => {
        }
        })
   })
-it('Unarchive_Template', function (){
+it('To validate the unarchive template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -135,7 +135,7 @@ it('Unarchive_Template', function (){
        }
        })
 })
-it('Multiple_Archive', function (){
+it('To validate the multiple archive feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTemplates();
@@ -145,7 +145,7 @@ it('Multiple_Archive', function (){
      }
      })
 })
-it('Multiple_Unarchive', function (){
+it('To validate the multiple unarchive feature', function (){
    cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -156,7 +156,7 @@ it('Multiple_Unarchive', function (){
     }
     })
 })
-it('Delete', function (){
+it('To validate the delete feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTemplates();
@@ -164,7 +164,7 @@ it('Delete', function (){
     }
     })
 })
-it('Delete_Multiple', function (){
+it('To validate the delete multiple template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTemplates();
@@ -172,7 +172,7 @@ it('Delete_Multiple', function (){
     }
     })
 })
-it('Create_Team_Template', function (){
+it('To validate the create team template', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
   for  (var jsonindex in json_TestDataData){
     templates.navigateToTemplates();
@@ -184,7 +184,7 @@ it('Create_Team_Template', function (){
   }
   })
 })
-it('Edit_Template', function (){
+it('To validate the edit template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -192,7 +192,7 @@ it('Edit_Template', function (){
    }
    })
 })
-it('View_Template', function (){
+it('To validate the view template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
           templates.navigateToTeamTemplates();
@@ -200,7 +200,7 @@ it('View_Template', function (){
   }
   })
 })
-it('Clone_Template', function (){
+it('To validate the clone template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       templates.navigateToTeamTemplates();
@@ -208,7 +208,7 @@ it('Clone_Template', function (){
   }
   })
 })
-it('Add_Tag', function (){
+it('To validate the add tag feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -217,7 +217,7 @@ it('Add_Tag', function (){
     }
   })
 })
-it('Remove_Tag', function (){
+it('To validate the remove tag feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -225,7 +225,7 @@ it('Remove_Tag', function (){
     }
   })
 })
-it('Multiple_Add_Tag', function (){
+it('To validate the multiple add tag feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -234,7 +234,7 @@ it('Multiple_Add_Tag', function (){
      }
      })
 })
-it('Multiple_Remove_Tag', function (){
+it('To validate the multiple remove tag feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -242,7 +242,7 @@ it('Multiple_Remove_Tag', function (){
     }
     })
 })
-it('Archive_Template', function (){
+it('To validate the archive template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -252,7 +252,7 @@ it('Archive_Template', function (){
      }
      })
 })
-it('Unarchive_Template', function (){
+it('To validate the unarchive template feature', function (){
   cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -263,7 +263,7 @@ it('Unarchive_Template', function (){
      }
      })
 })
-it('Multiple_Archive', function (){
+it('To validate the multiple archive feature', function (){
 cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   templates.navigateToTeamTemplates();
@@ -273,7 +273,7 @@ cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) =
    }
    })
 })
-it('Multiple_Unarchive', function (){
+it('To validate the multiple unarchive feature', function (){
  cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
   for  (var jsonindex in json_TestDataData){
     templates.navigateToTeamTemplates();
@@ -284,7 +284,7 @@ it('Multiple_Unarchive', function (){
   }
   })
 })
-it('Delete', function (){
+it('To validate the delete template feature', function (){
 cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   templates.navigateToTeamTemplates();
@@ -292,7 +292,7 @@ cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) =
   }
   })
 })
-it('Delete_Multiple', function (){
+it('To validate the delete multiple template feature', function (){
 cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   templates.navigateToTeamTemplates();
@@ -300,5 +300,4 @@ cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) =
   }
   })
 })
-
 })

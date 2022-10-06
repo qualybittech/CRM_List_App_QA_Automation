@@ -1,7 +1,7 @@
 import { Settings } from "./components/settings";
 import { Util } from "./components/util";
 
-describe('Settings module', () => {
+describe('Setting module', () => {
 
     const settings = new Settings();
     const util = new Util();
@@ -18,7 +18,7 @@ describe('Settings module', () => {
       }
     })
   })
-      it('Account Details', function (){
+      it('To validate the account details', function (){
         cy.fixture('./JSON_TestData/Settings_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
           settings.navigateToSettings();
@@ -26,7 +26,7 @@ describe('Settings module', () => {
          }
         })
     })
-    /*it('Updated', function (){
+    /*it('To validate the edit account details feature', function (){
       cy.fixture('./JSON_TestData/Settings_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
         settings.navigateToSettings();
@@ -34,7 +34,7 @@ describe('Settings module', () => {
        }
       })
   })*/
-  it('User&Teams', function (){
+  it('To validate the user&teams feature', function (){
     cy.fixture('./JSON_TestData/Settings_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       settings.navigateToSettings();
@@ -42,7 +42,7 @@ describe('Settings module', () => {
      }
     })
 })
-it('Security', function (){
+it('To validate the change password feature', function (){
   cy.fixture('./JSON_TestData/Settings_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     settings.navigateToSettings();

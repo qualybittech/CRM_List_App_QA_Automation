@@ -45,7 +45,7 @@ Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
 		//cy.visit(environment.URL)
-		cy.visit('environment.URL', {
+		cy.visit(environment.URL, {
 			auth: {
 		  username: 'qateam',
 		  password: 'Secured1659password',
@@ -238,10 +238,10 @@ Cypress.Commands.add('Returning_XPATH_value_based_on_XpathKey_Supplied', (xpathV
 Cypress.Commands.add('launch_Application', () => {
 	
 	cy.fixture('./Environment_Specific/'+Cypress.env('environment')+'_Environment').then((environment)  => {
-		cy.visit('environment.URL', {
+		cy.visit(environment.URL, {
         auth: {
-        username: 'qateam',
-        password: 'Secured1659password',
+        username: environment.uname,
+        password: environment.password
         },
     })
 	})

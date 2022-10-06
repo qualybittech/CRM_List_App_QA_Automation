@@ -55,7 +55,7 @@ describe('Sequences module', () => {
      }
      })
   })
-  it('Create_Snippet', function (){
+  it('To validate the create snippet feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -64,7 +64,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Create_Personal_Template', function (){
+  it('To validate the create personal template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -73,7 +73,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Create_Team_Template', function (){
+  it('To validate the create team template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -82,7 +82,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Create_Sequences', function (){
+  it('To validate the create contact feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     contacts.navigateToContacts();
@@ -98,7 +98,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Create_Steps', function (){
+  it('To validate the create step feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToTeamSequences();
@@ -113,7 +113,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Edit_Steps', function (){
+  it('To validate the edit step feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToTeamSequences();
@@ -129,7 +129,7 @@ describe('Sequences module', () => {
     })
   })
   
-  it('Activate_Steps', function (){
+  it('To validate the activate sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToTeamSequences();
@@ -138,14 +138,14 @@ describe('Sequences module', () => {
     })
   })
  /* 
- it('Select_Steps', function (){
+ it('To validate the select sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.selectSequences(RandomSequences);
     }
     })
   })*/
-  it('Assign_Contact', function (){
+  it('To validate the assgin contact feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToTeamSequences();
@@ -157,7 +157,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Task_Contact', function (){
+  it('To validate the task modules', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -167,7 +167,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Complete_Task', function (){
+  it('To validate the complete task feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -176,7 +176,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Notcomplete_Task', function (){
+  it('To validate the not complete task feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -185,7 +185,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Outbox', function (){
+  it('To validate the outbox module', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -193,10 +193,10 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Add&Edit after task created',function (){
+  it('To validate the add/edit step feature after the contact is assigned',function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
       sequences.createSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms);
       sequences.editSmsSteps(RandomDescriptionAdded,json_TestDataData[jsonindex].Sms,ERandomDescriptionAdded);
@@ -205,10 +205,10 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Edit_Old_Steps', function (){
+  it('To validate the edit step feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
     sequences.editCallSteps(EDescription2,json_TestDataData[jsonindex].Call,EDescription2);
     sequences.editLinkedinSteps(EDescription3,json_TestDataData[jsonindex].Linkedin,EDescription3);
@@ -219,19 +219,19 @@ describe('Sequences module', () => {
     }
     })
   })
-  it('Remove_Contact', function (){
+  it('To validate the remove contact feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
    sequences.removeContacts(json_TestDataData[jsonindex].Firstname,Lastname1);
     }
     })
   })
-  it('Deactivate_Steps', function (){
+  it('To validate the deactivate sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.deactivateSequences(RandomSequences);
       sequences.selectSequences(RandomSequences);
       sequences.assignContacts(json_TestDataData[jsonindex].Firstname,Lastname2);
@@ -242,7 +242,7 @@ describe('Sequences module', () => {
     }
     })
   })
-  /*it('Edit_Sequences', function (){
+  /*it('To validate the edit sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     sequences.editSequences(ERandomSequences);
@@ -250,37 +250,37 @@ describe('Sequences module', () => {
     })
   })*/
 
-  it('Settings_Sequences', function (){
+  it('To validate the setting feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
   sequences.settingsSequences(json_TestDataData[jsonindex].Time);
     }
     })
   })
-  it('Clone_Sequences', function (){
+  it('To validate the clone feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.cloneSequences(RandomSequences);
     }
     })
   })
-  it('Delete_Steps', function (){
+  it('To validate the delete steps feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.selectSequences(RandomSequences);
        sequences.deleteEmailSteps(json_TestDataData[jsonindex].Email_Sub,json_TestDataData[jsonindex].Email);
       sequences.deleteCallSteps(EDescription2,json_TestDataData[jsonindex].Call);  
     }
     })
   })
-  it('Delete_Sequences', function (){
+  it('To validate the delete sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
-      sequences.navigateToTeamSequences();
+      sequences.navigateToSequences();
       sequences.deleteSequences(RandomSequences);
     }
     })

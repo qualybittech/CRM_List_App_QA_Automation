@@ -40,6 +40,5 @@ export class Settings{
       cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Newpassword',newpassword)
       cy.element_Send_Value_based_on_InputXpath('Settings_Section_Security_Cnfpassword',newpassword)
       cy.element_Click_based_on_inputXpath('Settings_Section_Security_Submit');
-
     }
 }

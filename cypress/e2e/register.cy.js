@@ -1,6 +1,6 @@
 import { Register } from "./components/register";
 
-describe('Register', () => {
+describe('Register ', () => {
 
     const register = new Register();
 
