@@ -3,7 +3,7 @@ import { Accounts } from "./components/accounts";
 import { Tasks } from "./components/tasks";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Task module', () => {
 
   const accounts = new Accounts();
   const contacts = new Contacts();
@@ -40,7 +40,7 @@ describe('Testing Successful login in Application', () => {
      })
   })
   
-  it('Filter_Task', function (){
+  it('To validate the filter feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         tasks.navigateToTasks();
@@ -49,7 +49,7 @@ describe('Testing Successful login in Application', () => {
    }
    })
   })
-  it('Create_Account', function (){
+  it('To validate the create account feature', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       accounts.navigateToAccounts();
@@ -61,7 +61,7 @@ describe('Testing Successful login in Application', () => {
   }
  })
 })
-  it('Create_Contact', function (){
+  it('To validate the create contact feature', function (){
     cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       contacts.navigateToContacts();
@@ -79,7 +79,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
 //cy.logout_of_CRM_Application();
 }
 })})
-   it('Create_Tasks', function (){
+   it('To validate the create task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     tasks.navigateToTasks();
@@ -105,7 +105,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Edit_Tasks', function (){
+  it('To validate the edit task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       //tasks.sort();
@@ -115,7 +115,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('View_Tasks', function (){
+  it('To validate the view task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
       
@@ -124,7 +124,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-   it('Archive_Tasks', function (){
+   it('To validate the archive task feature', function (){
       cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
         tasks.navigateToTasks();
@@ -134,7 +134,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
          }
          })
     })
-  it('Unarchive_Tasks', function (){
+  it('To validate the unarchive task feature', function (){
       cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
         tasks.navigateToTasks();
@@ -145,7 +145,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
          }
          })
   })
-  it('Multiple_Archive', function (){
+  it('To validate the multiple archive task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -156,7 +156,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
        }
        })
   })
-  it('Multiple_Unarchive', function (){
+  it('To validate the multiple unarchive feature', function (){
      cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         tasks.navigateToTasks();
@@ -168,7 +168,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Add_Tag', function (){
+  it('To validate the add tag feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -178,7 +178,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
     })
   })
-  it('Remove_Tag', function (){
+  it('To validate the remove tag feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -187,7 +187,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
     })
   })
-  it('Multiple_Add_Tag', function (){
+  it('To validate the multiple add tag feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -197,7 +197,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
        }
        })
   })
-  it('Multiple_Remove_Tag', function (){
+  it('To validate the multiple remove tag feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -206,7 +206,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Complete_Task', function (){
+  it('To validate the complete task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -215,7 +215,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Notcomplete_Task', function (){
+  it('To validate the not complete task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -224,7 +224,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Skip_Task', function (){
+  it('To validate the skip task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -233,7 +233,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Undoskip_Task', function (){
+  it('To validate the undo skip feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -243,7 +243,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       })
   })
   
-  it('Delete', function (){
+  it('To validate the delete task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -252,7 +252,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
       }
       })
   })
-  it('Search_Task', function (){
+  it('To validate the search task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         tasks.navigateToTasks();
@@ -260,7 +260,7 @@ contacts.createContact(Firstname2,Lastname1,RandomEmail2,json_TestDataData[jsoni
    }
    })
   })
-  it('Delete_Multiple', function (){
+  it('To validate the multiple delete task feature', function (){
     cy.fixture('./JSON_TestData/Tasks_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();

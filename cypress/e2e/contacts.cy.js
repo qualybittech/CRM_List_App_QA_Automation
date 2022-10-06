@@ -4,7 +4,7 @@ import { Templates } from "./components/templates";
 import { Sequences } from "./components/sequences";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
-describe('Testing Successful login in Application', () => {
+describe('Contact module ', () => {
 
   const accounts = new Accounts();
   const snippets = new Snippets();
@@ -41,7 +41,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-   it('Basics', function (){
+   it('To validate the redirections to modules ', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -49,7 +49,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-    it('Create_Account', function (){
+    it('To validate the create account feature', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         accounts.navigateToAccounts();
@@ -61,7 +61,7 @@ describe('Testing Successful login in Application', () => {
     }
    })
   })
-    it('Create_Snippet', function (){
+    it('To validate the create snippet feature', function (){
       cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
           snippets.navigateToSnippets();
@@ -70,7 +70,7 @@ describe('Testing Successful login in Application', () => {
       }
       })
     })
-    it('Create_Personal_Template', function (){
+    it('To validate the create personal template feature', function (){
       cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
           templates.navigateToTemplates();
@@ -79,7 +79,7 @@ describe('Testing Successful login in Application', () => {
       }
       })
     })
-    it('Create_Team_Template', function (){
+    it('To validate the create personal template feature', function (){
       cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -89,7 +89,7 @@ describe('Testing Successful login in Application', () => {
       })
     })
 
-    it('Create_Sequences', function (){
+    it('To validate the create sequence feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             sequences.navigateToSequences();
@@ -99,7 +99,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-    it('Create_Contact', function (){
+    it('To validate the create contact feature', function (){
     	cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         contact.navigateToContacts();
@@ -117,7 +117,7 @@ describe('Testing Successful login in Application', () => {
 	//cy.logout_of_CRM_Application();
   }
 })})
-  it('Filter_Contact', function (){
+  it('To validate the filter feature', function (){
     cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       contact.navigateToContacts();
@@ -127,7 +127,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-   it('Invalid_Contact', function (){
+   it('To validate the create contact feature with invalid email id', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -135,7 +135,7 @@ describe('Testing Successful login in Application', () => {
          }
         })
     })
-    it('Duplicate_Contact', function (){
+    it('To validate the create contact feature with duplicate email id', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -143,7 +143,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
     })
-   it('View_Contact', function (){
+   it('To validate the view contact feature', function (){
          cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
            for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -154,7 +154,7 @@ describe('Testing Successful login in Application', () => {
         }
         })
     })
-    it('Edit_Contact', function (){
+    it('To validate the feature edit contact', function (){
       cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();
@@ -163,7 +163,7 @@ describe('Testing Successful login in Application', () => {
           }
           })
   })
-    it('Insert_Contact_Variables', function (){
+    it('To validate the insert contact variables feature', function (){
       cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
        for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();
@@ -172,7 +172,7 @@ describe('Testing Successful login in Application', () => {
           }
           })
     })
-    it('Insert_Account_Variables', function (){
+    it('To validate the insert account variables feature', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();
@@ -183,7 +183,7 @@ describe('Testing Successful login in Application', () => {
           })
     })
    
-    it('Archive_Contact', function (){
+    it('To validate the archive contact feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -193,7 +193,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Unarchive_Contact', function (){
+    it('To validate the unarchive contact feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -204,7 +204,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Add_Tag', function (){
+    it('To validate the feature add tag', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -213,7 +213,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-	it('Remove_Tag', function (){
+	it('To validate the feature remove tag', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -221,7 +221,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Multiple_Add_Tag', function (){
+    it('To validate the feature multiple add tag', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -230,7 +230,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Multiple_Remove_Tag', function (){
+    it('To validate the feature multiple remove tag', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -238,7 +238,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Multiple_Archive', function (){
+    it('To validate the  multiple archive feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -248,7 +248,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Multiple_Unarchive', function (){
+    it('To validate the  multiple unarchive feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -261,7 +261,7 @@ describe('Testing Successful login in Application', () => {
     })
    
     
-    it('Delete', function (){
+    it('To validate the delete contact feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -269,7 +269,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Delete_Multiple', function (){
+    it('To validate the delete multiple contact feature', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
          for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
@@ -277,7 +277,7 @@ describe('Testing Successful login in Application', () => {
            }
            })
     })
-    it('Upload_Contact', function (){
+    it('To valiadte the upload contact feature', function (){
       cy.fixture('./CSV_TestData/Contacts_Testdata.csv').then((CSV_TestData) => {
        //for  (var jsonindex in json_TestDataData){
           contact.navigateToContacts();

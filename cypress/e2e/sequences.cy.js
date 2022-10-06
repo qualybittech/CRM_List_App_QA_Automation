@@ -6,7 +6,7 @@ import { Accounts } from "./components/accounts";
 import { Contacts } from "./components/contacts";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Sequence module ', () => {
 
   const accounts = new Accounts();
   const tasks = new Tasks();
@@ -64,7 +64,7 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
-  it('Create_Account', function (){
+  it('To validate the create account feature', function (){
     cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       accounts.navigateToAccounts();
@@ -76,7 +76,7 @@ describe('Testing Successful login in Application', () => {
   }
  })
 })
-  it('Create_Snippet', function (){
+  it('To validate the create snippet feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -85,7 +85,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Create_Personal_Template', function (){
+  it('To validate the create personal template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
         templates.navigateToTemplates();
@@ -94,7 +94,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Create_Team_Template', function (){
+  it('o validate the create team template feature', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       templates.navigateToTemplates();
@@ -103,7 +103,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Create_Contact', function (){
+  it('o validate the create contact feature', function (){
     cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       contacts.navigateToContacts();
@@ -121,7 +121,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
 //cy.logout_of_CRM_Application();
 }
 })})
-  it('Create_Steps', function (){
+  it('o validate the create steps for sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -136,7 +136,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Edit_Steps', function (){
+  it('o validate the edit step feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -152,7 +152,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     })
   })
   
-  it('Activate_Steps', function (){
+  it('To validate the activate sequence feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -161,14 +161,14 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     })
   })
  /* 
- it('Select_Steps', function (){
+ it('To validate the select sequence feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.selectSequences(RandomSequences);
     }
     })
   })*/
-  it('Assign_Contact', function (){
+  it('To validate the assign contact to the sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -180,7 +180,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Task_Contact', function (){
+  it('To validate the task modules', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -190,7 +190,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Complete_Task', function (){
+  it('To validate the complete task feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -199,7 +199,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Notcomplete_Task', function (){
+  it('To validate the not complete task feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -208,7 +208,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Outbox', function (){
+  it('To validate the outbox module', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       tasks.navigateToTasks();
@@ -216,7 +216,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Add&Edit after task created',function (){
+  it('To validate the add/edit step feature after the contact is assigned',function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -228,7 +228,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Edit_Old_Steps', function (){
+  it('To validate the edit step feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -242,7 +242,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Remove_Contact', function (){
+  it('To validate the remove contact feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -251,7 +251,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Deactivate_Steps', function (){
+  it('To validate the deactivate sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -265,7 +265,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  /*it('Edit_Sequences', function (){
+  /*it('To validate the edit sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     sequences.editSequences(ERandomSequences);
@@ -273,7 +273,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     })
   })*/
 
-  it('Settings_Sequences', function (){
+  it('To validate the setting feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -282,7 +282,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Clone_Sequences', function (){
+  it('To validate the clone feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -290,7 +290,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Delete_Steps', function (){
+  it('To validate the delete steps feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();
@@ -300,7 +300,7 @@ contacts.createContact(Firstname2,Lastname2,RandomEmail2,json_TestDataData[jsoni
     }
     })
   })
-  it('Delete_Sequences', function (){
+  it('To validate the delete sequences feature', function (){
     cy.fixture('./JSON_TestData/Sequences_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       sequences.navigateToSequences();

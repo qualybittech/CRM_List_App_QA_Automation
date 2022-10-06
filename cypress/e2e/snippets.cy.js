@@ -1,7 +1,7 @@
 import { Snippets } from "./components/snippets";
 import { Util } from "./components/util";
 
-describe('Testing Successful login in Application', () => {
+describe('Snippets module', () => {
 
 	const snippets = new Snippets();
 	const util = new Util();
@@ -20,7 +20,7 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
-  it('Upload_Snippets', function (){
+  it('To validate the feature upload snippet', function (){
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       //for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -28,7 +28,7 @@ describe('Testing Successful login in Application', () => {
       // }
        })
   })
-  it('Create_Personal_Snippets', function (){
+  it('To validate the create personal snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippets();
@@ -38,7 +38,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Edit_Snippet', function (){
+  it('To validate the edit snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -47,7 +47,7 @@ describe('Testing Successful login in Application', () => {
      }
      })
   })
-  it('View_Snippet', function (){
+  it('To validate the view snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -55,7 +55,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Clone_Snippet', function (){
+  it('To validate the clone snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
@@ -63,7 +63,7 @@ describe('Testing Successful login in Application', () => {
     }
     })
   })
-  it('Add_Tag', function (){
+  it('To validate the add tag feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -72,7 +72,7 @@ describe('Testing Successful login in Application', () => {
       }
     })
   })
-  it('Remove_Tag', function (){
+  it('To validate the remove tag feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -80,7 +80,7 @@ describe('Testing Successful login in Application', () => {
       }
     })
   })
-  it('Multiple_Add_Tag', function (){
+  it('To validate the multiple add tag feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -90,7 +90,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
   })
-  it('Multiple_Remove_Tag', function (){
+  it('To validate the multiple remove tag feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -98,7 +98,7 @@ describe('Testing Successful login in Application', () => {
       }
       })
   })
- it('Archive_Snippet', function (){
+ it('To validate the archive snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -108,7 +108,7 @@ describe('Testing Successful login in Application', () => {
        }
        })
   })
-it('Unarchive_Snippet', function (){
+it('To validate the unarchive snippet feature', function (){
     cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
      for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -119,7 +119,7 @@ it('Unarchive_Snippet', function (){
        }
        })
 })
-it('Multiple_Archive', function (){
+it('To validate the multiple archive snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippets();
@@ -129,7 +129,7 @@ it('Multiple_Archive', function (){
      }
      })
 })
-it('Multiple_Unarchive', function (){
+it('To validate the multiple unarchive snippet feature', function (){
    cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippets();
@@ -140,7 +140,7 @@ it('Multiple_Unarchive', function (){
     }
     })
 })
-it('Delete', function (){
+it('To validate the delete snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippets();
@@ -148,7 +148,7 @@ it('Delete', function (){
     }
     })
 })
-it('Delete_Multiple', function (){
+it('To validate the delete multiple snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippets();
@@ -157,7 +157,7 @@ it('Delete_Multiple', function (){
     }
     })
 })
-it('Create_Team_Snippets', function (){
+it('To validate the create team snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
   for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -167,7 +167,7 @@ it('Create_Team_Snippets', function (){
   }
   })
 })
-it('Edit_Snippet', function (){
+it('To validate the edit snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -176,7 +176,7 @@ it('Edit_Snippet', function (){
    }
    })
 })
-it('View_Snippet', function (){
+it('To validate the view snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippetsTeam();
@@ -184,7 +184,7 @@ it('View_Snippet', function (){
   }
   })
 })
-it('Clone_Snippet', function (){
+it('To validate the clone snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
     for  (var jsonindex in json_TestDataData){
       snippets.navigateToSnippetsTeam();
@@ -192,7 +192,7 @@ it('Clone_Snippet', function (){
   }
   })
 })
-it('Add_Tag', function (){
+it('To validate the add tag feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -201,7 +201,7 @@ it('Add_Tag', function (){
     }
   })
 })
-it('Remove_Tag', function (){
+it('To validate the remove tag feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -209,7 +209,7 @@ it('Remove_Tag', function (){
     }
   })
 })
-it('Multiple_Add_Tag', function (){
+it('To validate the multiple add tag feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -219,7 +219,7 @@ it('Multiple_Add_Tag', function (){
      }
      })
 })
-it('Multiple_Remove_Tag', function (){
+it('To validate the multiple remove tag feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -227,7 +227,7 @@ it('Multiple_Remove_Tag', function (){
     }
     })
 })
-it('Archive_Snippet', function (){
+it('To validate the archive snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -237,7 +237,7 @@ it('Archive_Snippet', function (){
      }
      })
 })
-it('Unarchive_Snippet', function (){
+it('To validate the unarchive snippet feature', function (){
   cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
    for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -248,7 +248,7 @@ it('Unarchive_Snippet', function (){
      }
      })
 })
-it('Multiple_Archive', function (){
+it('To validate the multiple archive feature', function (){
 cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   snippets.navigateToSnippetsTeam();
@@ -258,7 +258,7 @@ cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) =>
    }
    })
 })
-it('Multiple_Unarchive', function (){
+it('To validate the multiple unarchive feature', function (){
  cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
   for  (var jsonindex in json_TestDataData){
     snippets.navigateToSnippetsTeam();
@@ -269,7 +269,7 @@ it('Multiple_Unarchive', function (){
   }
   })
 })
-it('Delete', function (){
+it('To validate the delete snippet feature', function (){
 cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   snippets.navigateToSnippetsTeam();
@@ -277,7 +277,7 @@ cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) =>
   }
   })
 })
-it('Delete_Multiple', function (){
+it('To validate the multiple delete feature', function (){
 cy.fixture('./JSON_TestData/Snippets_Testdata.json').then((json_TestDataData) => {
  for  (var jsonindex in json_TestDataData){
   snippets.navigateToSnippetsTeam();

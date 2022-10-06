@@ -1,6 +1,6 @@
 import { Register } from "./components/register";
 
-describe('Testing Successful login in Application', () => {
+describe('Register ', () => {
 
     const register = new Register();
 
