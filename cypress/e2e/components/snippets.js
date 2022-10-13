@@ -186,7 +186,6 @@ export class Snippets{
   uploadSnippet(file){
     cy.element_Click_based_on_inputXpath('Snippets_Section_Upload');
     cy.get('#file-upload--input').attachFile(file);
-    cy.wait(2000)
     cy.element_Click_based_on_inputXpath('Snippets_Section_Upload_Next');
     cy.element_Click_based_on_inputXpath('Snippets_Section_Upload_Confirm');
     cy.element_Click_based_on_inputXpath('Snippets_Section_Upload_Complete');

@@ -21,6 +21,11 @@ describe('Snippets module', () => {
      })
   })
   it('To validate the feature upload snippet', function (){
+   cy.on('uncaught:exception', (err, runnable) => {
+      // returning false here prevents Cypress from
+      // failing the test
+      return false
+    })
     cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
       //for  (var jsonindex in json_TestDataData){
         snippets.navigateToSnippets();
