@@ -20,8 +20,9 @@ import './Application_level_Reusable_functions'
 // require('./commands')
 
 require('cypress-xpath')
-Cypress.on('uncaught:exception', (err, runnable) => {
+cy.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test
     return false
   })
+
