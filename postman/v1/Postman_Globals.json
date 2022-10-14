@@ -1,5 +1,5 @@
 {
-	"id": "11214859-b705-46f7-80e6-caba376f4211",
+	"id": "c6fdbdc5-e45d-4ade-8a8e-bd2f1bcb2a60",
 	"values": [
 		{
 			"key": "register_First_Name_01",
@@ -838,6 +838,12 @@
 			"enabled": true
 		},
 		{
+			"key": "contact_Tag",
+			"value": "contact",
+			"type": "default",
+			"enabled": true
+		},
+		{
 			"key": "contact_First_Name_03",
 			"value": "tom20220929150927",
 			"type": "any",
@@ -1124,70 +1130,10 @@
 			"value": "Edes",
 			"type": "default",
 			"enabled": true
-		},
-		{
-			"key": "Contact_Last_Name_02",
-			"value": "jerry20220927180945",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "taskid1",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "sequences_Step_Message",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "contact_Efirst_Name",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "contact_Elast_Name",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Email",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "contact_Tag_01",
-			"value": "",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "Tag_01",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "taskid3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "taskid4",
-			"value": "",
-			"type": "any",
-			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2022-10-13T05:31:44.575Z",
-	"_postman_exported_using": "Postman/10.0.25-221012-1025"
+	"_postman_exported_at": "2022-10-13T05:35:16.252Z",
+	"_postman_exported_using": "Postman/10.0.22"
 }
