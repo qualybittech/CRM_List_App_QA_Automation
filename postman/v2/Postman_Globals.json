@@ -548,12 +548,6 @@
 			"enabled": true
 		},
 		{
-			"key": "account_Filter",
-			"value": "account filter",
-			"type": "default",
-			"enabled": true
-		},
-		{
 			"key": "account_Sortby",
 			"value": "Last Modified",
 			"type": "default",
@@ -1174,18 +1168,6 @@
 			"enabled": true
 		},
 		{
-			"key": "taskid3",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
-			"key": "taskid4",
-			"value": "",
-			"type": "any",
-			"enabled": true
-		},
-		{
 			"key": "template_Type",
 			"value": "",
 			"type": "default",
@@ -1214,10 +1196,70 @@
 			"value": "",
 			"type": "any",
 			"enabled": true
+		},
+		{
+			"key": "notification_Id_01",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Title",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Filter_Name",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Sharing",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Filter_Type",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Status",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Filter_Id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Filter_Ename",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Filter_Ename",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Filter_Ename",
+			"value": "",
+			"type": "any",
+			"enabled": true
 		}
 	],
 	"name": "Globals",
 	"_postman_variable_scope": "globals",
-	"_postman_exported_at": "2022-10-18T07:21:43.336Z",
-	"_postman_exported_using": "Postman/10.0.27-221013-1123"
+	"_postman_exported_at": "2022-11-02T18:17:02.060Z",
+	"_postman_exported_using": "Postman/10.0.40-221028-0536"
 }

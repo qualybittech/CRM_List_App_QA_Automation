@@ -41,14 +41,14 @@ describe('Contact module ', () => {
        }
        })
     })
-   it('To validate the redirections to modules ', function (){
+   /*it('To validate the redirections to modules ', function (){
         cy.fixture('./JSON_TestData/Contacts_Testdata.json').then((json_TestDataData) => {
           for  (var jsonindex in json_TestDataData){
             contact.navigateToContacts();
             contact.basics();
        }
        })
-    })
+    })*/
     it('To validate the create account feature', function (){
       cy.fixture('./JSON_TestData/Accounts_Testdata.json').then((json_TestDataData) => {
       for  (var jsonindex in json_TestDataData){
