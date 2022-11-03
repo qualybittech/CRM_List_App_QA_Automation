@@ -1,0 +1,1139 @@
+{
+	"id": "c6fdbdc5-e45d-4ade-8a8e-bd2f1bcb2a60",
+	"values": [
+		{
+			"key": "register_First_Name_01",
+			"value": "chota",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Last_Name_01",
+			"value": "bheem",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Email_01",
+			"value": "chotabheem0209@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Password_01",
+			"value": "Haaaashini@98",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_Id_01",
+			"value": "634555e0847104d95b4382cb",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_First_Name_02",
+			"value": "janaki",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Last_Name_02",
+			"value": "gowmi",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Email_02",
+			"value": "janakigowmi@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "register_Password_02",
+			"value": "haaaashini@98",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_Id_02",
+			"value": "634555e1847104d95b4382d2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "global_Token_01",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1NTVlMDg0NzEwNGQ5NWI0MzgyY2IiLCJhY2NvdW50SWQiOiI2MzQ1NTVlMDg0NzEwNGQ5NWI0MzgyY2EiLCJpYXQiOjE2NjU0ODgzNzEsImV4cCI6MTY5NzA0NTk3MX0.ZVWg3YSuNGzwQREUvsjlqiq7eOxpDl9mPTaLTQn_8Hw",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phone_Number_01",
+			"value": "9966553344",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phone_Number_02",
+			"value": "4455668899",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "new_Password_01",
+			"value": "Haaaashini@99",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Name_01",
+			"value": "Account01",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Name_02",
+			"value": "Account02",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Phone_Number_01",
+			"value": "789789789",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Phone_Number_02",
+			"value": "456456564",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Web_01",
+			"value": "con20221011111069.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Id_01",
+			"value": "63450306129ce8b7b4a132a5",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "global_Token_02",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ1NTVlMTg0NzEwNGQ5NWI0MzgyZDIiLCJhY2NvdW50SWQiOiI2MzQ1NTVlMTg0NzEwNGQ5NWI0MzgyZDEiLCJpYXQiOjE2NjU0ODgzNzEsImV4cCI6MTY5NzA0NTk3MX0.o9NpzMyS9iuL_4er5jX822r3Yi0okZ8EAIeh8VnnSj0",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Web_02",
+			"value": "acctag220220929150976.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Id_02",
+			"value": "63356de92a56196c1aae1950",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Address",
+			"value": "Address",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_City",
+			"value": "City",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Country",
+			"value": "Country",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_State",
+			"value": "State",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Code",
+			"value": "638114",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Linkedin",
+			"value": "Linkedin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Facebook",
+			"value": "Facebook",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Twitter",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Industry",
+			"value": "Industry",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_About",
+			"value": "About",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_No_Of_Employee",
+			"value": "50",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Web_03",
+			"value": "acc320220929150979.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Web_04",
+			"value": "acc420220929150920.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Id_04",
+			"value": "63356de42a56196c1aae192a",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Id_03",
+			"value": "63356de32a56196c1aae1925",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Ename",
+			"value": "Eaccount",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Ephonenumber",
+			"value": "E243535",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Eaddress",
+			"value": "Eaddress",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Ecity",
+			"value": "Ecity",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Estate",
+			"value": "Estate",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Ecountry",
+			"value": "Ecounrty",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Ecode",
+			"value": "Ecode",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Elinkedin",
+			"value": "Elinkedin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Efacebook",
+			"value": "Efacebook",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Etwitter",
+			"value": "Etwitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Eindustry",
+			"value": "Eindustry",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Eabout",
+			"value": "Eabout",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Eno_Of_Emps",
+			"value": "75",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Eweb",
+			"value": "20220929150955.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "account_Tag",
+			"value": "Account",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Name_01",
+			"value": "snippetname1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Description_01",
+			"value": "snippetdescription1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Type",
+			"value": "personal",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Tag_01",
+			"value": "snippettag1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Name_02",
+			"value": "snippetname2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Description_02",
+			"value": "snippetdescription2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Tag_02",
+			"value": "snippettag2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Name_03",
+			"value": "snippetname3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Description_03",
+			"value": "snippetdescription3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Tag_03",
+			"value": "snippettag3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Name_04",
+			"value": "snippetname4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Description_04",
+			"value": "snippetdescription4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippets_Tag_04",
+			"value": "snippettag4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Id_04",
+			"value": "63356d9b2a56196c1aae1830",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Id_01",
+			"value": "63356dcb2a56196c1aae1896",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Ename",
+			"value": "Esnippetname",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Edescription",
+			"value": "Esnippetdescription",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Etag",
+			"value": "Esnippettag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Tag",
+			"value": "snippettag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Id_02",
+			"value": "63356d992a56196c1aae1825",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "snippet_Id_03",
+			"value": "63356d9a2a56196c1aae182c",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Name_01",
+			"value": "template1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Name_02",
+			"value": "template2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Name_03",
+			"value": "template3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Name_04",
+			"value": "template4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Description",
+			"value": "templatedescription",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Subject",
+			"value": "templatesubject",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Tag",
+			"value": "templatetag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tempid1",
+			"value": "62e0251a2708f543c503eb3f",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Id_01",
+			"value": "63356ddd2a56196c1aae18f8",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Id_02",
+			"value": "63356dd12a56196c1aae18ba",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Id_03",
+			"value": "63356dcd2a56196c1aae18a2",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Id_04",
+			"value": "63356dcd2a56196c1aae18a6",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "template_Ename",
+			"value": "Etemplatename",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Edescription",
+			"value": "Etemplatedescription",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Esubject",
+			"value": "Etemplatesubject",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Etag",
+			"value": "Etemplatetag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "template_Tags",
+			"value": "templatetags",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Filter",
+			"value": "account filter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Sortby",
+			"value": "Last Modified",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Initialvalue",
+			"value": "0",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Finalvalue",
+			"value": "100",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Filter_Type",
+			"value": "company",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Sharing",
+			"value": "private",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Filter_Id",
+			"value": "63356df82a56196c1aae1993",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Efilter",
+			"value": "account Efilter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "account_Efinalvalue",
+			"value": "200",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "fName1",
+			"value": "tom20220929150900",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName1",
+			"value": "jerry20220925230988",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email01",
+			"value": "chinShaina_Smith@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName2",
+			"value": "tom20220929150900",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName2",
+			"value": "chan20220923220966",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email02",
+			"value": "chinGonzalo_Balistreri@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName3",
+			"value": "ninja20220923220945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName3",
+			"value": "hatori20220923220945",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email03",
+			"value": "hatoriiAnabel.Keeling@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "fName4",
+			"value": "chhin20220923220985",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lName4",
+			"value": "chann20220923220985",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email04",
+			"value": "chhanniSabryna34@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Phone",
+			"value": "9865344446",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Stage",
+			"value": "New",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Street",
+			"value": "1208 Rocket Drive",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_City",
+			"value": "Minneapolis",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_State",
+			"value": "Minnesota",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Country",
+			"value": "United States",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Code",
+			"value": "55410",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Linkedin",
+			"value": "Linkedin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Facebook",
+			"value": "Facebook",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Twitter",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Type",
+			"value": "Lead",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Tag",
+			"value": "Tag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Timezone",
+			"value": "Asia/Calcutta",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_01",
+			"value": "tom20221011111076",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_01",
+			"value": "jerryBrandyn11@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_02",
+			"value": "tom20220929150951",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Last_Name_02",
+			"value": "jerry20220929150951",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_02",
+			"value": "jerryUlices.Dibbert68@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_04",
+			"value": "tom20220929150970",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Last_Name_04",
+			"value": "jerry20220929150970",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_04",
+			"value": "jerryCordie.Donnelly@yahoo.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_01",
+			"value": [
+				"6345030b129ce8b7b4a132aa"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_02",
+			"value": [
+				"63356e012a56196c1aae19d2"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_03",
+			"value": [
+				"63356e022a56196c1aae19d8"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Id_04",
+			"value": [
+				"63356e022a56196c1aae19de"
+			],
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Last_Name_01",
+			"value": "jerry20221011111076",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Tag",
+			"value": "contact",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_First_Name_03",
+			"value": "tom20220929150927",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Last_Name_03",
+			"value": "jerry20220924230961",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Email_03",
+			"value": "jerryAlanna13@hotmail.com",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Last_Name_03",
+			"value": "jerry20220929150927",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Filter_Name",
+			"value": "con20220929150946EditedFilter",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "contact_Sortby",
+			"value": "Created",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Sharing",
+			"value": "private",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contact_Filter_Id",
+			"value": "63356e322a56196c1aae1a49",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Note_Type",
+			"value": "Note",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Description",
+			"value": "Description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Date",
+			"value": "2023-07-25T18:30:00.000Z",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Name",
+			"value": "sequences",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Email_Subject",
+			"value": "subject",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Email_Body",
+			"value": "body",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Type",
+			"value": "personal",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Email",
+			"value": "Email",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Id_01",
+			"value": "63356e472a56196c1aae1b2a",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Id_02",
+			"value": "63356e3b2a56196c1aae1a8c",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Id_01",
+			"value": "63356e3b2a56196c1aae1a83",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Id_02",
+			"value": "63356e472a56196c1aae1b36",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Description",
+			"value": "Description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Call",
+			"value": "Call Log",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Linkedin",
+			"value": "LinkedIn",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Meeting",
+			"value": "Meeting",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Twitter",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Whatsapp",
+			"value": "WhatsApp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Step_Sms",
+			"value": "SMS",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Edit_Description",
+			"value": "Edit description",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Assign_Contact_01",
+			"value": "63356e482a56196c1aae1b45",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Setting_Stop_Sending",
+			"value": "Replies to this sequence",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Time_Zone_Value",
+			"value": "Pacific/Midway",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Time_Zone_Lable",
+			"value": "(GMT-11:00) Midway Island, Samoa",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sequences_Edit_Name",
+			"value": "Edited sequences",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Id_01",
+			"value": "63469e90c3f9b274d428a1e2",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Call_Type",
+			"value": "Call Log",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Call_Result",
+			"value": "No Answer",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Email_Type",
+			"value": "Email",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Linkedin_Type",
+			"value": "LinkedIn",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Whatsapp_Type",
+			"value": "WhatsApp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Meeting_Type",
+			"value": "Meeting",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Sms_Type",
+			"value": "SMS",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Twitter_Type",
+			"value": "Twitter",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Id_03",
+			"value": "634664356cdb6d71173f0de6",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Id_04",
+			"value": "6346644f6cdb6d71173f0dee",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Tag",
+			"value": "Task_tag",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Id_02",
+			"value": "634696de2495d4626fa374ab",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "task_Edate",
+			"value": "December 22, 2022 12:00 AM",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "task_Edes",
+			"value": "Edes",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-10-13T05:35:16.252Z",
+	"_postman_exported_using": "Postman/10.0.22"
+}

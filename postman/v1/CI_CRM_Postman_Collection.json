@@ -282,7 +282,7 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "{{url}}/verifyemail/{{global_Token_01}}",
@@ -14550,7 +14550,7 @@
 			]
 		},
 		{
-			"name": "SEQUENCES",
+			"name": "Sequences",
 			"item": [
 				{
 					"name": "Add_Sequences",
@@ -18780,6 +18780,3293 @@
 									"path": [
 										"sequences",
 										"{{sequences_Id_01}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Save_Task",
+					"item": [
+						{
+							"name": "Acc_Add_01_Happy_Path Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"account_Id_01\",jsonData.id);\r",
+											"\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var compname = pm.globals.get(\"account_Name_01\");\r",
+											"pm.test(\"Account name\", function () {\r",
+											"    pm.expect(jsonData.fullName).to.include(compname);\r",
+											"});\r",
+											"\r",
+											"var compphno = pm.globals.get(\"account_Phone_Number_01\");\r",
+											"pm.test(\"Account phone number\", function () {\r",
+											"    pm.expect(jsonData.companyPhone).to.include(compphno);\r",
+											"});\r",
+											"\r",
+											"var compweb = pm.globals.get(\"account_Web_01\");\r",
+											"pm.test(\"Account website\", function () {\r",
+											"    pm.expect(jsonData.website).to.include(compweb);\r",
+											"});\r",
+											"\r",
+											"var compaddress = pm.globals.get(\"account_Address\");\r",
+											"pm.test(\"Account address\", function () {\r",
+											"    pm.expect(jsonData.address).to.include(compaddress);\r",
+											"});\r",
+											"\r",
+											"var compcity = pm.globals.get(\"account_City\");\r",
+											"pm.test(\"Account City\", function () {\r",
+											"    pm.expect(jsonData.city).to.include(compcity);\r",
+											"});\r",
+											"\r",
+											"var compcountry = pm.globals.get(\"account_Country\");\r",
+											"pm.test(\"Account country\", function () {\r",
+											"    pm.expect(jsonData.country).to.include(compcountry);\r",
+											"});\r",
+											"\r",
+											"var compstate = pm.globals.get(\"account_State\");\r",
+											"pm.test(\"Account state\", function () {\r",
+											"    pm.expect(jsonData.state).to.include(compstate);\r",
+											"});\r",
+											"\r",
+											"var compcode = pm.globals.get(\"account_Code\");\r",
+											"pm.test(\"Account code\", function () {\r",
+											"    pm.expect(jsonData.code).to.include(compcode);\r",
+											"});\r",
+											"var compLinked = pm.globals.get(\"account_Linkedin\");\r",
+											"pm.test(\"Account linkedin\", function () {\r",
+											"    pm.expect(jsonData.companyLinkedin).to.include(compLinked);\r",
+											"});\r",
+											"\r",
+											"var compfacebook = pm.globals.get(\"account_Facebook\");\r",
+											"pm.test(\"Account facebook\", function () {\r",
+											"    pm.expect(jsonData.companyFacebook).to.include(compfacebook);\r",
+											"});\r",
+											"\r",
+											"var comptwitter= pm.globals.get(\"account_Twitter\");\r",
+											"pm.test(\"Account twitter\", function () {\r",
+											"    pm.expect(jsonData.twitter).to.include(comptwitter);\r",
+											"});\r",
+											"\r",
+											"var compindustry = pm.globals.get(\"account_Industry\");\r",
+											"pm.test(\"Account industry\", function () {\r",
+											"    pm.expect(jsonData.industry).to.include(compindustry);\r",
+											"});\r",
+											"\r",
+											"var compabout = pm.globals.get(\"account_About\");\r",
+											"pm.test(\"Account about\", function () {\r",
+											"    pm.expect(jsonData.about).to.include(compabout);\r",
+											"});\r",
+											"\r",
+											"var compnumOfEmps = pm.globals.get(\"account_No_Of_Employee\");\r",
+											"pm.test(\"Account no of employee\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(compnumOfEmps);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');-\r",
+											"pm.environment.set('currentdate', moment().format((\"YYYYMMDDHHMMSS\")));\r",
+											"\r",
+											"pm.globals.get(\"account_Web_01\");\r",
+											"var Repositoryname =pm.variables.replaceIn('con{{currentdate}}')+\".com\";\r",
+											"pm.globals.set(\"account_Web_01\",Repositoryname);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"fullName\":\"{{account_Name_01}}\",\"companyPhone\":\"{{account_Phone_Number_01}}\",\"address\":\"{{account_Address}}\",\"city\":\"{{account_City}}\",\"country\":\"{{account_Country}}\",\"state\":\"{{account_State}}\",\"code\":\"{{account_Code}}\",\"companyLinkedin\":\"{{account_Linkedin}}\",\"companyFacebook\":\"{{account_Facebook}}\",\"twitter\":\"{{account_Twitter}}\",\"website\":\"{{account_Web_01}}\",\"industry\":\"{{account_Industry}}\",\"about\":\"{{account_About}}\",\"numOfEmps\":\"{{account_No_Of_Employee}}\",\"filePath\":\"\",\"owner\":\"{{user_Id_01}}\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addcompany",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addcompany"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Con_Add_01_Happy_Path Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"pm.environment.set('currentdate', moment().format((\"YYYYMMDDHHMMSS\")));\r",
+											"\r",
+											"pm.globals.get(\"contact_First_Name_01\");\r",
+											"var repositoryName ='tom'+ pm.variables.replaceIn('{{currentdate}}');\r",
+											"pm.globals.set(\"contact_First_Name_01\",repositoryName);\r",
+											"\r",
+											"pm.globals.get(\"contact_Last_Name_01\");\r",
+											"var repositoryname =\"jerry\"+ pm.variables.replaceIn('{{currentdate}}');\r",
+											"pm.globals.set(\"contact_Last_Name_01\",repositoryname);\r",
+											"\r",
+											"pm.globals.get(\"contact_Email_01\");\r",
+											"var repositoryy =\"jerry\"+ pm.variables.replaceIn('{{$randomEmail}}');\r",
+											"pm.globals.set(\"contact_Email_01\",repositoryy);\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add contact successfully\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Contact Created\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"fName\":\"{{contact_First_Name_01}}\",\"lName\":\"{{contact_Last_Name_01}}\",\"company\":\"{{account_Id_01}}\",\"owner\":\"{{user_Id_01}}\",\"email\":\"{{contact_Email_01}}\",\"emailType\":\"\",\"title\":\"{{contact_Title}}\",\"phone\":\"{{contact_Phone}}\",\"extn\":\"\",\"phoneType\":\"\",\"stage\":\"{{contact_Stage}}\",\"street\":\"{{contact_Street}}\",\"city\":\"{{contact_City}}\",\"state\":\"{{contact_State}}\",\"country\":\"{{contact_Country}}\",\"code\":\"{{contact_Code}}\",\"linkedin\":\"{{contact_Linkedin}}\",\"facebook\":\"{{contact_Facebook}}\",\"timezone\":\"{{contact_Timezone}}\",\"tags\":[\"{{contact_Tag}}\"],\"type\":\"{{contact_Type}}\",\"twitter\":\"{{contact_Twitter}}\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addcontact",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addcontact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Con_Get_All_01_Happy_Path Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.globals.get(\"contact_Id_01\");\r",
+											"\r",
+											"var fName1 = pm.globals.get(\"contact_First_Name_01\");\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"const userIds = [];\r",
+											"_.forEach(_.filter(jsonData.results, c => c.fName === fName1),\r",
+											"  item => { userIds.push(item._id); });\r",
+											"console.log(userIds);\r",
+											"pm.globals.set(\"contact_Id_01\", userIds);\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/getallcontact?limit=1000",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"getallcontact"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_01_Happy_Path_Note_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"task_Id_01\",jsonData.id); \r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var fname = pm.globals.get(\"contact_First_Name_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contact).to.include(fname);\r",
+											"});\r",
+											"var uname = pm.globals.get(\"register_First_Name_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.assignedUser).to.include(uname);\r",
+											"});\r",
+											"var id = pm.globals.get(\"contact_Id_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contactRef).to.include(id);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_02_Happy_Path_Call_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"task_Id_03\",jsonData.id); \r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"callResult\":\"{{task_Call_Result}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Call_Type}}\",\"value\":1},\"option\":\"{{task_Call_Type}}\",\"value\":1}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_03_Happy_Path_Email_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"task_Id_04\",jsonData.id); \r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Email_Type}}\",\"value\":0},\"option\":\"{{task_Email_Type}}\",\"value\":0}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_04_Happy_Path_Linkedin_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Linkedin_Type}}\",\"value\":0},\"option\":\"{{task_Linkedin_Type}}\",\"value\":0}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_05_Happy_Path_Whatsapp_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Whatsapp_Type}}\",\"value\":0},\"option\":\"{{task_Whatsapp_Type}}\",\"value\":0}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_06_Happy_Path_Meeting_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Meeting_Type}}\",\"value\":0},\"option\":\"{{task_Meeting_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_07_Happy_Path_Message_Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"taskid3\",jsonData.id);\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Sms_Type}}\",\"value\":0},\"option\":\"{{task_Sms_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_08_Happy_Path_Twitter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"taskid4\",jsonData.id);\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Twitter_Type}}\",\"value\":0},\"option\":\"{{task_Twitter_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_10_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"task_Id_02\",jsonData.id); \r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var fname = pm.globals.get(\"contact_First_Name_02\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contact).to.include(fname);\r",
+											"});\r",
+											"var uname = pm.globals.get(\"register_First_Name_02\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.assignedUser).to.include(uname);\r",
+											"});\r",
+											"var id = pm.globals.get(\"contact_Id_02\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contactRef).to.include(id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_02}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_02}}\",\"label\":\"{{contact_First_Name_02}} {{contact_Last_Name_02}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_02}}\",\"label\":\"{{register_First_Name_02}} {{register_Last_Name_02}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_11_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "zI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}"
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_13_Empty_Field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add task with empty data\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Date is required\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"id\":\"\",\"contact\":\"\",\"type\":\"Note\",\"value\":0},\"option\":\"Note\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Save_Task_14_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Null\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_02}}\",\"label\":\"{{contact_First_Name_02}} {{contact_Last_Name_02}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_02}}\",\"label\":\"{{register_First_Name_02}} {{register_Last_Name_02}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get_All_Tasks",
+					"item": [
+						{
+							"name": "Tas_Get_All_Task_01_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.globals.get(\"task_Id_01\");\r",
+											"pm.test(\"Get task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/getalltasks?limit=1000",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"getalltasks"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Get_All_Task_02_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_02}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/getalltasks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"getalltasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Get_All_Task_03_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "3684365",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/getalltasks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"getalltasks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add_Task_Tag",
+					"item": [
+						{
+							"name": "Tas_Add_Tag_01_Happy_Path Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Add a tag for task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Created\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Tag_02_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Add a tag for task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Created\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_02}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_02}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Mul_Tag_03_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add a tag for multiple task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Created\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_03}}\",\"{{task_Id_04}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Tag_04_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add a tag for task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "3456789",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Tag_05_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Add a tag for task with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"12121\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Tag_06_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"pm.test(\"Add a tag for task of missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Task found with selected ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_02}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Add_Tag_07_Empty_Field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Add a tag for task with empty data\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag cannot be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"\",\"selected\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/addtasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"addtasktag"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get_Task_Tag",
+					"item": [
+						{
+							"name": "Tas_Get_Tag_03_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"var tag = pm.globals.get(\"task_Tag\");\r",
+											"pm.test(\"Get tag\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(tag);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\"{{task_Id_01}}\"]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/gettasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"gettasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Get_Tag_07_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get tag with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "23235423523",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\"{{task_Id_01}}\"]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/gettasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"gettasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Get_Tag_08_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get tag with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\"12121\"]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/gettasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"gettasktag"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Remove_Task_Tag",
+					"item": [
+						{
+							"name": "Tas_Remove_Tag_01_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Remove tag successfully\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Removed\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/removetasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"removetasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Remove_Mul_Tag_02_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Remove multiple tag successfully\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Removed\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_03}}\",\"{{task_Id_04}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/removetasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"removetasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Remove_Tag_03_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Remove tag with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "23456789",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/removetasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"removetasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Remove_Tag_04_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"pm.test(\"Remove tag with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"1215\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/removetasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"removetasktag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Remove_Tag_05_Missmatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Remove tag for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Task found with selected ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_02}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/removetasktag",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"removetasktag"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Archive_Task",
+					"item": [
+						{
+							"name": "Tas_Archive_01_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archive task successfully\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"1 Task(s) Archived\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_01}}\",\"archive\":false}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_Mul_02_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archive multiple task successfully\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"2 Task(s) Archived\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_03}}\",\"archive\":false},{\"_id\":\"{{task_Id_04}}\",\"archive\":false}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_Already_03_Archived",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archiving the already archived task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"1 Task(s) Unarchived \");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_01}}\",\"archive\":true}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_Already_Mul_04_Archived",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archiving the already archived multiple task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"2 Task(s) Unarchived \");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_03}}\",\"archive\":true},{\"_id\":\"{{task_Id_04}}\",\"archive\":true}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_05_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archive task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "121212",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_01}}\",\"archive\":false}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_06_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archive task with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"1598624\",\"archive\":false}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_Archive_07_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Archive task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Records to Archive\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"_id\":\"{{task_Id_02}}\",\"archive\":false}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/archivetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"archivetask"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete_Task",
+					"item": [
+						{
+							"name": "Tas_01_Delete_Task_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Delete task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Task(s) Deleted\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/deletetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"deletetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_02_Delete_Mul_Task_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Delete multiple task\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Task(s) Deleted\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":[\"{{task_Id_03}}\",\"{{task_Id_04}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/deletetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"deletetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_03_Delete_invalid_access_token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Delete task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7899876",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":[\"{{task_Id_01}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/deletetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"deletetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_04_Delete_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Delete task with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":[\"12121\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/deletetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"deletetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_05_Delete_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Delete task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Task(s) to Delete\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":[\"{{task_Id_02}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/deletetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"deletetask"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Complete_Task_Id",
+					"item": [
+						{
+							"name": "Tas_01_Complete_Task_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/completetask/{{task_Id_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"completetask",
+										"{{task_Id_01}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_02_Complete_Task_Id_invalid_access_token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Complete task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7899876",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/completetask/{{task_Id_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"completetask",
+										"{{task_Id_01}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_04_Complete_Task_id_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Complete task with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": \"false\",\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": \"true\",\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tag s\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/completetask/12121",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"completetask",
+										"12121"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_05_Complete_Task_Id_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Complete task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"null\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": \"false\",\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": \"true\",\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tag s\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/completetask/{{task_Id_02}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"completetask",
+										"{{task_Id_02}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Not_Complete_Task_Id",
+					"item": [
+						{
+							"name": "Tas_01_Complete_Task_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": false,\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": false,\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tags\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notcompletetask/{{task_Id_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notcompletetask",
+										"{{task_Id_01}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_02_Complete_Task_Id_invalid_access_token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Not complete task with invalid acces token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7899876",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": \"false\",\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": \"true\",\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tag s\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notcompletetask/{{task_Id_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notcompletetask",
+										"{{task_Id_01}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_04_Complete_Task_id_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Not complete task with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Global_Token1}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": \"false\",\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": \"true\",\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tag s\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notcompletetask/12121",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notcompletetask",
+										"12121"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_05_Complete_Task_Id_Mismatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Not complete task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"null\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"AccountId\": \"61e7fc3309db1a878f94c3b2\",\r\n\"CreatedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"LastModifiedBy\": \"61e7fc3309db1a878f94c3b3\",\r\n\"archive\": false,\r\n\"assignedUser\": \"keer sunny\",\r\n\"completed\": false,\r\n\"contact\": \"tom987 489jerry\",\r\n\"contactRef\": \"61fcdc366e2851f3040a1e49\",\r\n\"date\": \"2022-02-18T03:30:00.000Z\",\r\n\"id\": \"620c71db8ff8468fed36ec1b\",\r\n\"notes\": \"\",\r\n\"tags\": \"[]\",\r\n\"type\": \"Note\",\r\n\"userRef\": \"61e7fc3309db1a878f94c3b3\",\r\n\"value\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notcompletetask/{{task_Id_02}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notcompletetask",
+										"{{task_Id_02}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Edit_Task",
+					"item": [
+						{
+							"name": "Tas_Save_Task_01_Happy_Path_Note_Task Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.globals.set(\"task_Id_01\",jsonData.id); \r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var fname = pm.globals.get(\"contact_First_Name_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contact).to.include(fname);\r",
+											"});\r",
+											"var uname = pm.globals.get(\"register_First_Name_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.assignedUser).to.include(uname);\r",
+											"});\r",
+											"var id = pm.globals.get(\"contact_Id_01\");\r",
+											"pm.test(\"Add task successfully\", function () {\r",
+											"    pm.expect(jsonData.contactRef).to.include(id);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/savetask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"savetask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_01_Edit_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Edit task\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"{{task_Id_01}}\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_EDes}}\",\"date\":\"{{task_Edate}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/edittask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"edittask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_03_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Edit task with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "234787",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"{{task_Id_01}}\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_EDes}}\",\"date\":\"{{task_Edate}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/edittask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"edittask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_04_Edit_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Edit task with invalid id\", function () {\r",
+											"    pm.response.to.have.status(\"Invalid ID or ID is not provided\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"1212\",\"contact\":{\"value\":\"{{contact_Id_01}}\",\"label\":\"{{contact_First_Name_01}} {{contact_Last_Name_01}}\"},\"description\":\"{{task_EDes}}\",\"date\":\"{{task_Edate}}\",\"assignedUser\":{\"value\":\"{{user_Id_01}}\",\"label\":\"{{register_First_Name_01}} {{register_Last_Name_01}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/edittask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"edittask"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tas_05_Edit_mismatch_id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Edit task for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Task match the ID\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"formData\":{\"_id\":\"{{task_Id_02}}\",\"contact\":{\"value\":\"{{contact_Id_02}}\",\"label\":\"{{contact_First_Name_02}} {{contact_Last_Name_02}}\"},\"description\":\"{{task_Edes}}\",\"date\":\"{{task_Edate}}\",\"assignedUser\":{\"value\":\"{{user_Id_02}}\",\"label\":\"{{register_First_Name_02}} {{register_Last_Name_02}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/edittask",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"edittask"
 									]
 								}
 							},

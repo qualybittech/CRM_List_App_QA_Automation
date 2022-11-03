@@ -19,6 +19,11 @@ describe('Account module ', () => {
     })
 
     beforeEach(()=>{
+      cy.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false
+      })
       cy.fixture('./JSON_TestData/Templates_Testdata.json').then((json_TestDataData) => {
         for  (var jsonindex in json_TestDataData){
           cy.login_with_Userkey_from_Testdata_to_CRM_Application(json_TestDataData[jsonindex].userkey);
