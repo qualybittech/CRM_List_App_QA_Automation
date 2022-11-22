@@ -2313,6 +2313,936 @@
 					]
 				},
 				{
+					"name": "Notes_Contact",
+					"item": [
+						{
+							"name": "Create_Note_Contact",
+							"item": [
+								{
+									"name": "Create_Note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note created\");\r",
+													"});\r",
+													"\r",
+													"var jsonData = JSON.parse(responseBody);\r",
+													"pm.globals.set(\"note_Id_01\",jsonData.note._id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_02_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "1212",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_03_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"contact\":\"1596546\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_04_Empty_Data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_05_Miss_Match_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No Contact found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"contact\":\"{{contact_Id_02}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Edit_Note_Contact",
+							"item": [
+								{
+									"name": "Edit_Note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note updated\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_02_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "13548",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_03_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"1258\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_04_Empty_Data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_05_Miss_MatchId",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_02}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get_Note_Contact",
+							"item": [
+								{
+									"name": "Get_Note_01_Contact_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = JSON.parse(responseBody);\r",
+													"var tag = pm.globals.get(\"note_Id_01\");\r",
+													"pm.test(\"Get note tag\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(tag);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/{{contact_Id_01}}/contact",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{contact_Id_01}}",
+												"contact"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get_Note_02_Contact_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "1212",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/{{contact_Id_01}}/contact",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{contact_Id_01}}",
+												"contact"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get_Note_03_Contact_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/12121/contact",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"12121",
+												"contact"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete_Note_Contact",
+							"item": [
+								{
+									"name": "Delete_note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note deleted\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_01}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_01}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_note_02_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/12121",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"12121"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_Note_03_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "12121",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_01}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_01}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_note_04_Miss_Match_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_02}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_01}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_01}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "Archive_Contact",
 					"item": [
 						{
@@ -2647,12 +3577,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Archive contact with missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No  Contact(s) to Archive\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Contact(s) to Archive\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3370,6 +4300,109 @@
 					]
 				},
 				{
+					"name": "Get_All_Tags",
+					"item": [
+						{
+							"name": "Get_All_Tags_01_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"\r",
+											"var tag = pm.globals.get(\"contact_Tag_01\");\r",
+											"pm.test(\"Get snippet tag\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(tag);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/contact/tags",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"contact",
+										"tags"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_All_Tags_02_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "12121",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/contact/tags",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"contact",
+										"tags"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Remove_Contact_Tag",
 					"item": [
 						{
@@ -3435,8 +4468,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"pm.test(\"Remove contact tag for multiple tags successfully\", function () {\r",
 											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Removed\");\r",
@@ -3604,7 +4637,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Remove contact tag with missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Contact found with selected ID\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Contact found with this Id\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3642,6 +4675,211 @@
 										"v2",
 										"contact",
 										"tag"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact_Lookups",
+					"item": [
+						{
+							"name": "Contact_Lookups_01_Happypath",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"var fName = pm.globals.get(\"contact_First_Name_01\");\r",
+											"pm.test(\"Get contact\", function () {\r",
+											"    pm.expect(jsonData[0].fName).to.include(fName);\r",
+											"});\r",
+											"\r",
+											"var lName = pm.globals.get(\"contact_Last_Name_01\");\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(jsonData[0].lName).to.include(lName);\r",
+											"});\r",
+											"\r",
+											"var email = pm.globals.get(\"contact_Email_01\");\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(jsonData[0].email).to.include(email);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/contact/lookup?input={{contact_First_Name_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"contact",
+										"lookup"
+									],
+									"query": [
+										{
+											"key": "input",
+											"value": "{{contact_First_Name_01}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contact_Lookups_02_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "535",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/contact/lookup?input={{contact_First_Name_01}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"contact",
+										"lookup"
+									],
+									"query": [
+										{
+											"key": "input",
+											"value": "{{contact_First_Name_01}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contact_Lookups_03_Invalid_Input",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/contact/lookup?input=input",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"contact",
+										"lookup"
+									],
+									"query": [
+										{
+											"key": "input",
+											"value": "input"
+										}
 									]
 								}
 							},
@@ -3688,7 +4926,7 @@
 											"\r",
 											"pm.globals.get(\"contact_Eemail_01\");\r",
 											"var repositoryy =\"jerry\"+ pm.variables.replaceIn('{{$randomEmail}}');\r",
-											"pm.globals.set(\"contact_Email_01\",repositoryy);\r",
+											"pm.globals.set(\"contact_Eemail_01\",repositoryy);\r",
 											"\r",
 											""
 										],
@@ -3711,7 +4949,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"_id\":\"6336d94b17307cf69e0f843b\",\"fName\":\"tom20220930170\",\"lName\":\"jerry20220930170943\",\"company\":\"6336d90517307cf69e0f82da\",\"email\":\"jerrypablo81@hotmail.com\",\"emailType\":\"\",\"title\":\"{{contact_Title}}\",\"phone\":\"9865344446\",\"extn\":\"\",\"phoneType\":\"\",\"stage\":\"New\",\"street\":\"1208 Rocket Drive\",\"city\":\"Minneapolis\",\"state\":\"Minnesota\",\"country\":\"United States\",\"code\":\"55410\",\"linkedin\":\"Linkedin\",\"facebook\":\"Facebook\",\"type\":\"Lead\",\"owner\":\"63367a5817307cf69e0f709b\",\"tags\":[\"Tag\"],\"archive\":false,\"timezone\":\"Asia/Calcutta\",\"views\":0,\"clicks\":0,\"totalEmailSent\":0,\"isUnsubscribed\":false,\"AccountId\":\"63367a5817307cf69e0f7099\",\"fName_fuzzy\":[\"to\",\"tom\",\"tom2\",\"tom20\",\"tom202\",\"tom2022\",\"tom20220\",\"tom202209\",\"tom2022093\",\"tom20220930\",\"tom202209301\",\"tom2022093017\",\"tom20220930170\",\"tom202209301709\",\"tom2022093017094\",\"tom20220930170943\"],\"lName_fuzzy\":[\"je\",\"jer\",\"jerr\",\"jerry\",\"jerry2\",\"jerry20\",\"jerry202\",\"jerry2022\",\"jerry20220\",\"jerry202209\",\"jerry2022093\",\"jerry20220930\",\"jerry202209301\",\"jerry2022093017\",\"jerry20220930170\",\"jerry202209301709\",\"jerry2022093017094\",\"jerry20220930170943\"],\"notes\":[],\"createdAt\":\"2022-09-30T11:55:55.885Z\",\"updatedAt\":\"2\"}",
+									"raw": "{\"_id\":\"{{contact_Id_01}}\",\"fName\":\"{{contact_Efirst_Name_01}}\",\"lName\":\"{{contact_Elast_Name_01}}\",\"company\":\"{{account_Id_01}}\",\"email\":\"{{contact_Eemail_01}}\",\"emailType\":\"\",\"title\":\"\",\"phone\":\"\",\"extn\":\"\",\"phoneType\":\"\",\"stage\":\"\",\"street\":\"\",\"city\":\"\",\"state\":\"\",\"country\":\"\",\"code\":\"\",\"linkedin\":\"\",\"facebook\":\"\",\"type\":\"\",\"owner\":\"{{user_Id_01}}\",\"tags\":[\"Tag\"],\"archive\":false,\"timezone\":\"Asia/Calcutta\",\"views\":0,\"clicks\":0,\"totalEmailSent\":0,\"isUnsubscribed\":false,\"AccountId\":\"{{user_Id_01}}\",\"fName_fuzzy\":[],\"lName_fuzzy\":[],\"notes\":[],\"createdAt\":\"2022-11-16T05:38:18.997Z\",\"updatedAt\":\"2022-11-16T05:38:37.621Z\",\"__v\":0}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4622,314 +5860,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "Get_All_Tags",
-					"item": [
-						{
-							"name": "Get_All_Tags_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"\r",
-											"\r",
-											"var tag = pm.globals.get(\"contact_Tag_01\");\r",
-											"pm.test(\"Get snippet tag\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(tag);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/contact/tags",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"contact",
-										"tags"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get_All_Tags_02_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "12121",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/contact/tags",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"contact",
-										"tags"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Contact_Lookups",
-					"item": [
-						{
-							"name": "Contact_Lookups_01_Happypath",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"\r",
-											"var fName = pm.globals.get(\"contact_First_Name_01\");\r",
-											"pm.test(\"Get contact\", function () {\r",
-											"    pm.expect(jsonData[0].fName).to.include(fName);\r",
-											"});\r",
-											"\r",
-											"var lName = pm.globals.get(\"contact_Last_Name_01\");\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(jsonData[0].lName).to.include(lName);\r",
-											"});\r",
-											"\r",
-											"var email = pm.globals.get(\"contact_Email_01\");\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(jsonData[0].email).to.include(email);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/contact/lookup?input={{contact_First_Name_01}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"contact",
-										"lookup"
-									],
-									"query": [
-										{
-											"key": "input",
-											"value": "{{contact_First_Name_01}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Contact_Lookups_02_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "535",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/contact/lookup?input={{contact_First_Name_01}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"contact",
-										"lookup"
-									],
-									"query": [
-										{
-											"key": "input",
-											"value": "{{contact_First_Name_01}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Contact_Lookups_03_Invalid_Input",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/contact/lookup?input=input",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"contact",
-										"lookup"
-									],
-									"query": [
-										{
-											"key": "input",
-											"value": "input"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
 				}
 			]
 		},
@@ -5610,8 +6540,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"var jsonData = JSON.parse(responseBody);\r",
@@ -7294,8 +8224,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Edit snippet for miss match id\", function () {\r",
@@ -8601,1862 +9531,118 @@
 			]
 		},
 		{
-			"name": "Notes_Contact",
+			"name": "Email_Availability_Check",
 			"item": [
 				{
-					"name": "Create_Note_Contact",
-					"item": [
+					"name": "Email_Avaliability_Check_01_Already_Eist_Email",
+					"event": [
 						{
-							"name": "Create_Note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note created\");\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"pm.globals.set(\"note_Id_01\",jsonData.note._id);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_02_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "1212",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_03_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"contact\":\"1596546\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_04_Empty_Data",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"contact\":\"{{contact_Id_01}}\",\"notes\":\"\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_05_Miss_Match_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Contact found\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"contact\":\"{{contact_Id_02}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email already exists\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/auth/checkEmailAvailability/{{register_Email_01}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v2",
+								"auth",
+								"checkEmailAvailability",
+								"{{register_Email_01}}"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"name": "Edit_Note_Contact",
-					"item": [
+					"name": "Email_Avaliability_Check_02_New_Email",
+					"event": [
 						{
-							"name": "Edit_Note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note updated\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_02_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "13548",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_03_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"1258\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_04_Empty_Data",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_05_Miss_MatchId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_01}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email available\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/auth/checkEmailAvailability/{{Email}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v2",
+								"auth",
+								"checkEmailAvailability",
+								"{{Email}}"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"name": "Get_Note_Contact",
-					"item": [
+					"name": "Email_Avaliability_Check_03_Invalid_Email",
+					"event": [
 						{
-							"name": "Get_Note_01_Contact_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"var tag = pm.globals.get(\"note_Id_01\");\r",
-											"pm.test(\"Get note tag\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(tag);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/{{contact_Id_01}}/contact",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{contact_Id_01}}",
-										"contact"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get_Note_02_Contact_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "1212",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/{{contact_Id_01}}/contact",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{contact_Id_01}}",
-										"contact"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get_Note_03_Contact_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/12121/contact",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"12121",
-										"contact"
-									]
-								}
-							},
-							"response": []
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Please provide a valid email\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				{
-					"name": "Delete_Note_Contact",
-					"item": [
-						{
-							"name": "Delete_note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note deleted\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/auth/checkEmailAvailability/02",
+							"host": [
+								"{{url}}"
 							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_01}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_01}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_note_02_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/12121",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"12121"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_Note_03_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "12121",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_01}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_01}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_note_04_Miss_Match_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_01}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_01}}"
-									]
-								}
-							},
-							"response": []
+							"path": [
+								"v2",
+								"auth",
+								"checkEmailAvailability",
+								"02"
+							]
 						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Notes_Account",
-			"item": [
-				{
-					"name": "Create_Note_Company",
-					"item": [
-						{
-							"name": "Create_Note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note created\");\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"pm.globals.set(\"note_Id_02\",jsonData.note._id);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_02_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "1212",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_03_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"company\":\"159872\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_04_Empty_Data",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create_Note_05_Miss_Match_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Company found\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"company\":\"{{account_Id_02}}\",\"notes\":\"{{notes}}\"}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Edit_Note_Company",
-					"item": [
-						{
-							"name": "Edit_Note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note updated\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_02_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "13548",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_03_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"1258\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_04_Empty_Data",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Edit_Note_05_Miss_MatchId",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Get_Note_Company",
-					"item": [
-						{
-							"name": "Get_Note_01_Company_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"var tag = pm.globals.get(\"note_Id_02\");\r",
-											"pm.test(\"Get note tag\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(tag);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/{{account_Id_01}}/company",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{account_Id_01}}",
-										"company"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get_Note_02_Company_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "1212",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/{{account_Id_01}}/company",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{account_Id_01}}",
-										"company"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get_Note_03_Company_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/notes/12121/company",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"12121",
-										"company"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Delete_Note_Account",
-					"item": [
-						{
-							"name": "Delete_note_01_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note deleted\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_02}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_02}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_note_02_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/12121",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"12121"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_Note_03_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "12121",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_02}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_02}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete_note_04_Miss_Match_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/notes/{{note_Id_02}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"notes",
-										"{{note_Id_02}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
+					},
+					"response": []
 				}
 			]
 		},
@@ -11863,6 +11049,936 @@
 								}
 							},
 							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notes_Account",
+					"item": [
+						{
+							"name": "Create_Note_Company",
+							"item": [
+								{
+									"name": "Create_Note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note created\");\r",
+													"});\r",
+													"\r",
+													"var jsonData = JSON.parse(responseBody);\r",
+													"pm.globals.set(\"note_Id_02\",jsonData.note._id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_02_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "1212",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_03_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"company\":\"159872\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_04_Empty_Data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"company\":\"{{account_Id_01}}\",\"notes\":\"\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create_Note_05_Miss_Match_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No Company found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"company\":\"{{account_Id_02}}\",\"notes\":\"{{notes}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Edit_Note_Company",
+							"item": [
+								{
+									"name": "Edit_Note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note updated\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_02_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "13548",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_03_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"1258\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_04_Empty_Data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note cannot be empty\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit_Note_05_Miss_MatchId",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_02}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"id\":\"{{note_Id_02}}\",\"notes\":\"{{enotes}}\",\"isEdited\":true}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get_Note_Company",
+							"item": [
+								{
+									"name": "Get_Note_01_Company_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = JSON.parse(responseBody);\r",
+													"var tag = pm.globals.get(\"note_Id_02\");\r",
+													"pm.test(\"Get note tag\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(tag);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/{{account_Id_01}}/company",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{account_Id_01}}",
+												"company"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get_Note_02_Company_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "1212",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/{{account_Id_01}}/company",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{account_Id_01}}",
+												"company"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get_Note_03_Company_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/v2/notes/12121/company",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"12121",
+												"company"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete_Note_Account",
+							"item": [
+								{
+									"name": "Delete_note_01_Happy_Path",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note deleted\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_02}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_02}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_note_02_Invalid_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_01}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/12121",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"12121"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_Note_03_Invalid_Access_Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "12121",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_02}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_02}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete_note_04_Miss_Match_Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Note not found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{global_Token_02}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/v2/notes/{{note_Id_02}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"v2",
+												"notes",
+												"{{note_Id_02}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				},
@@ -13650,12 +13766,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Archive company with missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Company(s) to Archive\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -13878,7 +13994,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Delete company with invalid id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Account(s) to Delete\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -14392,7 +14508,7 @@
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"pm.test(\"Edit company with invalid id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid ID\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -16474,7 +16590,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Archive template with invalid id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid  Id\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -16523,12 +16639,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Archive template for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Records to Archive\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"No Templates(s) to Archive\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -17052,7 +17168,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Delete template with invalid id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid  Id\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -17475,122 +17591,6 @@
 							"response": []
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Email_Availability_Check",
-			"item": [
-				{
-					"name": "Email_Avaliability_Check_01_Already_Eist_Email",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Email already exists\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/auth/checkEmailAvailability/{{register_Email_01}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"auth",
-								"checkEmailAvailability",
-								"{{register_Email_01}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Email_Avaliability_Check_02_New_Email",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Email available\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/auth/checkEmailAvailability/{{Email}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"auth",
-								"checkEmailAvailability",
-								"{{Email}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Email_Avaliability_Check_03_Invalid_Email",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Please provide a valid email\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/auth/checkEmailAvailability/02",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"auth",
-								"checkEmailAvailability",
-								"02"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -18338,73 +18338,6 @@
 							"response": []
 						},
 						{
-							"name": "Tas_Save_Task_10_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"pm.globals.set(\"task_Id_02\",jsonData.id); \r",
-											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"var fname = pm.globals.get(\"contact_First_Name_02\");\r",
-											"pm.test(\"Add task successfully\", function () {\r",
-											"    pm.expect(jsonData.contact).to.include(fname);\r",
-											"});\r",
-											"var uname = pm.globals.get(\"register_First_Name_02\");\r",
-											"pm.test(\"Add task successfully\", function () {\r",
-											"    pm.expect(jsonData.assignedUser).to.include(uname);\r",
-											"});\r",
-											"var id = pm.globals.get(\"contact_Id_02\");\r",
-											"pm.test(\"Add task successfully\", function () {\r",
-											"    pm.expect(jsonData.contactRef).to.include(id);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"formData\":{\"_id\":\"\",\"contact\":{\"value\":\"{{contact_Id_02}}\",\"label\":\"{{contact_First_Name_02}} {{contact_Last_Name_02}}\"},\"description\":\"{{task_Description}}\",\"date\":\"{{task_Date}}\",\"assignedUser\":{\"value\":\"{{user_Id_02}}\",\"label\":\"{{register_First_Name_02}} {{register_Last_Name_02}}\"},\"type\":\"{{task_Note_Type}}\",\"value\":0},\"option\":\"{{task_Note_Type}}\",\"value\":0}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/tasks",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"tasks"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Tas_Save_Task_11_Invalid_Access_Token",
 							"event": [
 								{
@@ -18519,7 +18452,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Add task for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Null\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid Contact Id\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -18767,60 +18700,6 @@
 							"response": []
 						},
 						{
-							"name": "Tas_Add_Tag_02_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Add a tag for task\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Tag(s) Created\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"tag\":\"{{task_Tag}}\",\"selected\":[\"{{task_Id_02}}\"]}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/tasks/tag",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"tasks",
-										"tag"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Tas_Add_Mul_Tag_03_Happy_Path",
 							"event": [
 								{
@@ -18991,11 +18870,11 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"pm.test(\"Add a tag for task of missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Task found with selected ID\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -19603,12 +19482,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Remove tag for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Task found with selected ID\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -19993,12 +19872,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Archive task for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Records to Archive\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -20273,12 +20152,12 @@
 									"script": {
 										"exec": [
 											"\r",
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Delete task for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Task(s) to Delete\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -20572,7 +20451,7 @@
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"pm.test(\"Edit task for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No Task match the ID\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid ID or ID is not provided\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -20936,7 +20815,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Invalid access token\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid Id\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -21454,7 +21333,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid_Id\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -21700,7 +21579,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid_Id\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid  ID\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -22210,12 +22089,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Contact filter with invalid access token\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Filter name is required\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Name is Required\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -23019,7 +22898,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Filter name is required\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Name is Required\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -23758,7 +23637,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Filter name is required\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Name is Required\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -27043,537 +26922,6 @@
 					]
 				},
 				{
-					"name": "Update_Settings",
-					"item": [
-						{
-							"name": "Sequences_01_Update_Settings_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"pm.test(\"Update settings\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Sequence updated successfully\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_02_Update_Settings_Empty_Days",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Update settings with empty data\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid day(s) - []\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_03_Update_Settings_Empty_Timezone",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Update settings with empty timezone\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"timezone should be an object\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"\",\"label\":\"\",\"offset\":\"\",\"abbrev\":\"\",\"altName\":\"\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_04_Update_Settings_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Update settings with invalid access token\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "123123",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_05_Update_Settings_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Update settings with invalid id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid sequence id\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/121/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"121",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_06_Update_Settings_Missmatch_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Update settings for missmatch id\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"You don't have permissions to update this sequence\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Get_Settings",
-					"item": [
-						{
-							"name": "Sequences_01_Settings_Happy_Path",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Get sequences settings\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"true\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_02_Settings_MissMatch_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"No sequence with that id found!\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_02}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_03_Settings_Invalid_Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Body matches string\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid sequence id\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{global_Token_01}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/sequences/12121/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"12121",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sequences_04_Settings_Invalid_Access_Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Get settings with invalid access token\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "12123",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"sequences",
-										"{{sequences_Id_01}}",
-										"settings"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Edit_Sequences",
 					"item": [
 						{
@@ -27848,6 +27196,199 @@
 										"sequences",
 										"{{sequences_Id_01}}",
 										"name"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get_Settings",
+					"item": [
+						{
+							"name": "Sequences_01_Settings_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get sequences settings\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"true\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_02_Settings_MissMatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"No sequence with that id found!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_02}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_03_Settings_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid sequence id\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/sequences/12121/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"12121",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_04_Settings_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get settings with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "12123",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
 									]
 								}
 							},
@@ -28960,6 +28501,344 @@
 		{
 			"name": "Emails",
 			"item": [
+				{
+					"name": "Update_Settings",
+					"item": [
+						{
+							"name": "Sequences_01_Update_Settings_Happy_Path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Update settings\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Sequence updated successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_02_Update_Settings_Empty_Days",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Update settings with empty data\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid day(s) - []\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_03_Update_Settings_Empty_Timezone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Update settings with empty timezone\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"timezone should be an object\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"\",\"label\":\"\",\"offset\":\"\",\"abbrev\":\"\",\"altName\":\"\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_04_Update_Settings_Invalid_Access_Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Update settings with invalid access token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Access Token is Expired / Invalid Token\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "123123",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_05_Update_Settings_Invalid_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Update settings with invalid id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid sequence id\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_01}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/121/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"121",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sequences_06_Update_Settings_Missmatch_Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Update settings for missmatch id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"You don't have permissions to update this sequence\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{global_Token_02}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"daysToRun\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\",\"Sun\",\"Sat\"],\"startTime\":\"0800\",\"sendLimit\":10,\"enrollmentLimit\":10,\"timezone\":{\"value\":\"{{sequences_Time_Zone_Value}}\",\"label\":\"{{sequences_Time_Zone_Lable}}\",\"offset\":-11,\"abbrev\":\"SST\",\"altName\":\"Samoa Standard Time\"},\"owner\":\"{{user_Id_01}}\",\"followUpEmail\":false,\"linkToUnsubscribe\":false,\"trackOpens\":true,\"trackLinkClicks\":true,\"stopSending\":\"{{sequences_Setting_Stop_Sending}}\",\"delayBetween\":2} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/v2/sequences/{{sequences_Id_01}}/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"sequences",
+										"{{sequences_Id_01}}",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Send_Email",
 					"protocolProfileBehavior": {
